@@ -16,6 +16,9 @@
 # Mono auto generated files
 mono_crash.*
 
+# Ignore lib
+!/SimpleGameEngine/Dependencies/**/lib/
+
 # Build results
 [Rr]eleases/
 x64/
@@ -390,6 +393,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-!glew/lib/
-!SDL/lib/
