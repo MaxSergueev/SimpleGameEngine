@@ -9,6 +9,7 @@
 
 #include <vector>
 #include "../AnimatedSpriteComponent.h"
+#include "../MoveComponent.h"
 
 Pong::Pong():Scene("Pong")
 {
@@ -44,13 +45,18 @@ void Pong::Load()
     }
     Actor* actor = new Actor();
     AddActor(actor);
-    actor->SetPosition(Vector2{ 250, 250 });
-    actor->SetScale(Vector2{ 1.0f, 1.0f });
+    actor->SetPosition(Vector2{ 400, 400 });
 
     AnimatedSpriteComponent* anim = new AnimatedSpriteComponent(actor, WalkCycle);
+    MoveComponent* move = new MoveComponent(actor);
     anim->SetAnimationFps(12);
+    move->SetSpeed(-15.0f);
 
     //PokeBall
     Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
-    //SpriteComponent* sprite =  new SpriteComponent(actor, Assets::GetTexture("ball"));
+    Actor* ballActor = new Actor();
+    AddActor(ballActor);
+    SpriteComponent* sprite =  new SpriteComponent(ballActor, Assets::GetTexture("ball"));
+    ballActor->SetPosition(Vector2{ 865, 500 });
+    ballActor->SetScale(Vector2{ 0.15f, 0.15f });
 }

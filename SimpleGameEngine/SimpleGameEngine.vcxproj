@@ -176,6 +176,8 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MoveComponent.cpp" />
+    <ClCompile Include="MoveComponent.h" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />

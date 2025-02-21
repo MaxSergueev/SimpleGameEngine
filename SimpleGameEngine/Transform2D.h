@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Maths.h"
 
 
 class Transform2D
@@ -22,4 +23,7 @@ public:
 
     void Translate(Vector2 pMovement);
     void Rotate(float pRotation);
+
+    Vector2 Right() const { return Vector2(Maths::Cos(mZrotation), -Maths::Sin(mZrotation)); }
+    Vector2 Up() const { return Vector2(Maths::Sin(mZrotation), -Maths::Cos(mZrotation)); }
 };

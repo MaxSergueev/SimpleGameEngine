@@ -9,6 +9,8 @@ struct Vector2
     static const Vector2 Zero;
     static const Vector2 One;
 
+    float GetSqrLength();
+
     friend Vector2 operator+(const Vector2& pLeft, const Vector2& pRight)
     {
         return {pLeft.x + pRight.x, pLeft.y + pRight.y};
