@@ -9,7 +9,6 @@ public:
     void Start() override;
     void Render() override;
     void Update() override;
-    void OnInputs(SDL_Event pEvent) override;
     void Close() override;
     
     void Load() override;

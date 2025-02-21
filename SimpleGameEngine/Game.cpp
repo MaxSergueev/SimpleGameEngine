@@ -30,6 +30,8 @@ void Game::Initialize()
 {
     mWindow = new Window(1000, 1000);
 
+    mInputManager = new InputManager;
+
     if(mWindow->Open() && mRenderer->Initialize(*mWindow))
     {
         mScenes[mLoadedScene]->Load();
@@ -76,7 +78,6 @@ void Game::CheckInputs()
                     //Send input to scene
                     break;
             }
-            mScenes[mLoadedScene]->OnInputs(event);
         }
     }
 }

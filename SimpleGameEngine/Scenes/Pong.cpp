@@ -27,10 +27,6 @@ void Pong::Update()
 {
 }
 
-void Pong::OnInputs(SDL_Event pEvent)
-{
-}
-
 void Pong::Close()
 {
 }

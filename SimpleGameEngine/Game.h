@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "Scene.h"
 #include "Window.h"
+#include "InputManager.h"
 
 
 class Game
@@ -13,6 +14,8 @@ private:
     std::string mTitle;
     Window* mWindow;
     Renderer* mRenderer;
+    InputManager* mInputManager;
+
     bool mIsRunning;
     std::vector<Scene*> mScenes;
     int mLoadedScene;
