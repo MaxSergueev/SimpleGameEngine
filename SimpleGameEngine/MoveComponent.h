@@ -1,9 +1,8 @@
 #pragma once
 #include "Component.h"
 #include "Vector2.h"
-#include "IInputListener.h"
 
-class MoveComponent : public Component, public IInputListener
+class MoveComponent : public Component
 {
 protected:
 	Vector2 mSpeed;
@@ -13,14 +12,9 @@ public:
 	MoveComponent(const MoveComponent&) = delete;
 	MoveComponent& operator= (const MoveComponent&) = delete;
 
-	~MoveComponent();
-
 	Vector2 GetSpeed() const { return mSpeed; }
 	void SetSpeed(Vector2 pSpeed);
 
-	void OnStart() override;
+	virtual void OnStart() override; ////Dont forget the virtuals here
 	void Update() override;
-
-	// Inherited via IInputListener
-	void OnNotify(SDL_Event& pEvent) override;
 };
