@@ -44,6 +44,7 @@ void Game::Loop()
     {
         Time::ComputeDeltaTime();
         CheckInputs();
+        mScenes[mLoadedScene]->UpdateAllActors();
         mScenes[mLoadedScene]->Update();
         Render();
         Time::DelayTime();

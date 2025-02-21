@@ -171,6 +171,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -189,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="AnimatedSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Log.h" />

@@ -7,9 +7,11 @@
 
 #include "../Time.h"
 
+#include <vector>
+#include "../AnimatedSpriteComponent.h"
+
 Pong::Pong():Scene("Pong")
 {
-    pos = {20, 20};
 }
 
 void Pong::Start()
@@ -18,10 +20,6 @@ void Pong::Start()
 
 void Pong::Render()
 {
-    pos = {pos.x + 5.0f * Time::deltaTime, pos.y};
-
-    Rectangle r {{pos.x, pos.y}, {20, 20}};
-    mRenderer->DrawRect(r);
 }
 
 void Pong::Update()
@@ -38,8 +36,21 @@ void Pong::Close()
 
 void Pong::Load()
 {
-    Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
+    std::vector<Texture*> WalkCycle{};
+    for (int i = 0; i < 9; i++) {
+        Assets::LoadTexture(*mRenderer, "Resources/WalkCycle/0" + std::to_string(i) + "_MouseWalk.png", "0" + std::to_string(i) + "MW");
+        WalkCycle.push_back(&Assets::GetTexture("0" + std::to_string(i) + "MW"));
+
+    }
     Actor* actor = new Actor();
-    SpriteComponent* sprite =  new SpriteComponent(actor, Assets::GetTexture("ball"));
-    actor->SetPosition(Vector2{500, 500});
+    AddActor(actor);
+    actor->SetPosition(Vector2{ 250, 250 });
+    actor->SetScale(Vector2{ 1.0f, 1.0f });
+
+    AnimatedSpriteComponent* anim = new AnimatedSpriteComponent(actor, WalkCycle);
+    anim->SetAnimationFps(12);
+
+    //PokeBall
+    Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
+    //SpriteComponent* sprite =  new SpriteComponent(actor, Assets::GetTexture("ball"));
 }
