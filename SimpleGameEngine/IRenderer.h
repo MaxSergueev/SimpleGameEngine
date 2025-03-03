@@ -4,6 +4,7 @@
 #include "Window.h"
 
 class Texture;
+class SpriteComponent;
 
 class IRenderer
 {
@@ -31,6 +32,8 @@ public:
     virtual RendererType GetType() = 0;
 
     virtual void DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip = Flip::None) const = 0;
+    virtual void AddSprite(SpriteComponent* pSprite) = 0;
+    virtual void RemoveSprite(SpriteComponent* pSprite) = 0;
 
 
 };

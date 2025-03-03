@@ -2,8 +2,8 @@
 #include <glew.h>
 #include "Log.h"
 #include <SDL_image.h>
+#include "SpriteComponent.h"
 
-class SpriteComponent;
 
 bool RendererGl::Initialize(Window& rWindow)
 {
@@ -99,5 +99,9 @@ void RendererGl::Close()
 IRenderer::RendererType RendererGl::GetType()
 {
 	return RendererType::OPENGL;
+}
+
+void RendererGl::DrawSprites()
+{
 }
 

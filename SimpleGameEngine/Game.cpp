@@ -1,6 +1,8 @@
 #include "Game.h"
 #include <iostream>
 #include <SDL.h>
+#include "RendererSDL.h"
+#include "RendererGL.h"
 
 #include "Log.h"
 #include "Time.h"
@@ -9,8 +11,15 @@ class Scene;
 using namespace std;
 
 
-Game::Game(std::string pTitle, std::vector<Scene*> pScenes):mTitle(pTitle), mRenderer(new RendererSDL()), mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
+Game::Game(std::string pTitle, std::vector<Scene*> pScenes, IRenderer::RendererType pType):mTitle(pTitle),  mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
 {
+    if (pType == IRenderer::RendererType::SDL) {
+        mRenderer = new RendererSDL();
+    }
+    else if (pType == IRenderer::RendererType::OPENGL){
+        mRenderer = new RendererGl();
+    }
+
     if(mScenes.empty())
     {
         Log::Error(LogType::Error, "No scene set for game");

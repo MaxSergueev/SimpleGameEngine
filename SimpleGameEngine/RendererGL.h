@@ -1,7 +1,6 @@
 #pragma once
 #include "IRenderer.h"
 #include "VertexArray.h"
-#include "SpriteComponent.h"
 #include "ShaderProgram.h"
 
 
@@ -24,10 +23,13 @@ public:
 	void Draw() override;
 	void DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip = Flip::None) const override;
 	void EndDraw() override;
-	void AddSprite(SpriteComponent* pSprite);
-	void RemoveSprite(SpriteComponent* pSprite);
 	void Close() override;
 	RendererType GetType() override;
+
+	// Inherited via IRenderer
+	void DrawSprites() override;
+	void AddSprite(SpriteComponent* pSprite);
+	void RemoveSprite(SpriteComponent* pSprite);
 };
 
 

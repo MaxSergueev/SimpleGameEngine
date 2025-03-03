@@ -11,7 +11,7 @@ class Scene
 {
 protected:
     std::string mTitle;
-    RendererSDL* mRenderer;
+    IRenderer* mRenderer;
     bool mIsUpdatingActors;
     std::vector<Actor*> mActors;
     std::vector<Actor*> mPendingActors;
@@ -22,7 +22,7 @@ public:
     
     virtual ~Scene() = default;
     Scene(std::string pTitle = "Base Scene");
-    void SetRenderer(RendererSDL* pRenderer);
+    void SetRenderer(IRenderer* pRenderer);
     virtual void Start() = 0;
     virtual void Render()= 0;
     virtual void Update()=0;
@@ -39,5 +39,5 @@ public:
     void UpdateAllActors();
 
     
-    RendererSDL& GetRenderer();
+    IRenderer& GetRenderer();
 };

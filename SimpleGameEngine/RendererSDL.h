@@ -4,7 +4,6 @@
 #include "Window.h"
 #include "IRenderer.h"
 
-class SpriteComponent;
 class Texture;
 
 class RendererSDL: public IRenderer
@@ -28,6 +27,7 @@ public:
     SDL_Renderer* ToSdlRenderer() const {return mSdlRenderer;}
 
     void DrawRect(Rectangle& rRect);
+
     void DrawSprite(Actor& pActor,const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip = Flip::None) const;
     void AddSprite(SpriteComponent* pSprite);
     void RemoveSprite(SpriteComponent* pSprite);
