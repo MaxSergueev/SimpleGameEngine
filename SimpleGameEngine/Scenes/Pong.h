@@ -12,6 +12,4 @@ public:
     void Close() override;
     
     void Load() override;
-
-    Vector2 pos;
 };
