@@ -25,5 +25,7 @@ void GlTestScene::Load()
 	mSimpleFrag->Load("Simple.frag", FRAGMENT);
 	mSimpleVert->Load("Simple.vert", VERTEX);
 
-	sp->Compose({ mSimpleFrag, mSimpleVert });
+	sp->Compose({ mSimpleFrag, mSimpleVert }); 
+
+	//Actor
 }
