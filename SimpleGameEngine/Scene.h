@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "Renderer.h"
+#include "RendererSDL.h"
 
 class Actor;
 
@@ -11,7 +11,7 @@ class Scene
 {
 protected:
     std::string mTitle;
-    Renderer* mRenderer;
+    RendererSDL* mRenderer;
     bool mIsUpdatingActors;
     std::vector<Actor*> mActors;
     std::vector<Actor*> mPendingActors;
@@ -22,7 +22,7 @@ public:
     
     virtual ~Scene() = default;
     Scene(std::string pTitle = "Base Scene");
-    void SetRenderer(Renderer* pRenderer);
+    void SetRenderer(RendererSDL* pRenderer);
     virtual void Start() = 0;
     virtual void Render()= 0;
     virtual void Update()=0;
@@ -39,5 +39,5 @@ public:
     void UpdateAllActors();
 
     
-    Renderer& GetRenderer();
+    RendererSDL& GetRenderer();
 };

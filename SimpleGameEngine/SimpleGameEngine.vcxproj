@@ -201,12 +201,13 @@
     <ClInclude Include="IInputListener.h" />
     <ClInclude Include="InputEvent.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RendererSDL.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scenes\Pong.h" />
     <ClInclude Include="SpriteComponent.h" />

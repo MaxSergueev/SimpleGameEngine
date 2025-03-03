@@ -9,7 +9,7 @@ class Scene;
 using namespace std;
 
 
-Game::Game(std::string pTitle, std::vector<Scene*> pScenes):mTitle(pTitle), mRenderer(new Renderer()), mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
+Game::Game(std::string pTitle, std::vector<Scene*> pScenes):mTitle(pTitle), mRenderer(new RendererSDL()), mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
 {
     if(mScenes.empty())
     {

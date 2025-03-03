@@ -2,32 +2,28 @@
 #include "Actor.h"
 #include "Rectangle.h"
 #include "Window.h"
+#include "IRenderer.h"
 
 class SpriteComponent;
 class Texture;
 
-class Renderer
+class RendererSDL: public IRenderer
 {
 private:
     SDL_Renderer* mSdlRenderer;
     std::vector<SpriteComponent*> mSprites;
 public:
-    enum class Flip
-    {
-        None = SDL_FLIP_NONE,
-        Horizontal = SDL_FLIP_HORIZONTAL,
-        Vertical = SDL_FLIP_VERTICAL
-    };
-    Renderer();
-    Renderer(const Renderer&) = delete;
+    RendererSDL();
+    RendererSDL(const RendererSDL&) = delete;
     //Renderer& operator= (const Renderer&) = delete;
 
-    bool Initialize(Window& rWindow);
-    void BeginDraw();
-    void Draw();
-    void DrawSprites();
-    void EndDraw();
-    void Close();
+    bool Initialize(Window& rWindow) override;
+    void BeginDraw() override;
+    void Draw() override;
+    void DrawSprites() override;
+    void EndDraw() override;
+    void Close() override;
+    virtual RendererType GetType() override;
 
     SDL_Renderer* ToSdlRenderer() const {return mSdlRenderer;}
 

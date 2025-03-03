@@ -12,7 +12,7 @@ Scene::Scene( std::string pTitle): mTitle(pTitle), mRenderer(nullptr), mIsUpdati
     ActiveScene = this;
 }
 
-void Scene::SetRenderer(Renderer* pRenderer)
+void Scene::SetRenderer(RendererSDL* pRenderer)
 {
     mRenderer = pRenderer;
 }
@@ -73,7 +73,7 @@ void Scene::UpdateAllActors()
     }
 }
 
-Renderer& Scene::GetRenderer()
+RendererSDL& Scene::GetRenderer()
 {
     return *mRenderer;
 }

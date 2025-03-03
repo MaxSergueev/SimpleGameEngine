@@ -24,9 +24,9 @@ void SpriteComponent::SetTexture(const Texture& pTexture)
     mTexture.UpdateInfo(mTexWidth, mTexHeight);
 }
 
-void SpriteComponent::Draw(Renderer& pRenderer)
+void SpriteComponent::Draw(RendererSDL& pRenderer)
 {
     Vector2 origin {mTexWidth/2.0f, mTexHeight/2.0f};
-    Renderer::Flip flip = mFlipX ? Renderer::Flip::Horizontal : Renderer::Flip::None;
+    RendererSDL::Flip flip = mFlipX ? RendererSDL::Flip::Horizontal : RendererSDL::Flip::None;
     pRenderer.DrawSprite(*mOwner, mTexture, Rectangle(), origin, flip); 
 }

@@ -19,7 +19,7 @@ public:
 
     virtual void SetTexture(const Texture& pTexture);
     void SetFlipX(bool FlipX) { mFlipX = FlipX; };
-    virtual void Draw(Renderer& pRenderer);
+    virtual void Draw(RendererSDL& pRenderer);
 
     //Getters
     int GetDrawOrder() const {return mDrawOrder;}

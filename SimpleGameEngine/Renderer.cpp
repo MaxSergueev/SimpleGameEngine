@@ -1,4 +1,4 @@
-#include "Renderer.h"
+#include "RendererSDL.h"
 #include "Log.h"
 #include "Maths.h"
 
@@ -7,11 +7,11 @@
 
 using namespace std;
 
-Renderer::Renderer():mSdlRenderer(nullptr)
+RendererSDL::RendererSDL():mSdlRenderer(nullptr)
 {
 }
 
-bool Renderer::Initialize(Window& rWindow)
+bool RendererSDL::Initialize(Window& rWindow)
 {
     mSdlRenderer = SDL_CreateRenderer(rWindow.GetSdlWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(!mSdlRenderer)
@@ -27,18 +27,18 @@ bool Renderer::Initialize(Window& rWindow)
     return true;
 }
 
-void Renderer::BeginDraw()
+void RendererSDL::BeginDraw()
 {
     SDL_SetRenderDrawColor(mSdlRenderer, 120, 120, 255, 255);
     SDL_RenderClear(mSdlRenderer);
 }
 
-void Renderer::Draw()
+void RendererSDL::Draw()
 {
     DrawSprites();
 }
 
-void Renderer::DrawSprites()
+void RendererSDL::DrawSprites()
 {
     for(SpriteComponent* sprite : mSprites)
     {
@@ -46,7 +46,7 @@ void Renderer::DrawSprites()
     }
 }
 
-void Renderer::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip) const
+void RendererSDL::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip) const
 {
     SDL_Rect destinationRect;
     Transform2D transform = pActor.GetTransform();
@@ -76,7 +76,7 @@ void Renderer::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceR
     delete sourceSDL;
 }
 
-void Renderer::AddSprite(SpriteComponent* pSprite)
+void RendererSDL::AddSprite(SpriteComponent* pSprite)
 {
     int spriteDrawOrder = pSprite->GetDrawOrder();
     vector<SpriteComponent*>::iterator sc;
@@ -87,26 +87,33 @@ void Renderer::AddSprite(SpriteComponent* pSprite)
     mSprites.insert(sc, pSprite);
 }
 
-void Renderer::RemoveSprite(SpriteComponent* pSprite)
+void RendererSDL::RemoveSprite(SpriteComponent* pSprite)
 {
     vector<SpriteComponent*>::iterator sc;
     sc = std::find(mSprites.begin(), mSprites.end(), pSprite);
     mSprites.erase(sc);
 }
 
-void Renderer::EndDraw()
+void RendererSDL::EndDraw()
 {
     SDL_RenderPresent(mSdlRenderer);
 }
 
-void Renderer::Close()
+void RendererSDL::Close()
 {
     SDL_DestroyRenderer(mSdlRenderer);
 }
 
-void Renderer::DrawRect(Rectangle& rRect)
+IRenderer::RendererType RendererSDL::GetType()
+{
+    return RendererType::SDL;
+}
+
+void RendererSDL::DrawRect(Rectangle& rRect)
 {
     SDL_SetRenderDrawColor(mSdlRenderer, 255, 255, 255, 255);
     SDL_Rect sdlRect = rRect.ToSdlRect();
     SDL_RenderFillRect(mSdlRenderer, &sdlRect);
 }
+
+

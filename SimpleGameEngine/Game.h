@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "Renderer.h"
+#include "RendererSDL.h"
 #include "Scene.h"
 #include "Window.h"
 #include "InputManager.h"
@@ -13,7 +13,7 @@ class Game
 private:
     std::string mTitle;
     Window* mWindow;
-    Renderer* mRenderer;
+    RendererSDL* mRenderer;
     InputManager* mInputManager;
 
     bool mIsRunning;
