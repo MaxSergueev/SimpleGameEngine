@@ -8,9 +8,7 @@ class PlayerController : public MoveComponent, public IInputListener
 	PlayerController(const PlayerController&) = delete;
 	PlayerController& operator= (const MoveComponent&) = delete;
 
-	PlayerController(Actor* actor)
-		: MoveComponent(actor) {
-	}
+	PlayerController(Actor* actor);
 
 	~PlayerController();
 

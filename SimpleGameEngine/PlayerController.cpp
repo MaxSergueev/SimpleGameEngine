@@ -1,6 +1,13 @@
 #include "PlayerController.h"
 #include "InputManager.h"
+#include "Actor.h"
 #include <iostream>
+#include "SpriteComponent.h"
+
+PlayerController::PlayerController(Actor* actor)
+    : MoveComponent(actor), mInputX(0), mInputY(0)
+{
+}
 
 PlayerController::~PlayerController()
 {
@@ -33,9 +40,11 @@ void PlayerController::OnNotify(SDL_Event& pEvent)
              mInputY = (pEvent.type == SDL_KEYDOWN) ? -30.0f : 0.0f;
              break;
          case SDLK_a:
+             mOwner->GetComponentOfType<SpriteComponent>()->SetFlipX(true);
              mInputX = (pEvent.type == SDL_KEYDOWN) ? -30.0f : 0.0f;
              break;
          case SDLK_d:
+             mOwner->GetComponentOfType<SpriteComponent>()->SetFlipX(false);
              mInputX = (pEvent.type == SDL_KEYDOWN) ? 30.0f : 0.0f;
              break;
          }

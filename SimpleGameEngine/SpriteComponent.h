@@ -2,13 +2,14 @@
 #include "Component.h"
 #include "Texture.h"
 
-class SpriteComponent: public Component
+class SpriteComponent : public Component
 {
 protected:
     Texture mTexture;
     int mDrawOrder;
     int mTexWidth;
     int mTexHeight;
+    bool mFlipX = false;
 public:
     SpriteComponent(Actor* pOwner, Texture& pTexture, int pDrawOrder = 100);
     virtual ~SpriteComponent();
@@ -17,6 +18,7 @@ public:
     SpriteComponent& operator= (const SpriteComponent&) = delete;
 
     virtual void SetTexture(const Texture& pTexture);
+    void SetFlipX(bool FlipX) { mFlipX = FlipX; };
     virtual void Draw(Renderer& pRenderer);
 
     //Getters

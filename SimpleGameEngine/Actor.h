@@ -2,9 +2,9 @@
 #include <vector>
 
 #include "Transform2D.h"
+#include "Component.h"
 
 class Scene;
-class Component;
 
 class Actor
 {
@@ -15,6 +15,20 @@ public:
         Paused,
         Dead
     };
+
+    template<typename  C>
+    C* GetComponentOfType() const
+    {
+        C* result = nullptr;
+        for (Component* component : mComponents)
+        {
+            result = dynamic_cast<C*>(component);
+            if (result != nullptr) return result;
+        }
+        return nullptr;
+    }
+
+
 protected:
     Scene& mScene;
     ActorState mState;
