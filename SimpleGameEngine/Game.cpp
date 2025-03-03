@@ -34,6 +34,7 @@ void Game::Initialize()
 
     if(mWindow->Open() && mRenderer->Initialize(*mWindow))
     {
+        mScenes[mLoadedScene]->Start();
         mScenes[mLoadedScene]->Load();
         Loop();
     }
@@ -57,7 +58,6 @@ void Game::Loop()
 void Game::Render()
 {
     mRenderer->BeginDraw();
-    //mScenes[mLoadedScene]->Render();
     mRenderer->Draw();
     mRenderer->EndDraw();
 }
@@ -76,6 +76,7 @@ void Game::CheckInputs()
                     break;
                 default:
                     //Send input to scene
+                    InputManager::Instance().HandleInputs(event);
                     break;
             }
         }

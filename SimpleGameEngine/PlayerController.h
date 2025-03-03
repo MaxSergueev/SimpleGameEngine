@@ -8,11 +8,18 @@ class PlayerController : public MoveComponent, public IInputListener
 	PlayerController(const PlayerController&) = delete;
 	PlayerController& operator= (const MoveComponent&) = delete;
 
+	PlayerController(Actor* actor)
+		: MoveComponent(actor) {
+	}
+
 	~PlayerController();
 
 	void OnStart() override;
 
 	// Inherited via IInputListener
 	void OnNotify(SDL_Event& pEvent) override;
+private:
+	float mInputY;
+	float mInputX;
 };
 

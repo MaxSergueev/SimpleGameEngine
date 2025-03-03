@@ -10,6 +10,7 @@
 #include <vector>
 #include "../AnimatedSpriteComponent.h"
 #include "../MoveComponent.h"
+#include "../PlayerController.h"
 
 Pong::Pong():Scene("Pong")
 {
@@ -39,14 +40,16 @@ void Pong::Load()
         WalkCycle.push_back(&Assets::GetTexture("0" + std::to_string(i) + "MW"));
 
     }
+
     Actor* actor = new Actor();
     AddActor(actor);
     actor->SetPosition(Vector2{ 400, 400 });
 
     AnimatedSpriteComponent* anim = new AnimatedSpriteComponent(actor, WalkCycle);
-    MoveComponent* move = new MoveComponent(actor);
     anim->SetAnimationFps(12);
-    move->SetSpeed(-15.0f);
+
+    PlayerController* pc = new PlayerController(actor);
+	pc->OnStart();
 
     //PokeBall
     Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
