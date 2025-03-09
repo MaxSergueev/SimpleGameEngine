@@ -10,6 +10,7 @@ void GlTestScene::Start()
 
 void GlTestScene::Render()
 {
+	mRenderer->Draw();
 }
 
 void GlTestScene::Update()
@@ -27,5 +28,4 @@ void GlTestScene::Load()
 
 	sp->Compose({ mSimpleFrag, mSimpleVert }); 
 
-	//Actor
 }

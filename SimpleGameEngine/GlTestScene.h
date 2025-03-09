@@ -4,9 +4,9 @@
 class GlTestScene : public Scene
 {
 public:
-    Shader* mSimpleVert;
-    Shader* mSimpleFrag;
-    ShaderProgram* sp;
+    Shader* mSimpleVert = new Shader();
+    Shader* mSimpleFrag = new Shader();
+	ShaderProgram* sp = new ShaderProgram();
 
     GlTestScene();
     ~GlTestScene() override = default;

@@ -60,11 +60,20 @@ void RendererGl::BeginDraw()
 
 void RendererGl::Draw()
 {
+   DrawSprites();
 }
 
 void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip) const
 {
-	
+	//Idk what to do here
+}
+
+void RendererGl::DrawSprites()
+{
+	for (SpriteComponent* sprite : mSprites)
+	{
+		sprite->Draw(*this);
+	}
 }
 
 void RendererGl::EndDraw()
@@ -99,9 +108,5 @@ void RendererGl::Close()
 IRenderer::RendererType RendererGl::GetType()
 {
 	return RendererType::OPENGL;
-}
-
-void RendererGl::DrawSprites()
-{
 }
 

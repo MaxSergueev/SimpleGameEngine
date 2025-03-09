@@ -1,8 +1,8 @@
 #pragma once
 constexpr float vertices[] = {
--0.5f, 0.5f, 0.0f,	//A
-0.5f, 0.5f, 0.0f,	//B
-0.5f, -0.5f, 0.0f,	//C
+-0.5f, 0.5f, 0.0f,		//A
+0.5f, 0.5f, 0.0f,		//B
+0.5f, -0.5f, 0.0f,		//C
 -0.5f, -0.5f, 0.0f };	//D
 
 constexpr unsigned int indices[] = {
