@@ -63,10 +63,12 @@ void RendererGl::Draw()
    DrawSprites();
 }
 
-void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip) const
+void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin,
+	Flip pFlip) const
 {
-	//Idk what to do here
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
+
 
 void RendererGl::DrawSprites()
 {
