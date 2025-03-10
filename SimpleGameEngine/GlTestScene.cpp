@@ -25,8 +25,8 @@ void GlTestScene::Close()
 
 void GlTestScene::Load()
 {
-	mSimpleFrag->Load("Simple.frag", FRAGMENT);
-	mSimpleVert->Load("Simple.vert", VERTEX);
+	mSimpleFrag->Load("Sprite.frag", FRAGMENT);
+	mSimpleVert->Load("Sprite.vert", VERTEX);
 
 	sp->Compose({ mSimpleFrag, mSimpleVert }); 
 

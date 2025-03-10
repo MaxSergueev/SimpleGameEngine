@@ -23,7 +23,6 @@ bool Texture::Load(IRenderer& pRenderer, const std::string& pFileName)
     return LoadGl(dynamic_cast<RendererGl*>(&pRenderer), pFileName, surface);
 }
 
-
 void Texture::UpdateInfo(int& pWidthOut, int& pHeightOut)
 {
     pWidthOut = mWidth;
@@ -66,6 +65,7 @@ bool Texture::LoadSdl(RendererSDL* pRenderer, const std::string& pFileName, SDL_
     Log::Info("Loaded SDL texture : " + mFileName);
     return true;
 }
+
 void Texture::Unload()
 {
     if (mSdlTexture) SDL_DestroyTexture(mSdlTexture);

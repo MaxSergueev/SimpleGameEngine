@@ -14,9 +14,9 @@ VertexArray::VertexArray(const float* pVertices, unsigned pVerticeCount, const u
     glBindVertexArray(mVertexArrayId);
 
     //Generate VBO
-    glGenBuffers(1, &mVertexBufferId); ///
-    glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferId); /// Not sure if this or VBoID
-    glBufferData(GL_ARRAY_BUFFER, mVerticeCount * 3 * sizeof(float), pVertices, GL_STATIC_DRAW);
+    glGenBuffers(1, &mVertexBufferId);
+    glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferId); ///MVboid
+    glBufferData(GL_ARRAY_BUFFER, mVerticeCount * 5 * sizeof(float), pVertices, GL_STATIC_DRAW);
 
     //Generate Index Buffer
     glGenBuffers(1, &mIndexBufferId);
@@ -24,7 +24,9 @@ VertexArray::VertexArray(const float* pVertices, unsigned pVerticeCount, const u
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndexCount * sizeof(float), pIndices, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
 }
 
 VertexArray::~VertexArray()
