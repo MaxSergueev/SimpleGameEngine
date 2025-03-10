@@ -30,17 +30,17 @@ void Actor::AttachScene(Scene& pScene)
     mScene = pScene;
 }
 
-void Actor::SetPosition(Vector2 pPosition)
+void Actor::SetPosition(Vector3 pPosition)
 {
     mTransform.SetPosition(pPosition);
 }
 
-void Actor::SetScale(Vector2 pScale)
+void Actor::SetScale(Vector3 pScale)
 {
     mTransform.SetScale(pScale);
 }
 
-void Actor::SetRotation(float pRotation)
+void Actor::SetRotation(Quaternion pRotation)
 {
     mTransform.SetRotation(pRotation);
 }

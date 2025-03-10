@@ -32,7 +32,7 @@ void GlTestScene::Load()
 
 	Actor* actor = new Actor();
 	AddActor(actor);
-	actor->SetPosition(Vector2{ 400, 400 });
+	actor->SetPosition(Vector3{ 400, 400 , 0});
 
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::GetTexture("ball"));

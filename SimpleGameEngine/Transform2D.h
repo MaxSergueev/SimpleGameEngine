@@ -1,29 +1,39 @@
 #pragma once
 #include "Vector2.h"
+#include "Vector3.h"
 #include "Maths.h"
+#include "Matrix4Row.h"
+#include "Matrix4.h"
 
 
 class Transform2D
 {
 private:
-    Vector2 mPosition;
-    Vector2 mScale;
-    float mZrotation;
+    Vector3 mPosition;
+    Vector3 mScale;
+    Quaternion mRotation;
+    Matrix4Row mWorldTransform;
+    bool mNeedsUpdate;
     
 public:
     Transform2D();
     ~Transform2D() = default;
-    void SetPosition(Vector2 pPosition) {mPosition = pPosition;}
-    void SetScale(Vector2 pScale){mScale = pScale;}
-    void SetRotation(float pRotation) {mZrotation = pRotation;}
+    void SetPosition(Vector3 pPosition) {mPosition = pPosition;}
+    void SetScale(Vector3 pScale){mScale = pScale;}
+    void SetRotation(Quaternion pRotation) {mRotation = pRotation;}
 
-    Vector2 GetPosition() const {return mPosition;}
-    Vector2 GetScale() const {return mScale;}
-    float GetRotation() const {return mZrotation;}
+    Vector3 GetPosition() const {return mPosition;}
+    Vector3 GetScale() const {return mScale;}
+    Quaternion GetRotation() const {return mRotation;}
 
-    void Translate(Vector2 pMovement);
+    void Translate(Vector3 pMovement);
     void Rotate(float pRotation);
 
-    Vector2 Right() const { return Vector2(Maths::Cos(mZrotation), -Maths::Sin(mZrotation)); }
-    Vector2 Up() const { return Vector2(Maths::Sin(mZrotation), -Maths::Cos(mZrotation)); }
+    void ComputeWorldTransform();
+    Matrix4Row GetWorldTransform() { return mWorldTransform; }
+
+    Vector3 Right() const { return Vector3(Maths::Cos(mRotation.z), -Maths::Sin(mRotation.z), 0); }
+    Vector3 Up() const { return Vector3(Maths::Sin(mRotation.z), -Maths::Cos(mRotation.z), 0); }
+    Vector3 Forward() const { return Vector3::Transform(Vector3::unitX, mRotation); }
+
 };

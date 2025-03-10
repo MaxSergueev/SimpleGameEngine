@@ -12,6 +12,7 @@ private:
 	ShaderProgram* mShaderProgram;
 	SDL_GLContext mContext;
 	std::vector<SpriteComponent*> mSprites;
+	Matrix4Row mViewProj; //////////////////////// What is this supposed to be
 public:
 	RendererGl();
 	virtual ~RendererGl();
