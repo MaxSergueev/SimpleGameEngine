@@ -46,9 +46,9 @@ public:
     Transform2D& GetTransform();
 
     void AttachScene(Scene& pScene);
-    void SetPosition(Vector2 pPosition);
-    void SetScale(Vector2 pScale);
-    void SetRotation(float pRotation);
+    void SetPosition(Vector3 pPosition);
+    void SetScale(Vector3 pScale);
+    void SetRotation(Vector3 pRotation);
 
     virtual void Start(){}
     void AddComponent(Component* pComponent);

@@ -31,4 +31,6 @@ public:
     void DrawSprite(Actor& pActor,const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin, Flip pFlip = Flip::None) const;
     void AddSprite(SpriteComponent* pSprite);
     void RemoveSprite(SpriteComponent* pSprite);
+
+	void SetShaderProgram(ShaderProgram* shaderProgram) override;
 };

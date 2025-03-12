@@ -23,7 +23,7 @@ void MoveComponent::Update()
 {
     if (!Maths::NearZero(mSpeed.GetSqrLength()))
     {
-        Vector2 newPosition = mOwner->GetTransform().GetPosition()
+        Vector3 newPosition = mOwner->GetTransform().GetPosition()
             + (mOwner->GetTransform().Right() * mSpeed.x
                 + mOwner->GetTransform().Up() * mSpeed.y) * Time::deltaTime;
         mOwner->SetPosition(newPosition);

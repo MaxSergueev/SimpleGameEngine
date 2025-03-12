@@ -10,6 +10,7 @@ private:
 	Window* mWindow;
 	VertexArray* mVao;
 	ShaderProgram* mShaderProgram;
+	Matrix4Row mViewProj; ///Wtf is this, I never initialise it to a value (Now I do but i dunno if it's right)
 	SDL_GLContext mContext;
 	std::vector<SpriteComponent*> mSprites;
 public:
@@ -25,6 +26,8 @@ public:
 	void EndDraw() override;
 	void Close() override;
 	RendererType GetType() override;
+
+	void SetShaderProgram(ShaderProgram* shaderProgram);
 
 	// Inherited via IRenderer
 	void DrawSprites() override;

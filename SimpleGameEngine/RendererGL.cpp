@@ -22,6 +22,14 @@ bool RendererGl::Initialize(Window& rWindow)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
+	mViewProj = Matrix4Row::CreatePerspectiveFOV(
+		70.0f,  // Field of view
+		static_cast<float>(mWindow->GetDimensions().x),  // Window Width
+		static_cast<float>(mWindow->GetDimensions().y),  // Window Height
+		0.1f,  // Near plane
+		1000.0f  // Far plane
+	);
+
 	mContext = SDL_GL_CreateContext(mWindow->GetSdlWindow());
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
@@ -55,6 +63,7 @@ void RendererGl::BeginDraw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	if (mShaderProgram != nullptr) mShaderProgram->Use();
+	mShaderProgram->setMatrix4Row("uViewProj", mViewProj);
 	mVao->SetActive();
 }
 
@@ -66,8 +75,18 @@ void RendererGl::Draw()
 void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin,
 	Flip pFlip) const
 {
+	mShaderProgram->Use();
+	pActor.GetTransform().ComputeWorldTransform();
+	Matrix4Row scaleMat = Matrix4Row::CreateScale(
+		pTex.GetWidth(),
+		pTex.GetHeight(),
+		0.0f);
+	Matrix4Row world = scaleMat * pActor.GetTransform().GetWorldTransform();
+	mShaderProgram->setMatrix4Row("uWorldTransform", world);
+	pTex.SetActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
+
 
 
 void RendererGl::DrawSprites()
@@ -110,5 +129,10 @@ void RendererGl::Close()
 IRenderer::RendererType RendererGl::GetType()
 {
 	return RendererType::OPENGL;
+}
+
+void RendererGl::SetShaderProgram(ShaderProgram* shaderProgram)
+{
+	mShaderProgram = shaderProgram;
 }
 
