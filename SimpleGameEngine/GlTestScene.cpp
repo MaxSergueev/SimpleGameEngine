@@ -2,12 +2,16 @@
 #include "Assets.h"
 #include "SpriteComponent.h"
 
+Actor* actor;
+Vector3 rotation{ 0, 0, 0 };
+
 GlTestScene::GlTestScene()
 {
 }
 
 void GlTestScene::Start()
 {
+
 }
 
 void GlTestScene::Render()
@@ -16,6 +20,8 @@ void GlTestScene::Render()
 
 void GlTestScene::Update()
 {
+	rotation.y += 0.05;
+	actor->SetRotation(Vector3 (rotation));
 }
 
 void GlTestScene::Close()
@@ -31,9 +37,11 @@ void GlTestScene::Load()
 
 	mRenderer->SetShaderProgram(sp);
 
-	Actor* actor = new Actor();
+	actor = new Actor();
 	AddActor(actor);
-	actor->SetPosition(Vector3{ 400, 400, 0});
+	actor->SetPosition(Vector3{ 0, 0, 500 });
+	actor->SetRotation(Vector3{ rotation });
+	actor->SetScale(Vector3{ 0.2, 0.2, 0.2 });
 
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::GetTexture("ball"));

@@ -27,7 +27,7 @@ bool RendererGl::Initialize(Window& rWindow)
 		static_cast<float>(mWindow->GetDimensions().x),  // Window Width
 		static_cast<float>(mWindow->GetDimensions().y),  // Window Height
 		0.1f,  // Near plane
-		1000.0f  // Far plane
+		10000.0f  // Far plane
 	);
 
 	mContext = SDL_GL_CreateContext(mWindow->GetSdlWindow());
