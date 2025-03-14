@@ -20,9 +20,7 @@ void GlTestScene::Render()
 
 void GlTestScene::Update()
 {
-	//rotation.y += 1;
-	//actor->SetRotation(rotation);
-	actor->mTransform.Rotate(Vector3 (1, 1, 1));
+	actor->Rotate(Vector3(1, 0, 1));
 }
 
 void GlTestScene::Close()

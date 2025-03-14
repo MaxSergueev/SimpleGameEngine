@@ -46,6 +46,32 @@ void Actor::SetRotation(Vector3 pRotation)
     mTransform.SetRotation(pRotation);
 }
 
+void Actor::Rotate(Vector3 pRotation)
+{
+    mTransform.Rotate(pRotation);
+}
+
+void Actor::RotateAroundAxis(Vector3 pAxis, float pAngle)
+{
+    mTransform.RotateAroundAxis(pAxis, pAngle);
+}
+
+void Actor::RotateX(float pRotation)
+{
+    mTransform.RotateX(pRotation);
+}
+
+void Actor::RotateY(float pRotation)
+{
+    mTransform.RotateY(pRotation);
+}
+
+void Actor::RotateZ(float pRotation)
+{
+    mTransform.RotateZ(pRotation);
+}
+
+
 void Actor::AddComponent(Component* pComponent)
 {
     //Find correct place of insertion for the component depending

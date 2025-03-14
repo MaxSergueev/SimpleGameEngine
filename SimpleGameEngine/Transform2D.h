@@ -30,7 +30,6 @@ public:
 
 	void RotateAroundAxis(Vector3 pAxis, float pAngle);
     void Rotate(Vector3 pRotation);
-
     void RotateX(float xRotation);
 	void RotateY(float yRotation);
 	void RotateZ(float zRotation);
