@@ -8,7 +8,7 @@ class Transform2D
 private:
     Vector3 mPosition;
     Vector3 mScale;
-    Vector3 mRotation;
+    Quaternion mRotation;
 	Matrix4Row mWorldTransform;
     bool mNeedsUpdate;
 
@@ -19,15 +19,21 @@ public:
 
     void SetPosition(Vector3 pPosition) { mPosition = pPosition; mNeedsUpdate = true; }
     void SetScale(Vector3 pScale) { mScale = pScale; mNeedsUpdate = true; }
-    void SetRotation(Vector3 pRotation) { mRotation = pRotation; mNeedsUpdate = true; }
+    void SetRotation(Vector3 pRotation);
 
     Vector3 GetPosition() const { return mPosition; }
     Vector3 GetScale() const { return mScale; }
-    Vector3 GetRotation() const { return mRotation; }
+    Quaternion GetRotation() const { return mRotation; }
 	Matrix4Row GetWorldTransform() const { return mWorldTransform; }
 
     void Translate(Vector3 pMovement);
+
+	void RotateAroundAxis(Vector3 pAxis, float pAngle);
     void Rotate(Vector3 pRotation);
+
+    void RotateX(float xRotation);
+	void RotateY(float yRotation);
+	void RotateZ(float zRotation);
 
     void ComputeWorldTransform();
 

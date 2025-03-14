@@ -42,6 +42,7 @@ void Actor::SetScale(Vector3 pScale)
 
 void Actor::SetRotation(Vector3 pRotation)
 {
+
     mTransform.SetRotation(pRotation);
 }
 

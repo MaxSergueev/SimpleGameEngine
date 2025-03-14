@@ -32,10 +32,10 @@ public:
 protected:
     Scene& mScene;
     ActorState mState;
-    Transform2D mTransform;
     std::vector<Component*> mComponents;
 public:
-    
+    Transform2D mTransform; // !!!!! mTransform should be protected, made public for testings
+
     Actor();
     virtual ~Actor();
     Actor(const Actor&) = delete;

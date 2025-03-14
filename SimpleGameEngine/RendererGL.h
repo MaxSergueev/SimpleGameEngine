@@ -10,7 +10,7 @@ private:
 	Window* mWindow;
 	VertexArray* mVao;
 	ShaderProgram* mShaderProgram;
-	Matrix4Row mViewProj; ///What do I do with this
+	Matrix4Row mViewProj;
 	SDL_GLContext mContext;
 	std::vector<SpriteComponent*> mSprites;
 public:
