@@ -2,21 +2,27 @@
 #include "Assets.h"
 #include "SpriteComponent.h"
 
+Actor* actor;
+Vector3 rotation{ 0, 0, 0 };
+
 GlTestScene::GlTestScene()
 {
 }
 
 void GlTestScene::Start()
 {
+
 }
 
 void GlTestScene::Render()
 {
-	mRenderer->Draw();
 }
 
 void GlTestScene::Update()
 {
+	//rotation.y += 1;
+	//actor->SetRotation(rotation);
+	actor->mTransform.Rotate(Vector3 (1, 1, 1));
 }
 
 void GlTestScene::Close()
@@ -26,13 +32,17 @@ void GlTestScene::Close()
 void GlTestScene::Load()
 {
 	mSimpleFrag->Load("Sprite.frag", FRAGMENT);
-	mSimpleVert->Load("Sprite.vert", VERTEX);
+	mSimpleVert->Load("Transform.vert", VERTEX);
 
 	sp->Compose({ mSimpleFrag, mSimpleVert }); 
 
-	Actor* actor = new Actor();
+	mRenderer->SetShaderProgram(sp);
+
+	actor = new Actor();
 	AddActor(actor);
-	actor->SetPosition(Vector3{ 400, 400 , 0});
+	actor->SetPosition(Vector3{ 0, 0, 500 });
+	actor->SetRotation(Vector3{ rotation });
+	actor->SetScale(Vector3{ 0.2, 0.2, 0.2 });
 
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::GetTexture("ball"));

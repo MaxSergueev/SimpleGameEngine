@@ -43,7 +43,7 @@ void Pong::Load()
 
     Actor* actor = new Actor();
     AddActor(actor);
-    actor->SetPosition(Vector3{ 400, 400, 0 });
+    actor->SetPosition(Vector3{ 400, 400, 0});
 
     AnimatedSpriteComponent* anim = new AnimatedSpriteComponent(actor, WalkCycle);
     anim->SetAnimationFps(12);
@@ -56,6 +56,6 @@ void Pong::Load()
     Actor* ballActor = new Actor();
     AddActor(ballActor);
     SpriteComponent* sprite =  new SpriteComponent(ballActor, Assets::GetTexture("ball"));
-    ballActor->SetPosition(Vector3{ 865, 500, 0 });
-    ballActor->SetScale(Vector3{ 0.15f, 0.15f, 1.0f });
+    ballActor->SetPosition(Vector3{ 865, 500, 1});
+    ballActor->SetScale(Vector3{ 0.15f, 0.15f , 0.15f});
 }

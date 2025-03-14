@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Rectangle.h"
 #include "Window.h"
+#include "ShaderProgram.h"
 
 class Texture;
 class SpriteComponent;
@@ -35,5 +36,6 @@ public:
     virtual void AddSprite(SpriteComponent* pSprite) = 0;
     virtual void RemoveSprite(SpriteComponent* pSprite) = 0;
 
+    virtual void SetShaderProgram(ShaderProgram* shaderProgram) = 0;
 
 };

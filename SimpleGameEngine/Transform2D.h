@@ -1,10 +1,7 @@
 #pragma once
-#include "Vector2.h"
 #include "Vector3.h"
-#include "Maths.h"
 #include "Matrix4Row.h"
-#include "Matrix4.h"
-
+#include "Maths.h"
 
 class Transform2D
 {
@@ -12,28 +9,37 @@ private:
     Vector3 mPosition;
     Vector3 mScale;
     Quaternion mRotation;
-    Matrix4Row mWorldTransform;
+	Matrix4Row mWorldTransform;
     bool mNeedsUpdate;
-    
+
 public:
     Transform2D();
-    ~Transform2D() = default;
-    void SetPosition(Vector3 pPosition) {mPosition = pPosition;}
-    void SetScale(Vector3 pScale){mScale = pScale;}
-    void SetRotation(Quaternion pRotation) {mRotation = pRotation;}
 
-    Vector3 GetPosition() const {return mPosition;}
-    Vector3 GetScale() const {return mScale;}
-    Quaternion GetRotation() const {return mRotation;}
+    ~Transform2D() = default;
+
+    void SetPosition(Vector3 pPosition) { mPosition = pPosition; mNeedsUpdate = true; }
+    void SetScale(Vector3 pScale) { mScale = pScale; mNeedsUpdate = true; }
+    void SetRotation(Vector3 pRotation);
+
+    Vector3 GetPosition() const { return mPosition; }
+    Vector3 GetScale() const { return mScale; }
+    Quaternion GetRotation() const { return mRotation; }
+	Matrix4Row GetWorldTransform() const { return mWorldTransform; }
 
     void Translate(Vector3 pMovement);
-    void Rotate(float pRotation);
+
+	void RotateAroundAxis(Vector3 pAxis, float pAngle);
+    void Rotate(Vector3 pRotation);
+
+    void RotateX(float xRotation);
+	void RotateY(float yRotation);
+	void RotateZ(float zRotation);
 
     void ComputeWorldTransform();
-    Matrix4Row GetWorldTransform() { return mWorldTransform; }
 
-    Vector3 Right() const { return Vector3(Maths::Cos(mRotation.z), -Maths::Sin(mRotation.z), 0); }
-    Vector3 Up() const { return Vector3(Maths::Sin(mRotation.z), -Maths::Cos(mRotation.z), 0); }
-    Vector3 Forward() const { return Vector3::Transform(Vector3::unitX, mRotation); }
+    Vector3 Right() const { return Vector3(Maths::Cos(mRotation.z), -Maths::Sin(mRotation.z), 0.0f); }
+    Vector3 Up() const { return Vector3(Maths::Sin(mRotation.z), Maths::Cos(mRotation.z), 0.0f); }
+
 
 };
+

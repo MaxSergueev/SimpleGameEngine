@@ -32,10 +32,10 @@ public:
 protected:
     Scene& mScene;
     ActorState mState;
-    Transform2D mTransform;
     std::vector<Component*> mComponents;
 public:
-    
+    Transform2D mTransform; // !!!!! mTransform should be protected, made public for testings
+
     Actor();
     virtual ~Actor();
     Actor(const Actor&) = delete;
@@ -48,7 +48,7 @@ public:
     void AttachScene(Scene& pScene);
     void SetPosition(Vector3 pPosition);
     void SetScale(Vector3 pScale);
-    void SetRotation(Quaternion pRotation);
+    void SetRotation(Vector3 pRotation);
 
     virtual void Start(){}
     void AddComponent(Component* pComponent);

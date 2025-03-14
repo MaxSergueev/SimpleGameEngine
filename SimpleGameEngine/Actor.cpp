@@ -40,8 +40,9 @@ void Actor::SetScale(Vector3 pScale)
     mTransform.SetScale(pScale);
 }
 
-void Actor::SetRotation(Quaternion pRotation)
+void Actor::SetRotation(Vector3 pRotation)
 {
+
     mTransform.SetRotation(pRotation);
 }
 

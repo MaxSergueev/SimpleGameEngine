@@ -69,7 +69,7 @@ void RendererSDL::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSour
         pTex.GetSdlTexture(),
         sourceSDL,
         &destinationRect,
-        -Maths::ToDeg(transform.GetRotation()),
+        -Maths::ToDeg(transform.GetRotation().z),
         nullptr,
         static_cast<SDL_RendererFlip>(pFlip));
 
@@ -92,6 +92,10 @@ void RendererSDL::RemoveSprite(SpriteComponent* pSprite)
     vector<SpriteComponent*>::iterator sc;
     sc = std::find(mSprites.begin(), mSprites.end(), pSprite);
     mSprites.erase(sc);
+}
+
+void RendererSDL::SetShaderProgram(ShaderProgram* shaderProgram)
+{
 }
 
 void RendererSDL::EndDraw()
