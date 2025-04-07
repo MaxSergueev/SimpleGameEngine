@@ -44,6 +44,7 @@ public:
 
     Scene& GetScene() const {return mScene;}
     Transform2D& GetTransform();
+    Matrix4Row GetWorldTransform() const {return mTransform.GetWorldTransform();}
 
     void AttachScene(Scene& pScene);
     void SetPosition(Vector3 pPosition);

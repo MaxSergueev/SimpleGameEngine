@@ -33,4 +33,8 @@ public:
     void RemoveSprite(SpriteComponent* pSprite);
 
 	void SetShaderProgram(ShaderProgram* shaderProgram) override;
+
+    void AddMesh(MeshComponent* pMesh) override;
+    void RemoveMesh(MeshComponent* pMesh) override;
+    void DrawMeshes() override;
 };

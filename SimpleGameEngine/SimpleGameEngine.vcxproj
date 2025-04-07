@@ -182,7 +182,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="Matrix4Row.cpp" />
-    <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="MoveComponent.h" />
     <ClCompile Include="PlayerController.cpp" />
@@ -220,7 +221,8 @@
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Matrix4Row.h" />
-    <ClInclude Include="mesh.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Rectangle.h" />

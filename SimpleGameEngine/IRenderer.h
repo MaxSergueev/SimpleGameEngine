@@ -6,6 +6,7 @@
 
 class Texture;
 class SpriteComponent;
+class MeshComponent;
 
 class IRenderer
 {
@@ -37,5 +38,10 @@ public:
     virtual void RemoveSprite(SpriteComponent* pSprite) = 0;
 
     virtual void SetShaderProgram(ShaderProgram* shaderProgram) = 0;
+
+    virtual void AddMesh(MeshComponent* pMesh) = 0;
+    virtual void RemoveMesh(MeshComponent* pMesh) = 0;
+    virtual void DrawMeshes() = 0;
+
 
 };

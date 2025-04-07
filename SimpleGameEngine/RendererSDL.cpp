@@ -4,6 +4,7 @@
 
 #include "SDL_image.h"
 #include "SpriteComponent.h"
+#include "MeshComponent.h"
 
 using namespace std;
 
@@ -118,6 +119,20 @@ void RendererSDL::DrawRect(Rectangle& rRect)
     SDL_SetRenderDrawColor(mSdlRenderer, 255, 255, 255, 255);
     SDL_Rect sdlRect = rRect.ToSdlRect();
     SDL_RenderFillRect(mSdlRenderer, &sdlRect);
+}
+
+
+//Empty so its not abstract
+void RendererSDL::AddMesh(MeshComponent* pMesh)
+{
+}
+
+void RendererSDL::RemoveMesh(MeshComponent* pMesh)
+{
+}
+
+void RendererSDL::DrawMeshes()
+{
 }
 
 

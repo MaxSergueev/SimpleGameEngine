@@ -3,18 +3,76 @@
 #include "Log.h"
 #include <SDL_image.h>
 #include "SpriteComponent.h"
+#include "MeshComponent.h"
 
+constexpr float cubeVertices[] = {
+   -0.5, -0.5, -0.5, 0, 0,
+   0.5, -0.5, -0.5, 1, 0,
+   -0.5, 0.5, -0.5, 0, -1,
+   0.5, 0.5, -0.5, 1, -1,
+   -0.5, 0.5, 0.5, 0, -1,
+   0.5, 0.5, 0.5, 1, -1,
+   -0.5, -0.5, 0.5, 0, 0,
+   0.5, -0.5, 0.5, 1, 0,
+   -0.5, 0.5, -0.5, 0, -1,
+   0.5, -0.5, -0.5, 1, 0,
+   -0.5, 0.5, -0.5, 0, -1,
+   0.5, 0.5, -0.5, 1, -1,
+   -0.5, 0.5, 0.5, 0, -1,
+   -0.5, 0.5, 0.5, 0, -1,
+   0.5, 0.5, 0.5, 1, -1,
+   -0.5, -0.5, 0.5, 0, 0,
+   -0.5, -0.5, 0.5, 0, 0,
+   0.5, -0.5, 0.5, 1, 0,
+   -0.5, -0.5, -0.5, 0, 0,
+   0.5, -0.5, -0.5, 1, 0,
+   0.5, -0.5, -0.5, 1, 0,
+   0.5, -0.5, 0.5, 1, 0,
+   0.5, 0.5, -0.5, 1, -1,
+   0.5, 0.5, 0.5, 1, -1,
+   -0.5, -0.5, 0.5, 0, 0,
+   -0.5, -0.5, -0.5, 0, 0,
+   -0.5, 0.5, 0.5, 0, -1,
+   -0.5, 0.5, -0.5, 0, -1
+};
+
+constexpr unsigned int cubeIndices[] = {
+   2, 1, 0,
+   3, 9, 8,
+   4, 11, 10,
+   5, 11, 12,
+   6, 14, 13,
+   7, 14, 15,
+   18, 17, 16,
+   19, 17, 18,
+   22, 21, 20,
+   23, 21, 22,
+   26, 25, 24,
+   27, 25, 26
+};
+
+
+RendererGl::RendererGl() :
+	mWindow(nullptr),
+	mSpriteVao(nullptr),
+	mContext(nullptr),
+	mSpriteShaderProgram(nullptr),
+	mSpriteViewProj(Matrix4Row::CreateSimpleViewProj(800.0f, 600.0f)),
+	mView(Matrix4Row::CreateLookAt(Vector3(0, 0, 5), Vector3::unitX, Vector3::unitZ)),
+	mProjection(Matrix4Row::CreatePerspectiveFOV(70.0f, 800.0f, 600.0f, 0.01f, 10000.0f))
+{
+}
 
 bool RendererGl::Initialize(Window& rWindow)
 {
 	mWindow = &rWindow;
 
-	//Setting OpenGL attributes
+	// Setting OpenGL attributes
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
-	//8 bits color buffer
+	// 8 bits color buffer
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
@@ -22,12 +80,28 @@ bool RendererGl::Initialize(Window& rWindow)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
-	mViewProj = Matrix4Row::CreatePerspectiveFOV(
+	// Set up projection matrix for sprites
+	mSpriteViewProj = Matrix4Row::CreatePerspectiveFOV(
 		70.0f,  // Field of view
 		static_cast<float>(mWindow->GetDimensions().x),  // Window Width
 		static_cast<float>(mWindow->GetDimensions().y),  // Window Height
 		0.1f,  // Near plane
 		10000.0f  // Far plane
+	);
+
+	// Set up view and projection matrices for 3D rendering
+	mView = Matrix4Row::CreateLookAt(
+		Vector3(0.0f, 0.0f, -5.0f),  // Camera position
+		Vector3(0.0f, 0.0f, 0.0f),   // Target position
+		Vector3(0.0f, 1.0f, 0.0f)    // Up vector
+	);
+
+	mProjection = Matrix4Row::CreatePerspectiveFOV(
+		70.0f,  // Field of view
+		static_cast<float>(mWindow->GetDimensions().x),  // Window Width
+		static_cast<float>(mWindow->GetDimensions().y),  // Window Height
+		0.1f,  // Near plane
+		1000.0f  // Far plane
 	);
 
 	mContext = SDL_GL_CreateContext(mWindow->GetSdlWindow());
@@ -43,46 +117,43 @@ bool RendererGl::Initialize(Window& rWindow)
 	{
 		Log::Error(LogType::Video, "Failed to initialize SDL_Image");
 	}
-	mVao = new VertexArray(vertices, 4, indices, 6);
-	return true; 
-}
-
-RendererGl::RendererGl() :mWindow(nullptr), mVao(nullptr), mContext(nullptr)
-{
+	mSpriteVao = new VertexArray(vertices, 4, indices, 6);
+	return true;
 }
 
 RendererGl::~RendererGl()
 {
-	delete mVao;
+	delete mSpriteVao;
 }
 void RendererGl::BeginDraw()
 {
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	if (mShaderProgram != nullptr) mShaderProgram->Use();
-	mShaderProgram->setMatrix4Row("uViewProj", mViewProj);
-	mVao->SetActive();
+	if (mSpriteShaderProgram != nullptr) mSpriteShaderProgram->Use();
+	mSpriteShaderProgram->setMatrix4Row("uViewProj", mSpriteViewProj);
+	mSpriteVao->SetActive();
 }
 
 void RendererGl::Draw()
 {
-   DrawSprites();
+	DrawMeshes();
+    DrawSprites();
 }
 
 void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourceRect, Vector2 pOrigin,
 	Flip pFlip) const
 {
-	mShaderProgram->Use();
+	mSpriteShaderProgram->Use();
 	pActor.GetTransform().ComputeWorldTransform();
 	Matrix4Row scaleMat = Matrix4Row::CreateScale(
 		pTex.GetWidth(),
 		pTex.GetHeight(),
 		0.0f);
 	Matrix4Row world = scaleMat * pActor.GetTransform().GetWorldTransform();
-	mShaderProgram->setMatrix4Row("uWorldTransform", world);
+	mSpriteShaderProgram->setMatrix4Row("uWorldTransform", world);
 	pTex.SetActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
@@ -91,6 +162,15 @@ void RendererGl::DrawSprite(Actor& pActor, const Texture& pTex, Rectangle pSourc
 
 void RendererGl::DrawSprites()
 {
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	if (mSpriteShaderProgram != nullptr) mSpriteShaderProgram->Use();
+	mSpriteShaderProgram->setMatrix4Row("uViewProj", mSpriteViewProj);
+	mSpriteVao->SetActive();
+
 	for (SpriteComponent* sprite : mSprites)
 	{
 		sprite->Draw(*this);
@@ -123,7 +203,7 @@ void RendererGl::RemoveSprite(SpriteComponent* pSprite)
 void RendererGl::Close()
 {
 	SDL_GL_DeleteContext(mContext);
-	delete mVao;
+	delete mSpriteVao;
 }
 
 IRenderer::RendererType RendererGl::GetType()
@@ -133,6 +213,31 @@ IRenderer::RendererType RendererGl::GetType()
 
 void RendererGl::SetShaderProgram(ShaderProgram* shaderProgram)
 {
-	mShaderProgram = shaderProgram;
+	mSpriteShaderProgram = shaderProgram;
+}
+
+void RendererGl::AddMesh(MeshComponent* pMesh)
+{
+	mMeshes.push_back(pMesh);
+}
+
+void RendererGl::RemoveMesh(MeshComponent* pMesh)
+{
+	auto iter = std::find(mMeshes.begin(), mMeshes.end(), pMesh);
+	if (iter != mMeshes.end())
+	{
+		mMeshes.erase(iter);
+	}
+}
+
+void RendererGl::DrawMeshes()
+{
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
+
+	for (MeshComponent* m : mMeshes)
+	{
+		m->Draw(mView * mProjection);
+	}
 }
 
