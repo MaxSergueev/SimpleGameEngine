@@ -13,6 +13,11 @@ void Mesh::Unload()
 	mVertexArray = nullptr;
 }
 
+Texture* Mesh::GetTexture(size_t textureIndex) {
+	if (textureIndex < mTextures.size()) return mTextures[textureIndex];
+	return nullptr;
+}
+
 ShaderProgram& Mesh::GetShaderProgram()
 {
 	return mShaderProgram;

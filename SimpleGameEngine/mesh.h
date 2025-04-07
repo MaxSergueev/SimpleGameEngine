@@ -12,6 +12,8 @@ public:
     Mesh();
     void Unload();
     ShaderProgram& GetShaderProgram();
+    Texture* GetTexture(size_t textureIndex);
+    VertexArray* GetVertexArray() { return mVertexArray; }
 
 private:
     VertexArray* mVertexArray;
@@ -20,7 +22,6 @@ private:
     ShaderProgram mShaderProgram;
     std::vector<Texture*> mTextures;
 
-    // Vertex and index data for cube
     static const float cubeVertices[];
     static const unsigned int cubeIndices[];
 };

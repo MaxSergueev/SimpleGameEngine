@@ -5,6 +5,7 @@
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 
+
 constexpr float cubeVertices[] = {
    -0.5, -0.5, -0.5, 0, 0,
    0.5, -0.5, -0.5, 1, 0,
@@ -50,7 +51,6 @@ constexpr unsigned int cubeIndices[] = {
    26, 25, 24,
    27, 25, 26
 };
-
 
 RendererGl::RendererGl() :
 	mWindow(nullptr),
