@@ -243,8 +243,14 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Shaders\Basic.frag" />
+    <None Include="Resources\Shaders\Basic.vert" />
+    <None Include="Resources\Shaders\Simple.frag" />
+    <None Include="Resources\Shaders\Simple.vert" />
+    <None Include="Resources\Shaders\Sprite.frag" />
+    <None Include="Resources\Shaders\Sprite.vert" />
+    <None Include="Resources\Shaders\Transform.vert" />
     <None Include="Simple.frag" />
-    <None Include="Simple.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

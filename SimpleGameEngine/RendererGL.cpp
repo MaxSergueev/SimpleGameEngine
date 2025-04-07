@@ -5,53 +5,6 @@
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 
-
-constexpr float cubeVertices[] = {
-   -0.5, -0.5, -0.5, 0, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, 0.5, -0.5, 1, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, -0.5, -0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, 0.5, -0.5, 1, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   -0.5, -0.5, 0.5, 0, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   -0.5, -0.5, -0.5, 0, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   0.5, 0.5, -0.5, 1, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   -0.5, -0.5, -0.5, 0, 0,
-   -0.5, 0.5, 0.5, 0, -1,
-   -0.5, 0.5, -0.5, 0, -1
-};
-
-constexpr unsigned int cubeIndices[] = {
-   2, 1, 0,
-   3, 9, 8,
-   4, 11, 10,
-   5, 11, 12,
-   6, 14, 13,
-   7, 14, 15,
-   18, 17, 16,
-   19, 17, 18,
-   22, 21, 20,
-   23, 21, 22,
-   26, 25, 24,
-   27, 25, 26
-};
-
 RendererGl::RendererGl() :
 	mWindow(nullptr),
 	mSpriteVao(nullptr),
@@ -91,13 +44,13 @@ bool RendererGl::Initialize(Window& rWindow)
 
 	// Set up view and projection matrices for 3D rendering
 	mView = Matrix4Row::CreateLookAt(
-		Vector3(0.0f, 0.0f, -5.0f),  // Camera position
-		Vector3(0.0f, 0.0f, 0.0f),   // Target position
-		Vector3(0.0f, 1.0f, 0.0f)    // Up vector
+		Vector3(0.0f, 0.0f, 5.0f),  // Camera position
+		Vector3(1.0f, 0.0f, 0.0f),   // Target position
+		Vector3(0.0f, 0.0f, 1.0f)    // Up vector
 	);
 
 	mProjection = Matrix4Row::CreatePerspectiveFOV(
-		70.0f,  // Field of view
+		90.0f,  // Field of view
 		static_cast<float>(mWindow->GetDimensions().x),  // Window Width
 		static_cast<float>(mWindow->GetDimensions().y),  // Window Height
 		0.1f,  // Near plane
