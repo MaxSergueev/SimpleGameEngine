@@ -175,6 +175,7 @@
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="FPSController.cpp" />
     <ClCompile Include="GlTestScene.cpp" />
     <ClCompile Include="IInputListener.cpp" />
     <ClCompile Include="InputEvent.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="Assets.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="FPSController.h" />
     <ClInclude Include="GlTestScene.h" />
     <ClInclude Include="IInputListener.h" />
     <ClInclude Include="InputEvent.h" />

@@ -3,6 +3,7 @@
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 #include "Camera.h"
+#include "FPSController.h"
 
 Actor* actor;
 Actor* cubeActor;
@@ -10,9 +11,9 @@ Vector3 spritePosition{ 250, 250, 1000 };
 Vector3 spriteRotation{ 0, 0, 0};
 Vector3 spriteScale{ 0.2, 0.2, 0.2 };
 
-Vector3 meshPosition{ 0, 0, 0 };
+Vector3 meshPosition{ 0, -10, 0 };
 Vector3 meshRotation{ 0, 0, 0 };
-Vector3 meshScale{ 1, 1, 1 };
+Vector3 meshScale{ 100, 1, 100 };
 
 Camera* cam;
 
@@ -31,7 +32,7 @@ void GlTestScene::Render()
 
 void GlTestScene::Update()
 {
-	cubeActor->Rotate(Vector3(1, 0, 1));
+	//cubeActor->Rotate(Vector3(1, 0, 0));
 	//actor->RotateAroundAxis(rotation, 2);
 }
 
@@ -62,6 +63,9 @@ void GlTestScene::Load()
 	cam = new Camera();
 	//cam->UpdateActor();
 	AddActor(cam);
+	FPSController* cc = new FPSController(cam);
+	cc->OnStart();
+
 
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	Assets::LoadTexture(*mRenderer, "Resources/wall.png", "wall");
