@@ -40,6 +40,8 @@ public:
 	void AddMesh(MeshComponent* pMesh) override;
 	void RemoveMesh(MeshComponent* pMesh) override;
 	void DrawMeshes() override;
+
+	void SetViewMatrix(Matrix4Row view) override;
 };
 
 

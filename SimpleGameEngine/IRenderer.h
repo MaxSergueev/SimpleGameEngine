@@ -43,5 +43,7 @@ public:
     virtual void RemoveMesh(MeshComponent* pMesh) = 0;
     virtual void DrawMeshes() = 0;
 
+    virtual void SetViewMatrix(Matrix4Row view) = 0;
+
 
 };

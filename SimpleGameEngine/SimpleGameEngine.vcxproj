@@ -173,6 +173,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GlTestScene.cpp" />
     <ClCompile Include="IInputListener.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimatedSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="GlTestScene.h" />
     <ClInclude Include="IInputListener.h" />

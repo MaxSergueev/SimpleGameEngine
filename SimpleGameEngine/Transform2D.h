@@ -36,8 +36,11 @@ public:
 
     void ComputeWorldTransform();
 
-    Vector3 Right() const { return Vector3(Maths::Cos(mRotation.z), -Maths::Sin(mRotation.z), 0.0f); }
-    Vector3 Up() const { return Vector3(Maths::Sin(mRotation.z), Maths::Cos(mRotation.z), 0.0f); }
+    /*Vector3 Right() const { return Vector3(Maths::Cos(mRotation.z), -Maths::Sin(mRotation.z), 0.0f); }
+    Vector3 Up() const { return Vector3(Maths::Sin(mRotation.z), Maths::Cos(mRotation.z), 0.0f); }*/
+    Vector3 Right() const { return Vector3::Transform(Vector3::unitY, mRotation); }
+    Vector3 Up() const { return Vector3::Transform(Vector3::unitZ, mRotation); }
+    Vector3 Forward() const { return Vector3::Transform(Vector3::unitX, mRotation); }
 
 
 };

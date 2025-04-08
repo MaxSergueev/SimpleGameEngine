@@ -135,4 +135,8 @@ void RendererSDL::DrawMeshes()
 {
 }
 
+void RendererSDL::SetViewMatrix(Matrix4Row view)
+{
+}
+
 

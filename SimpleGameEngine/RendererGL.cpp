@@ -194,3 +194,8 @@ void RendererGl::DrawMeshes()
 	}
 }
 
+void RendererGl::SetViewMatrix(Matrix4Row view)
+{
+	mView = view;
+}
+

@@ -2,6 +2,7 @@
 #include "Assets.h"
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
+#include "Camera.h"
 
 Actor* actor;
 Actor* cubeActor;
@@ -12,6 +13,8 @@ Vector3 spriteScale{ 0.2, 0.2, 0.2 };
 Vector3 meshPosition{ 0, 0, 0 };
 Vector3 meshRotation{ 0, 0, 0 };
 Vector3 meshScale{ 1, 1, 1 };
+
+Camera* cam;
 
 GlTestScene::GlTestScene()
 {
@@ -55,7 +58,10 @@ void GlTestScene::Load()
 	cubeActor->SetPosition(meshPosition);
 	cubeActor->SetRotation(meshRotation);
 	cubeActor->SetScale(meshScale);
-	
+
+	cam = new Camera();
+	//cam->UpdateActor();
+	AddActor(cam);
 
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	Assets::LoadTexture(*mRenderer, "Resources/wall.png", "wall");
