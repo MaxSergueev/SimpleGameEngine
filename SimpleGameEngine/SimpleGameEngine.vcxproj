@@ -247,6 +247,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="red.frag" />
     <None Include="Resources\Shaders\Basic.frag" />
     <None Include="Resources\Shaders\Basic.vert" />
     <None Include="Resources\Shaders\Simple.frag" />

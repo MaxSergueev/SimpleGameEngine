@@ -246,5 +246,6 @@
     <None Include="Resources\Shaders\Sprite.frag" />
     <None Include="Resources\Shaders\Sprite.vert" />
     <None Include="Resources\Shaders\Transform.vert" />
+    <None Include="red.frag" />
   </ItemGroup>
 </Project>
