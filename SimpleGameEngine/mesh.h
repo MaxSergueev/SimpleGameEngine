@@ -58,6 +58,7 @@ public:
     Mesh();
     void Unload();
     ShaderProgram& GetShaderProgram();
+    ShaderProgram& SetShaderProgram(ShaderProgram* pShader);
     Texture* GetTexture(size_t textureIndex);
     VertexArray* GetVertexArray() { return mVertexArray; }
 

@@ -2,6 +2,8 @@
 #include <map>
 #include <string>
 #include "Texture.h"
+#include "Shader.h"
+#include "ShaderProgram.h"
 
 //SINGLETON CLASS
 class Assets
@@ -9,10 +11,14 @@ class Assets
 public:
     //Storage for future References
     static std::map<std::string, Texture> mTextures;
+    static std::map<std::string, ShaderProgram> mShaderPrograms;
     
     static Texture LoadTexture(IRenderer& pRenderer, const std::string& pFileName, const std::string& pName);
     static Texture& GetTexture(const std::string& pName);
     static void Clear();
+
+    static ShaderProgram* LoadShaderProgram(const std::string& pVert, const std::string& pFrag, const std::string& pName);
+    static ShaderProgram& GetShaderProgram(const std::string& pName);
 
 private:
     Assets() = default;

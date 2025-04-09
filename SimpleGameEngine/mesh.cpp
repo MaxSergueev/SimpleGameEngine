@@ -22,3 +22,8 @@ ShaderProgram& Mesh::GetShaderProgram()
 {
 	return mShaderProgram;
 }
+
+ShaderProgram& Mesh::SetShaderProgram(ShaderProgram* pShader)
+{
+	mShaderProgram = *pShader;
+}

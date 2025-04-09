@@ -12,8 +12,8 @@ Vector3 spriteRotation{ 0, 0, 0};
 Vector3 spriteScale{ 0.2, 0.2, 0.2 };
 
 Vector3 meshPosition{ 0, -10, 0 };
-Vector3 meshRotation{ 0, 0, 0 };
-Vector3 meshScale{ 100, 1, 100 };
+Vector3 meshRotation{ 90, 0, 0 };
+Vector3 meshScale{ 100, 100, 1 };
 
 Camera* cam;
 
@@ -45,7 +45,7 @@ void GlTestScene::Load()
 	mSimpleFrag->Load("Sprite.frag", FRAGMENT);
 	mSimpleVert->Load("Transform.vert", VERTEX);
 
-	sp->Compose({ mSimpleFrag, mSimpleVert }); 
+	sp->Compose({ mSimpleFrag, mSimpleVert });
 
 	mRenderer->SetShaderProgram(sp);
 
@@ -61,7 +61,6 @@ void GlTestScene::Load()
 	cubeActor->SetScale(meshScale);
 
 	cam = new Camera();
-	//cam->UpdateActor();
 	AddActor(cam);
 	FPSController* cc = new FPSController(cam);
 	cc->OnStart();
