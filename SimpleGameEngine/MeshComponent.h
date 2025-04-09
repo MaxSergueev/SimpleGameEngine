@@ -11,6 +11,7 @@ public:
 	virtual ~MeshComponent();
 	virtual void Draw(Matrix4Row viewProj);
 	virtual void SetMesh(Mesh& pMesh);
+	virtual Mesh* GetMesh();
 	void SetTextureIndex(size_t pTextureIndex);
 };
 

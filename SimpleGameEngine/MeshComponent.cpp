@@ -18,6 +18,11 @@ void MeshComponent::SetMesh(Mesh& pMesh)
 	mMesh = &pMesh;
 }
 
+Mesh* MeshComponent::GetMesh()
+{
+    return mMesh;
+}
+
 void MeshComponent::SetTextureIndex(size_t pTextureIndex)
 {
 	mTextureIndex = pTextureIndex;

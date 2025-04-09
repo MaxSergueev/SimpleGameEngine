@@ -95,7 +95,7 @@ void RendererSDL::RemoveSprite(SpriteComponent* pSprite)
     mSprites.erase(sc);
 }
 
-void RendererSDL::SetShaderProgram(ShaderProgram* shaderProgram)
+void RendererSDL::SetSpriteShaderProgram(ShaderProgram* shaderProgram)
 {
 }
 

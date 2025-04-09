@@ -37,7 +37,7 @@ public:
     virtual void AddSprite(SpriteComponent* pSprite) = 0;
     virtual void RemoveSprite(SpriteComponent* pSprite) = 0;
 
-    virtual void SetShaderProgram(ShaderProgram* shaderProgram) = 0;
+    virtual void SetSpriteShaderProgram(ShaderProgram* shaderProgram) = 0;
 
     virtual void AddMesh(MeshComponent* pMesh) = 0;
     virtual void RemoveMesh(MeshComponent* pMesh) = 0;

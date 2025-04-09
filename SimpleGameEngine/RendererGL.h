@@ -30,7 +30,7 @@ public:
 	void Close() override;
 	RendererType GetType() override;
 
-	void SetShaderProgram(ShaderProgram* shaderProgram);
+	void SetSpriteShaderProgram(ShaderProgram* shaderProgram);
 
 	// Inherited via IRenderer
 	void DrawSprites() override;

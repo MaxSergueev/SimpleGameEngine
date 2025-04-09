@@ -32,7 +32,7 @@ public:
     void AddSprite(SpriteComponent* pSprite);
     void RemoveSprite(SpriteComponent* pSprite);
 
-	void SetShaderProgram(ShaderProgram* shaderProgram) override;
+	void SetSpriteShaderProgram(ShaderProgram* shaderProgram) override;
 
     void AddMesh(MeshComponent* pMesh) override;
     void RemoveMesh(MeshComponent* pMesh) override;

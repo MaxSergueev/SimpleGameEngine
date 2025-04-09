@@ -164,7 +164,7 @@ IRenderer::RendererType RendererGl::GetType()
 	return RendererType::OPENGL;
 }
 
-void RendererGl::SetShaderProgram(ShaderProgram* shaderProgram)
+void RendererGl::SetSpriteShaderProgram(ShaderProgram* shaderProgram)
 {
 	mSpriteShaderProgram = shaderProgram;
 }
