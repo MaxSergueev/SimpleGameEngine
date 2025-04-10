@@ -16,6 +16,7 @@ MeshComponent::~MeshComponent()
 void MeshComponent::SetMesh(Mesh& pMesh)
 {
 	mMesh = &pMesh;
+    Scene::ActiveScene->GetRenderer().AddMesh(this);
 }
 
 Mesh* MeshComponent::GetMesh()
@@ -41,7 +42,7 @@ void MeshComponent::Draw(Matrix4Row viewProj)
         Texture* t = mMesh->GetTexture(mTextureIndex);
         if (t) t->SetActive();
         mMesh->GetVertexArray()->SetActive();
-        glDrawElements(GL_TRIANGLES, mMesh->GetVertexArray()->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
+        glDrawArrays(GL_TRIANGLES, 0, mMesh->GetVertexArray()->GetVerticeCount());
     }
 }
 

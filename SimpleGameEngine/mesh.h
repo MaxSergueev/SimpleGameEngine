@@ -6,56 +6,23 @@
 #include "Texture.h"
 #include "Assets.h"
 
-constexpr float cubeVertices[] = {
-   -0.5, -0.5, -0.5, 0, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, 0.5, -0.5, 1, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, -0.5, -0.5, 1, 0,
-   -0.5, 0.5, -0.5, 0, -1,
-   0.5, 0.5, -0.5, 1, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   -0.5, 0.5, 0.5, 0, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   -0.5, -0.5, 0.5, 0, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   -0.5, -0.5, -0.5, 0, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   0.5, -0.5, -0.5, 1, 0,
-   0.5, -0.5, 0.5, 1, 0,
-   0.5, 0.5, -0.5, 1, -1,
-   0.5, 0.5, 0.5, 1, -1,
-   -0.5, -0.5, 0.5, 0, 0,
-   -0.5, -0.5, -0.5, 0, 0,
-   -0.5, 0.5, 0.5, 0, -1,
-   -0.5, 0.5, -0.5, 0, -1
-};
+class VertexArray;
 
-constexpr unsigned int cubeIndices[] = {
-   2, 1, 0,
-   3, 9, 8,
-   4, 11, 10,
-   5, 11, 12,
-   6, 14, 13,
-   7, 14, 15,
-   18, 17, 16,
-   19, 17, 18,
-   22, 21, 20,
-   23, 21, 22,
-   26, 25, 24,
-   27, 25, 26
+struct Vertex
+{
+public:
+    Vector3 position;
+    Vector3 normal;
+    Vector2 texCoord;
 };
 
 class Mesh
 {
 public:
     Mesh();
+    Mesh(std::vector<Vertex> pVertices);
+    ~Mesh();
+    float* ToVerticeArray();
     void Unload();
     ShaderProgram& GetShaderProgram();
     void SetShaderProgram(ShaderProgram* pShader);
@@ -68,5 +35,6 @@ private:
     Shader mFragmentShader;
     ShaderProgram mShaderProgram;
     std::vector<Texture*> mTextures;
+    std::vector<Vertex> mVertices;
 };
 

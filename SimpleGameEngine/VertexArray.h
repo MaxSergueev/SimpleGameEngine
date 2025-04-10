@@ -1,14 +1,23 @@
 #pragma once
-constexpr float vertices[] = {
--0.5f, 0.5f, 0.0f,            0.0f, 0.0f,     //top left
-0.5f, 0.5f, 0.0f,             1.0f, 0.0f,     //top right
-0.5f, -0.5f, 0.0f,            1.0f, 1.0f,     //bottom right
--0.5f, -0.5f, 0.0f,           0.0f, 1.0f };   //bottom left
+//constexpr float vertices[] = {
+//-0.5f, 0.5f, 0.0f,            0.0f, 0.0f,     //top left
+//0.5f, 0.5f, 0.0f,             1.0f, 0.0f,     //top right
+//0.5f, -0.5f, 0.0f,            1.0f, 1.0f,     //bottom right
+//-0.5f, -0.5f, 0.0f,           0.0f, 1.0f };   //bottom left
+//
+//constexpr unsigned int indices[] = {
+//0, 1, 2,
+//2, 3, 0
+//};
 
-constexpr unsigned int indices[] = {
-0, 1, 2,
-2, 3, 0
+constexpr float spriteVertices[] = {
+	//POSITION                      NORMALS                     TEXCOORDS
+	-0.5f, 0.5f, 0.0f,              0.0f, 0.0f, 0.0f,           0.0f, 0.0f,     //top left
+	0.5f, 0.5f, 0.0f,               0.0f, 0.0f, 0.0f,           1.0f, 0.0f,     //top right
+	-0.5f, -0.5f, 0.0f,             0.0f, 0.0f, 0.0f,           0.0f, 1.0f,      //bottom left
+	0.5f, -0.5f, 0.0f,              0.0f, 0.0f, 0.0f,           1.0f, 1.0f,     //bottom right
 };
+
 
 class VertexArray
 {
@@ -23,7 +32,7 @@ private:
 
 public:
 
-	VertexArray(const float* pVertices, unsigned int pVerticeCount, const unsigned int* pIndices, unsigned int pIndexCount);
+	VertexArray(const float* pVertices, unsigned pVerticeCount);
 	~VertexArray();
 
 	void SetActive();

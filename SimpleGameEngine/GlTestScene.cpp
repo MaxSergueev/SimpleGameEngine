@@ -7,7 +7,6 @@
 
 Actor* actor;
 Actor* cubeActor;
-Actor* cube2Actor;
 
 Vector3 spritePosition{ 250, 250, 1000 };
 Vector3 spriteRotation{ 0, 0, 0};
@@ -15,11 +14,7 @@ Vector3 spriteScale{ 0.2, 0.2, 0.2 };
 
 Vector3 meshPosition{ 0, -10, 0 };
 Vector3 meshRotation{ 90, 0, 0 };
-Vector3 meshScale{ 100, 100, 1 };
-
-Vector3 mesh2Position{ 150, -10, 0 };
-Vector3 mesh2Rotation{ 90, 0, 0 };
-Vector3 mesh2Scale{ 10, 10, 10 };
+Vector3 meshScale{ 10, 10, 10 };
 
 Camera* cam;
 
@@ -38,8 +33,7 @@ void GlTestScene::Render()
 
 void GlTestScene::Update()
 {
-	cube2Actor->Rotate(Vector3(0.2, 0.1, 0.4));
-	//actor->RotateAroundAxis(rotation, 2);
+	cubeActor->Rotate(Vector3(0.2, 0.1, 0.4));
 }
 
 void GlTestScene::Close()
@@ -66,11 +60,6 @@ void GlTestScene::Load()
 	cubeActor->SetRotation(meshRotation);
 	cubeActor->SetScale(meshScale);
 
-	cube2Actor = new Actor();
-	cube2Actor->SetPosition(mesh2Position);
-	cube2Actor->SetRotation(mesh2Rotation);
-	cube2Actor->SetScale(mesh2Scale);
-
 	cam = new Camera();
 	AddActor(cam);
 	FPSController* cc = new FPSController(cam);
@@ -80,11 +69,10 @@ void GlTestScene::Load()
 	Assets::LoadTexture(*mRenderer, "Resources/pokeball.png", "ball");
 	Assets::LoadTexture(*mRenderer, "Resources/wall.png", "wall");
 
-	Assets::LoadShaderProgram("Basic.vert", "Red.frag", "red");
+	Assets::LoadMesh("Resources/Meshes/cube.obj", "cube");
 
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::GetTexture("ball"));
 	MeshComponent* mesh = new MeshComponent(cubeActor);
-	MeshComponent* mesh2 = new MeshComponent(cube2Actor);
-	mesh2->GetMesh()->SetShaderProgram(&Assets::GetShaderProgram("red"));
+	mesh->SetMesh(Assets::GetMesh("cube"));
 
 }
