@@ -56,6 +56,7 @@ void GlTestScene::Load()
 	actor->SetScale(spriteScale);
 
 	cubeActor = new Actor();
+	AddActor(cubeActor);
 	cubeActor->SetPosition(meshPosition);
 	cubeActor->SetRotation(meshRotation);
 	cubeActor->SetScale(meshScale);
