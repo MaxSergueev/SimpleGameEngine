@@ -4,11 +4,15 @@
 #include <vector>
 
 #include "RendererSDL.h"
+#include "AABBColliderComponent.h"
 
 class Actor;
 
 class Scene
 {
+private:
+    std::vector<AABBColliderComponent*> mColliders;
+
 protected:
     std::string mTitle;
     IRenderer* mRenderer;
@@ -29,14 +33,19 @@ public:
                             //virtual void OnInputs(SDL_Event pEvent)= 0;
     virtual void Close() = 0;
 
-    //Assets Management
+    // Assets Management
     virtual void Load(){}
     virtual void Unload();
 
-    //Actors Management
+    // Actors Management
     void AddActor(Actor* actor);
     void RemoveActor(Actor* actor);
     void UpdateAllActors();
+
+	// Colliders Management
+    void AddCollider(AABBColliderComponent* collider);
+    void RemoveCollider(AABBColliderComponent* collider);
+    void CheckCollisions();
 
     
     IRenderer& GetRenderer();

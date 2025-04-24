@@ -5,8 +5,14 @@
 #include "Camera.h"
 #include "FPSController.h"
 
+#include "AABBColliderComponent.h"
+#include <iostream>
+
 Actor* actor;
 Actor* cubeActor;
+
+AABBColliderComponent* cubeCollider;
+AABBColliderComponent* cameraCollider;
 
 Vector3 spritePosition{ 250, 250, 1000 };
 Vector3 spriteRotation{ 0, 0, 0};
@@ -34,6 +40,8 @@ void GlTestScene::Render()
 void GlTestScene::Update()
 {
 	cubeActor->Rotate(Vector3(0.2, 0.1, 0.4));
+
+	CheckCollisions();
 }
 
 void GlTestScene::Close()
@@ -74,5 +82,21 @@ void GlTestScene::Load()
 	SpriteComponent* sprite = new SpriteComponent(actor, Assets::GetTexture("ball"));
 	MeshComponent* mesh = new MeshComponent(cubeActor);
 	mesh->SetMesh(Assets::GetMesh("cube"));
+
+	// Cube Collider
+	cubeCollider = new AABBColliderComponent(cubeActor);
+	cubeCollider->SetDimensions(Vector3(10.0f, 10.0f, 10.0f));
+	cubeCollider->SetOnCollisionStay([](AABBColliderComponent* other) {
+		std::cout << "Cube collided with camera!" << std::endl;
+		Vector3 currentPos = cubeActor->GetTransform().GetPosition();
+		cubeActor->SetPosition(currentPos + Vector3(0.0f, 0.5f, 0.0f));
+		});
+
+	// Cam collider
+	cameraCollider = new AABBColliderComponent(cam);
+	cameraCollider->SetDimensions(Vector3(10.0f, 10.0f, 10.0f));
+	cameraCollider->SetOnCollisionStay([](AABBColliderComponent* other) {
+		std::cout << "Camera collided with cube!" << std::endl;
+		});
 
 }

@@ -170,6 +170,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABBColliderComponent.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABBColliderComponent.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimatedSpriteComponent.h" />
     <ClInclude Include="Assets.h" />

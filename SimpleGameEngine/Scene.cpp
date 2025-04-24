@@ -20,12 +20,10 @@ void Scene::SetRenderer(IRenderer* pRenderer)
 void Scene::Unload()
 {
     //Free actors pointers memory
-    //Because ~Actor() calls RemoveActor, we have to use a while loop
     while(!mActors.empty())
     {
         delete mActors.back();
     }
-    //Free up resources
     Assets::Clear();
 }
 
@@ -70,6 +68,95 @@ void Scene::UpdateAllActors()
     for(Actor* deadActor: mDeadActors)
     {
         delete deadActor;
+    }
+}
+
+void Scene::AddCollider(AABBColliderComponent* collider)
+{
+    mColliders.push_back(collider);
+}
+
+void Scene::RemoveCollider(AABBColliderComponent* collider)
+{
+    auto iter = std::find(mColliders.begin(), mColliders.end(), collider);
+    if (iter != mColliders.end())
+    {
+        mColliders.erase(iter);
+    }
+}
+
+void Scene::CheckCollisions()
+{
+    std::vector<std::pair<AABBColliderComponent*, AABBColliderComponent*>> currentFrameCollisions;
+
+    // Check all colliders against each other
+    for (size_t i = 0; i < mColliders.size(); i++)
+    {
+        if (!mColliders[i]->IsActive()) continue;
+
+        for (size_t j = i + 1; j < mColliders.size(); j++)
+        {
+            if (!mColliders[j]->IsActive()) continue;
+
+            AABBColliderComponent* a = mColliders[i];
+            AABBColliderComponent* b = mColliders[j];
+
+            // Check if they intersect
+            if (a->Intersects(b))
+            {
+                // Add to current frame collisions
+                currentFrameCollisions.push_back(std::make_pair(a, b));
+
+                // Check if this is a new collision
+                if (!a->IsCollidingWith(b))
+                {
+                    // New collision
+                    a->OnCollisionEnter(b);
+                    b->OnCollisionEnter(a);
+                }
+                else
+                {
+                    // Continuing collision
+                    a->OnCollisionStay(b);
+                    b->OnCollisionStay(a);
+                }
+            }
+        }
+    }
+
+    // Check for collisions that ended
+    for (auto& collider : mColliders)
+    {
+        if (!collider->IsActive()) continue;
+
+        const auto& currentCollisions = collider->GetCurrentCollisions();
+        std::vector<AABBColliderComponent*> endedCollisions;
+
+        for (auto& collision : currentCollisions)
+        {
+            bool stillColliding = false;
+
+            for (auto& currentCollision : currentFrameCollisions)
+            {
+                if ((currentCollision.first == collider && currentCollision.second == collision) ||
+                    (currentCollision.second == collider && currentCollision.first == collision))
+                {
+                    stillColliding = true;
+                    break;
+                }
+            }
+
+            if (!stillColliding)
+            {
+                endedCollisions.push_back(collision);
+            }
+        }
+
+        // Notify about ended collisions
+        for (auto& ended : endedCollisions)
+        {
+            collider->OnCollisionExit(ended);
+        }
     }
 }
 
