@@ -27,6 +27,7 @@ public:
     ShaderProgram& GetShaderProgram();
     void SetShaderProgram(ShaderProgram* pShader);
     Texture* GetTexture(size_t textureIndex);
+    void SetTexture(Texture* texture, size_t index = 0);
     VertexArray* GetVertexArray() { return mVertexArray; }
 
 private:

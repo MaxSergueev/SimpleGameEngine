@@ -33,6 +33,13 @@ Texture* Mesh::GetTexture(size_t textureIndex) {
 	return nullptr;
 }
 
+void Mesh::SetTexture(Texture* texture, size_t index) {
+	if (index >= mTextures.size()) {
+		mTextures.resize(index + 1, nullptr);
+	}
+	mTextures[index] = texture;
+}
+
 ShaderProgram& Mesh::GetShaderProgram()
 {
 	return mShaderProgram;
