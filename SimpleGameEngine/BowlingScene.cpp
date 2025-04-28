@@ -6,25 +6,12 @@
 #include "FPSController.h"
 #include "MoveComponent.h"
 #include "AABBColliderComponent.h"
+#include "Pin.h"
+#include "BowlingBall.h"
+#include "BowlingBallController.h"
 #include <iostream>
 
-Actor* pinActor;
-Actor* ballActor;
-
-AABBColliderComponent* PinCollider;
-AABBColliderComponent* BallCollider;
-AABBColliderComponent* characterCollider;
-
-// pin
-Vector3 MP{ 0, 0, 0 };
-Vector3 MR{ 0, 0, 0 };
-Vector3 MS{ 2.5f, 2.5f, 2.5f };
-
-// ball
-Vector3 MP2{ 0, 5, 0 };
-Vector3 MR2{ 90, 0, 0 };
-Vector3 MS2{ 5, 5, 5 };
-
+Actor* skyBox;
 Camera* camera;
 
 BowlingScene::BowlingScene()
@@ -59,18 +46,6 @@ void BowlingScene::Load()
 
 	mRenderer->SetSpriteShaderProgram(sp);
 
-	pinActor = new Actor();
-	AddActor(pinActor);
-	pinActor->SetPosition(MP);
-	pinActor->SetRotation(MR);
-	pinActor->SetScale(MS);
-
-	ballActor = new Actor();
-	AddActor(ballActor);
-	ballActor->SetPosition(MP2);
-	ballActor->SetRotation(MR2);
-	ballActor->SetScale(MS2);
-
 	camera = new Camera();
 	AddActor(camera);
 	FPSController* cc = new FPSController(camera);
@@ -79,37 +54,27 @@ void BowlingScene::Load()
 	Assets::LoadTexture(*mRenderer, "Resources/wall.png", "wall");
 	Assets::LoadTexture(*mRenderer, "Resources/pin.jpg", "pin");
 	Assets::LoadTexture(*mRenderer, "Resources/ball.jpg", "ball");
+	Assets::LoadTexture(*mRenderer, "Resources/Sky2.png", "sky");
 
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "sphere");
 	Assets::LoadMesh("Resources/Meshes/pin.obj", "pin");
 
-	MeshComponent* mesh = new MeshComponent(pinActor);
-	MeshComponent* mesh2 = new MeshComponent(ballActor);
+	Pin* pin1 = new Pin(this, Vector3(0, 0, 200));
 
-	mesh->SetMesh(Assets::GetMesh("pin"));
-	mesh->GetMesh()->SetTexture(&Assets::GetTexture("pin"));
+	Pin* pin2 = new Pin(this, Vector3(6, 0, 208));
+	Pin* pin3 = new Pin(this, Vector3(-6, 0, 208));
 
-	mesh2->SetMesh(Assets::GetMesh("sphere"));
-	mesh2->GetMesh()->SetTexture(&Assets::GetTexture("ball"));
+	Pin* pin4 = new Pin(this, Vector3(0, 0, 216));
+	Pin* pin5 = new Pin(this, Vector3(12, 0, 216));
+	Pin* pin6 = new Pin(this, Vector3(-12, 0, 216));
 
-	MoveComponent* move = new MoveComponent(pinActor);
-	move->SetSpeed(Vector2(0.0f, 0.0f));
+	Pin* pin7 = new Pin(this, Vector3(6, 0, 224));
+	Pin* pin8 = new Pin(this, Vector3(-6, 0, 224));
+	Pin* pin9 = new Pin(this, Vector3(18, 0, 224));
+	Pin* pin10 = new Pin(this, Vector3(-18, 0, 224));
 
-
-	// Cube Collider
-	PinCollider = new AABBColliderComponent(pinActor);
-	PinCollider->SetDimensions(Vector3(10.0f, 10.0f, 10.0f));
-	PinCollider->SetOnCollisionEnter([](AABBColliderComponent* other) {
-		MoveComponent* mMoveComponent = pinActor->GetComponentOfType<MoveComponent>();
-		mMoveComponent->SetSpeed(Vector2(5.0f, 0.0f));
-		});
-	PinCollider->SetOnCollisionExit([](AABBColliderComponent* other) {
-		MoveComponent* mMoveComponent = pinActor->GetComponentOfType<MoveComponent>();
-		mMoveComponent->SetSpeed(Vector2(0.0f, 0.0f));
-		});
-
-	// Cube 2 Collider
-	BallCollider = new AABBColliderComponent(ballActor);
-	BallCollider->SetDimensions(Vector3(8.0f, 8.0f, 8.0f));
+	BowlingBall* ball = new BowlingBall(this, Vector3(0, 0, 0));
+	BowlingBallController* bc = new BowlingBallController(ball);
+	bc->OnStart();
 
 }

@@ -18,12 +18,11 @@ public:
     void OnStart() override;
     void Update() override;
 
-    // Inherited via IInputListener
     void OnNotify(SDL_Event& pEvent) override;
 
 private:
-    float mInputZ; // Forward
-    float mInputX; // Right
-    MoveComponent* mMoveComponent; // Reference to the MoveComponent
+    float mInputZ;
+    float mInputX;
+    MoveComponent* mMoveComponent;
 };
 
