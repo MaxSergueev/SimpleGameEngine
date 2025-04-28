@@ -141,6 +141,9 @@
     <ClCompile Include="BowlingBallController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PinPhysicsComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -264,6 +267,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BowlingBallController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PinPhysicsComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

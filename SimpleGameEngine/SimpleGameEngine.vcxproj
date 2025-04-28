@@ -193,6 +193,7 @@
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="MoveComponent.h" />
     <ClCompile Include="Pin.cpp" />
+    <ClCompile Include="PinPhysicsComponent.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Rectangle.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="Pin.h" />
+    <ClInclude Include="PinPhysicsComponent.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Rectangle.h" />

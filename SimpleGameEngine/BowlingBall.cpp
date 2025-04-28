@@ -2,7 +2,7 @@
 #include "Assets.h"
 #include "Scene.h"
 
-BowlingBall::BowlingBall(Scene* scene, const Vector3& position) : mSpeed(30.0f)
+BowlingBall::BowlingBall(Scene* scene, const Vector3& position) : mSpeed(30.0f), mMass(7.0f)
 {
     scene->AddActor(this);
 

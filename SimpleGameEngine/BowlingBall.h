@@ -11,6 +11,7 @@ private:
     MoveComponent* mMoveComponent;
     AABBColliderComponent* mColliderComponent;
     float mSpeed;
+    float mMass;
 
 public:
     BowlingBall(Scene* scene, const Vector3& position = Vector3(0, 5, 0));
@@ -26,6 +27,8 @@ public:
     void Stop();
     void SetSpeed(float speed) { mSpeed = speed; }
     float GetSpeed() const { return mSpeed; }
+    float GetMass() const { return mMass; }
 };
+
 
 

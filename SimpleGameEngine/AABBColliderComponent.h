@@ -53,10 +53,11 @@ public:
     // Override Component update
     void Update() override;
 
-
     bool IsCollidingWith(AABBColliderComponent* other) const;
     const std::vector<AABBColliderComponent*>& GetCurrentCollisions() const { return mCurrentCollisions; }
 
     bool IsTrigger() const { return mIsTrigger; }
     bool IsActive() const { return mIsActive; }
+
+    class Actor* GetOwner() const { return mOwner; }
 };
