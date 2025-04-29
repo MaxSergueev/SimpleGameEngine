@@ -16,6 +16,7 @@ Pin::Pin(Scene* scene, const Vector3& position)
     mMeshComponent = new MeshComponent(this);
     mMeshComponent->SetMesh(Assets::GetMesh("pin"));
     mMeshComponent->GetMesh()->SetTexture(&Assets::GetTexture("pin"));
+	mMeshComponent->GetMesh()->SetShaderProgram(&Assets::GetShaderProgram("pinSP"));
 
     mMoveComponent = new MoveComponent(this);
     mMoveComponent->SetSpeed(Vector2(0.0f, 0.0f));

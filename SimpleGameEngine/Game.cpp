@@ -37,7 +37,8 @@ Game::~Game()
 
 void Game::Initialize()
 {
-    mWindow = new Window(1000, 1000);
+    //mWindow = new Window(1440, 810);
+    mWindow = new Window(1584, 891);
 
     mInputManager = new InputManager;
 

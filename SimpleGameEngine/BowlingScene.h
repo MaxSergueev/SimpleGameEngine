@@ -6,6 +6,10 @@ class BowlingScene : public Scene
 public:
     Shader* mSimpleVert = new Shader();
     Shader* mSimpleFrag = new Shader();
+
+	Shader* mFloorFrag = new Shader();
+	Shader* mFloorVert = new Shader();
+
     ShaderProgram* sp = new ShaderProgram();
 
     BowlingScene();
