@@ -43,6 +43,7 @@ void BowlingScene::Load()
 	Assets::LoadShaderProgram("Transform.vert", "Sprite.frag", "sp");
 	Assets::LoadShaderProgram("Basic.vert", "BasicPin.frag", "pinSP");
 	Assets::LoadShaderProgram("Basic.vert", "BasicFloor.frag", "floorSP");
+	Assets::LoadShaderProgram("Basic.vert", "BasicBall.frag", "ballSP");
 	mRenderer->SetSpriteShaderProgram(sp);
 
 
@@ -54,7 +55,7 @@ void BowlingScene::Load()
 	Assets::LoadTexture(*mRenderer, "Resources/wall.png", "wall");
 	Assets::LoadTexture(*mRenderer, "Resources/floor.png", "floor");
 	Assets::LoadTexture(*mRenderer, "Resources/pin.png", "pin");
-	Assets::LoadTexture(*mRenderer, "Resources/ball.png", "ball");
+	Assets::LoadTexture(*mRenderer, "Resources/bowlingball.png", "ball");
 	Assets::LoadTexture(*mRenderer, "Resources/BowlingSky.png", "sky");
 
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "sphere");
@@ -77,6 +78,7 @@ void BowlingScene::Load()
 	Pin* pin10 = new Pin(this, Vector3(-18, -24, 224));
 
 	BowlingBall* ball = new BowlingBall(this, Vector3(0, -20, 0));
+	ball->GetMeshComponent()->GetMesh()->SetShaderProgram(&Assets::GetShaderProgram("ballSP"));
 	BowlingBallController* bc = new BowlingBallController(ball);
 	bc->OnStart();
 

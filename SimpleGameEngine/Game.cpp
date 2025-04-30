@@ -77,17 +77,20 @@ void Game::CheckInputs()
     if (mIsRunning)
     {
         SDL_Event event;
-        while(SDL_PollEvent(&event))
+        while (SDL_PollEvent(&event))
         {
-            switch(event.type)
+            switch (event.type)
             {
-                case SDL_QUIT:
+            case SDL_QUIT:
+                mIsRunning = false;
+                break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
                     mIsRunning = false;
-                    break;
-                default:
-                    //Send input to scene
-                    InputManager::Instance().HandleInputs(event);
-                    break;
+                }
+            default:
+                InputManager::Instance().HandleInputs(event);
+                break;
             }
         }
     }
