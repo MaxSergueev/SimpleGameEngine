@@ -30,7 +30,7 @@ void DoomScene::Render()
 
 void DoomScene::Update()
 {
-	UpdateAllActors();
+	//UpdateAllActors();
 	CheckCollisions();
 }
 

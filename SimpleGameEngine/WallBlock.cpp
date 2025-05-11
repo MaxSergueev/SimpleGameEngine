@@ -18,5 +18,5 @@ WallBlock::WallBlock(Scene* scene, const Vector3& position)
     mMeshComponent->GetMesh()->SetShaderProgram(&Assets::GetShaderProgram("wallSP"));
 
     mColliderComponent = new AABBColliderComponent(this);
-    mColliderComponent->SetDimensions(Vector3(20.0f, 20.0f, 20.0f));
+    mColliderComponent->SetDimensions(Vector3(75.0f, 75.0f, 75.0f));
 }
