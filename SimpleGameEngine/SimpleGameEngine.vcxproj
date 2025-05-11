@@ -179,6 +179,8 @@
     <ClCompile Include="BowlingScene.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DoomScene.cpp" />
+    <ClCompile Include="FirstPersonActor.cpp" />
     <ClCompile Include="FPSController.cpp" />
     <ClCompile Include="GlTestScene.cpp" />
     <ClCompile Include="IInputListener.cpp" />
@@ -212,6 +214,7 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="VertexArray.cpp" />
+    <ClCompile Include="WallBlock.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +227,8 @@
     <ClInclude Include="BowlingScene.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DoomScene.h" />
+    <ClInclude Include="FirstPersonActor.h" />
     <ClInclude Include="FPSController.h" />
     <ClInclude Include="GlTestScene.h" />
     <ClInclude Include="IInputListener.h" />
@@ -256,6 +261,7 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="VertexArray.h" />
+    <ClInclude Include="WallBlock.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

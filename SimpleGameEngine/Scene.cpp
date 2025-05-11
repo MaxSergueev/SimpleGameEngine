@@ -23,6 +23,7 @@ void Scene::Unload()
     while(!mActors.empty())
     {
         delete mActors.back();
+        mActors.pop_back();
     }
     Assets::Clear();
 }

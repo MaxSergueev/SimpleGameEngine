@@ -13,7 +13,6 @@ class Game
 private:
     std::string mTitle;
     Window* mWindow;
-    //RendererSDL* mRenderer;
     IRenderer* mRenderer;
     InputManager* mInputManager;
 
