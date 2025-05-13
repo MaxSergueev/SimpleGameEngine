@@ -183,6 +183,7 @@
     <ClCompile Include="FirstPersonActor.cpp" />
     <ClCompile Include="FPSController.cpp" />
     <ClCompile Include="GlTestScene.cpp" />
+    <ClCompile Include="HealthBarComponent.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="IInputListener.cpp" />
     <ClCompile Include="InputEvent.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="FirstPersonActor.h" />
     <ClInclude Include="FPSController.h" />
     <ClInclude Include="GlTestScene.h" />
+    <ClInclude Include="HealthBarComponent.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="IInputListener.h" />
     <ClInclude Include="InputEvent.h" />

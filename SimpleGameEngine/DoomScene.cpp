@@ -32,6 +32,7 @@ void DoomScene::Update()
 {
 	//UpdateAllActors();
 	CheckCollisions();
+	doomGuy->TakeDamage(1);
 }
 
 void DoomScene::Close()
@@ -40,7 +41,11 @@ void DoomScene::Close()
 
 void DoomScene::Load()
 {
-	Assets::LoadShaderProgram("Transform.vert", "Sprite.frag", "sp");
+	mSimpleFrag->Load("Sprite.frag", FRAGMENT);
+	mSimpleVert->Load("Transform.vert", VERTEX);
+
+	sp->Compose({ mSimpleFrag, mSimpleVert });
+
 	Assets::LoadShaderProgram("Basic.vert", "BasicWall.frag", "wallSP");
 	Assets::LoadShaderProgram("Basic.vert", "BasicFloor.frag", "floorSP");
 	Assets::LoadShaderProgram("Basic.vert", "BasicBall.frag", "ballSP");
@@ -49,6 +54,9 @@ void DoomScene::Load()
 	Assets::LoadTexture(*mRenderer, "Resources/green.png", "doomWall");
 	Assets::LoadTexture(*mRenderer, "Resources/floor.png", "floor");
 	Assets::LoadTexture(*mRenderer, "Resources/BowlingSky.png", "sky");
+
+	Assets::LoadTexture(*mRenderer, "Resources/bowlingball.png", "yellow");
+	Assets::LoadTexture(*mRenderer, "Resources/purple.png", "purple");
 
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "sphere");
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "skySphere");

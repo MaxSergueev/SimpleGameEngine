@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "RigidBodyComponent.h"
 #include "HealthComponent.h"
+#include "HealthBarComponent.h"
 #include "Log.h"
 
 FirstPersonActor::FirstPersonActor(Scene* scene)
@@ -17,6 +18,13 @@ FirstPersonActor::FirstPersonActor(Scene* scene)
     mHealthComponent->SetOnDeathCallback([this]() {
         HandleDeath();
         });
+
+    mHealthBarComponent = new HealthBarComponent(this);
+    mHealthBarComponent->SetHealthComponent(mHealthComponent);
+    mHealthBarComponent->SetPosition(Vector3(-5500, 4000, 9500));
+    mHealthBarComponent->SetSize(Vector3(4, 0.5, 1));
+    mHealthBarComponent->SetBackgroundTexture("purple");
+    mHealthBarComponent->SetForegroundTexture("yellow");
 
     mCollider = GetComponentOfType<AABBColliderComponent>();
 
