@@ -2,6 +2,8 @@
 #include "FPSController.h"
 #include "Scene.h"
 #include "RigidBodyComponent.h"
+#include "HealthComponent.h"
+#include "Log.h"
 
 FirstPersonActor::FirstPersonActor(Scene* scene)
     : Camera()
@@ -10,12 +12,23 @@ FirstPersonActor::FirstPersonActor(Scene* scene)
 
     mRigidBody = new RigidBodyComponent(this);
 
+    mHealthComponent = new HealthComponent(this, 100);
+
+    mHealthComponent->SetOnDeathCallback([this]() {
+        HandleDeath();
+        });
+
     mCollider = GetComponentOfType<AABBColliderComponent>();
 
     SetupCollisionCallbacks();
 
     FPSController* controller = new FPSController(this);
     controller->OnStart();
+}
+
+bool FirstPersonActor::TakeDamage(int amount)
+{
+        return mHealthComponent->TakeDamage(amount);
 }
 
 void FirstPersonActor::SetupCollisionCallbacks()
@@ -30,6 +43,12 @@ void FirstPersonActor::SetupCollisionCallbacks()
         mRigidBody->ResolveCollision(other);
         });
 }
+
+void FirstPersonActor::HandleDeath()
+{
+    Log::Info("Player died!");
+}
+
 
 
 
