@@ -180,6 +180,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DoomScene.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FirstPersonActor.cpp" />
     <ClCompile Include="FPSController.cpp" />
     <ClCompile Include="GlTestScene.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DoomScene.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FirstPersonActor.h" />
     <ClInclude Include="FPSController.h" />
     <ClInclude Include="GlTestScene.h" />

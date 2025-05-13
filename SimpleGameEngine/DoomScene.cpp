@@ -9,10 +9,15 @@
 #include "WallBlock.h"
 #include <iostream>
 #include "FirstPersonActor.h"
+#include "Enemy.h"
+#include "Time.h"
 
 Actor* doomSky;
 Actor* doomFloor;
 FirstPersonActor* doomGuy;
+Enemy* enemy1;
+Enemy* enemy2;
+
 
 
 DoomScene::DoomScene()
@@ -30,9 +35,10 @@ void DoomScene::Render()
 
 void DoomScene::Update()
 {
-	//UpdateAllActors();
+	UpdateAllActors();
 	CheckCollisions();
-	doomGuy->TakeDamage(1);
+	//doomGuy->TakeDamage(1);
+	//enemy1->TakeDamage(1);
 }
 
 void DoomScene::Close()
@@ -60,6 +66,7 @@ void DoomScene::Load()
 
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "sphere");
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "skySphere");
+	Assets::LoadMesh("Resources/Meshes/sphere.obj", "enemy");
 	Assets::LoadMesh("Resources/Meshes/cube.obj", "floorCube");
 	Assets::LoadMesh("Resources/Meshes/cube.obj", "wallCube");
 
@@ -91,12 +98,12 @@ void DoomScene::Load()
 	WallBlock* wall7 = new WallBlock(this, Vector3(-270, 0, 300));
 	WallBlock* wall8 = new WallBlock(this, Vector3(-360, 0, 300));
 
-	WallBlock* wall9 = new WallBlock(this, Vector3(0, 0, -240));
+	//WallBlock* wall9 = new WallBlock(this, Vector3(0, 0, -240));
 	WallBlock* wall10 = new WallBlock(this, Vector3(90, 0, -240));
 	WallBlock* wall11 = new WallBlock(this, Vector3(180, 0, -240));
 	WallBlock* wall12 = new WallBlock(this, Vector3(270, 0, -240));
 	WallBlock* wall13 = new WallBlock(this, Vector3(-90, 0, -240));
-	WallBlock* wall14 = new WallBlock(this, Vector3(-180, 0, -240));
+	//WallBlock* wall14 = new WallBlock(this, Vector3(-180, 0, -240));
 	WallBlock* wall15 = new WallBlock(this, Vector3(-270, 0, -240));
 	WallBlock* wall16 = new WallBlock(this, Vector3(-360, 0, -240));
 
@@ -107,13 +114,17 @@ void DoomScene::Load()
 	WallBlock* wall21 = new WallBlock(this, Vector3(-360, 0, -150));
 
 	WallBlock* wall22 = new WallBlock(this, Vector3(270, 0, 210));
-	// WallBlock* wall23 = new WallBlock(this, Vector3(270, 0, 120));
+	WallBlock* wall23 = new WallBlock(this, Vector3(270, 0, 120));
 	WallBlock* wall24 = new WallBlock(this, Vector3(270, 0, 30));
-	// WallBlock* wall25 = new WallBlock(this, Vector3(270, 0, -60));
+	WallBlock* wall25 = new WallBlock(this, Vector3(270, 0, -60));
 	WallBlock* wall26 = new WallBlock(this, Vector3(270, 0, -150));
 
 	 doomGuy = new FirstPersonActor(this);
-	 AddActor(doomGuy);
+
+	 // Create some enemies
+	 enemy1 = new Enemy(this, Vector3(-100, 0, 100));
+	 enemy2 = new Enemy(this, Vector3(100, 0, 200));
+	 enemy2->SetPatrolDirection(Vector3(-1, 0, 0));
 	
 
 
