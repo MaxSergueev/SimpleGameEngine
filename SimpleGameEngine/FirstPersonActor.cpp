@@ -4,10 +4,11 @@
 #include "RigidBodyComponent.h"
 #include "HealthComponent.h"
 #include "HealthBarComponent.h"
+#include "BulletPool.h"
 #include "Log.h"
 
-FirstPersonActor::FirstPersonActor(Scene* scene)
-    : Camera()
+FirstPersonActor::FirstPersonActor(Scene* scene, BulletPool* bulletPool)
+    : Camera(), mBulletPool(bulletPool)
 {
     scene->AddActor(this);
 
@@ -36,19 +37,47 @@ FirstPersonActor::FirstPersonActor(Scene* scene)
 
 bool FirstPersonActor::TakeDamage(int amount)
 {
-        return mHealthComponent->TakeDamage(amount);
+    return mHealthComponent->TakeDamage(amount);
+}
+
+void FirstPersonActor::Shoot()
+{
+    if (!mBulletPool) {
+        Log::Info("Player has no bullet pool - cannot shoot");
+        return;
+    }
+
+    // Get shooting position (camera position)
+    Vector3 shootPos = GetTransform().GetPosition();
+
+    // Get shooting direction (camera forward direction)
+    Vector3 shootDirection = GetTransform().Forward();
+
+    // Fire bullet
+    if (mBulletPool->FireBullet(shootPos, shootDirection, this, 400.0f))
+    {
+        Log::Info("Player fired bullet!");
+    }
+    else
+    {
+        Log::Info("No bullets available in pool!");
+    }
 }
 
 void FirstPersonActor::SetupCollisionCallbacks()
 {
     mCollider->SetOnCollisionEnter([this](AABBColliderComponent* other) {
-        // Use rigid body physics to resolve the collision
-        mRigidBody->ResolveCollision(other);
+        // Only resolve collision if the other object is not a trigger
+        if (!other->IsTrigger()) {
+            mRigidBody->ResolveCollision(other);
+        }
         });
 
     mCollider->SetOnCollisionStay([this](AABBColliderComponent* other) {
-        // Continue to resolve the collision while in contact
-        mRigidBody->ResolveCollision(other);
+        // Only resolve collision if the other object is not a trigger
+        if (!other->IsTrigger()) {
+            mRigidBody->ResolveCollision(other);
+        }
         });
 }
 
@@ -56,8 +85,6 @@ void FirstPersonActor::HandleDeath()
 {
     Log::Info("Player died!");
 }
-
-
 
 
 

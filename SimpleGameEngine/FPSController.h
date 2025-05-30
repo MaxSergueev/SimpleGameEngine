@@ -4,6 +4,7 @@
 #include "Vector2.h"
 
 class MoveComponent;
+class FirstPersonActor;
 
 class FPSController : public Component, public IInputListener
 {
@@ -24,5 +25,7 @@ private:
     float mInputZ;
     float mInputX;
     MoveComponent* mMoveComponent;
+    FirstPersonActor* mFirstPersonActor;
 };
+
 

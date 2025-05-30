@@ -47,6 +47,10 @@ public:
     void RemoveCollider(AABBColliderComponent* collider);
     void CheckCollisions();
 
+    // Getters
+    const std::vector<AABBColliderComponent*>& GetColliders() const { return mColliders; };
+    const std::vector<Actor*>& GetActors() const { return mActors; }
+
     
     IRenderer& GetRenderer();
 };

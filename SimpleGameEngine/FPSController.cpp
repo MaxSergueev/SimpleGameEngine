@@ -2,10 +2,11 @@
 #include "InputManager.h"
 #include "Actor.h"
 #include "MoveComponent.h"
+#include "FirstPersonActor.h"
 #include <iostream>
 
 FPSController::FPSController(Actor* actor)
-    : Component(actor), mInputX(0), mInputZ(0), mMoveComponent(nullptr)
+    : Component(actor), mInputX(0), mInputZ(0), mMoveComponent(nullptr), mFirstPersonActor(nullptr)
 {
     // Find the MoveComponent on the actor
     mMoveComponent = mOwner->GetComponentOfType<MoveComponent>();
@@ -14,14 +15,9 @@ FPSController::FPSController(Actor* actor)
     if (!mMoveComponent) {
         mMoveComponent = new MoveComponent(actor);
     }
-}
 
-FPSController::~FPSController()
-{
-    InputManager::Instance().UnsubscribeTo(SDLK_w, this);
-    InputManager::Instance().UnsubscribeTo(SDLK_a, this);
-    InputManager::Instance().UnsubscribeTo(SDLK_s, this);
-    InputManager::Instance().UnsubscribeTo(SDLK_d, this);
+    // Try to cast the actor to FirstPersonActor for shooting functionality
+    mFirstPersonActor = dynamic_cast<FirstPersonActor*>(actor);
 }
 
 void FPSController::OnStart()
@@ -31,15 +27,29 @@ void FPSController::OnStart()
     InputManager::Instance().SubscribeTo(SDLK_a, this);
     InputManager::Instance().SubscribeTo(SDLK_s, this);
     InputManager::Instance().SubscribeTo(SDLK_d, this);
+
+    // Subscribe to left mouse button
+    InputManager::Instance().SubscribeToMouse(SDL_BUTTON_LEFT, this);
+}
+
+FPSController::~FPSController()
+{
+    InputManager::Instance().UnsubscribeTo(SDLK_w, this);
+    InputManager::Instance().UnsubscribeTo(SDLK_a, this);
+    InputManager::Instance().UnsubscribeTo(SDLK_s, this);
+    InputManager::Instance().UnsubscribeTo(SDLK_d, this);
+
+    // Unsubscribe from mouse button
+    InputManager::Instance().UnsubscribeToMouse(SDL_BUTTON_LEFT, this);
 }
 
 void FPSController::Update()
 {
-    // No need to do anything here - MoveComponent will handle movement
 }
 
 void FPSController::OnNotify(SDL_Event& pEvent)
 {
+    // Handle keyboard input for movement
     if (pEvent.type == SDL_KEYDOWN || pEvent.type == SDL_KEYUP)
     {
         switch (pEvent.key.keysym.sym)
@@ -63,4 +73,17 @@ void FPSController::OnNotify(SDL_Event& pEvent)
             mMoveComponent->SetSpeed(Vector2(mInputX, mInputZ));
         }
     }
+
+    // Handle mouse clicks for shooting
+    else if (pEvent.type == SDL_MOUSEBUTTONDOWN)
+    {
+        if (pEvent.button.button == SDL_BUTTON_LEFT) // Left mouse button
+        {
+            if (mFirstPersonActor)
+            {
+                mFirstPersonActor->Shoot();
+            }
+        }
+    }
 }
+

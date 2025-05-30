@@ -11,6 +11,7 @@
 #include "FirstPersonActor.h"
 #include "Enemy.h"
 #include "Time.h"
+#include "BulletPool.h"
 
 Actor* doomSky;
 Actor* doomFloor;
@@ -67,8 +68,11 @@ void DoomScene::Load()
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "sphere");
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "skySphere");
 	Assets::LoadMesh("Resources/Meshes/sphere.obj", "enemy");
+	Assets::LoadMesh("Resources/Meshes/sphere.obj", "bullet");
 	Assets::LoadMesh("Resources/Meshes/cube.obj", "floorCube");
 	Assets::LoadMesh("Resources/Meshes/cube.obj", "wallCube");
+
+	mBulletPool = new BulletPool(this, 100);
 
 	doomSky = new Actor();
 	AddActor(doomSky);
@@ -119,14 +123,19 @@ void DoomScene::Load()
 	WallBlock* wall25 = new WallBlock(this, Vector3(270, 0, -60));
 	WallBlock* wall26 = new WallBlock(this, Vector3(270, 0, -150));
 
-	 doomGuy = new FirstPersonActor(this);
+	 doomGuy = new FirstPersonActor(this, mBulletPool);
 
 	 // Create some enemies
-	 enemy1 = new Enemy(this, Vector3(-100, 0, 100));
-	 enemy2 = new Enemy(this, Vector3(100, 0, 200));
+	 enemy1 = new Enemy(this, Vector3(-100, 0, 100), mBulletPool);
+	 enemy2 = new Enemy(this, Vector3(100, 0, 200), mBulletPool);
 	 enemy2->SetPatrolDirection(Vector3(-1, 0, 0));
 	
 
 
 
+}
+
+DoomScene::~DoomScene()
+{
+	delete mBulletPool;
 }

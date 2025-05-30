@@ -1,18 +1,25 @@
 #include "InputManager.h"
-
 #include "Log.h"
 
 InputManager::~InputManager()
 {
+    // Clean up keyboard events
     std::map<SDL_Keycode, InputEvent*>::iterator it;
-    for (it = mInputEvents.begin(); it != mInputEvents.end(); it++)
+    for (it = mKeyboardEvents.begin(); it != mKeyboardEvents.end(); it++)
     {
         delete (it->second);
     }
-    mInputEvents.clear();
+    mKeyboardEvents.clear();
+
+    // Clean up mouse events
+    std::map<Uint8, InputEvent*>::iterator mouseIt;
+    for (mouseIt = mMouseEvents.begin(); mouseIt != mMouseEvents.end(); mouseIt++)
+    {
+        delete (mouseIt->second);
+    }
+    mMouseEvents.clear();
 }
 
-//C++ implementation of the singleton
 InputManager& InputManager::Instance()
 {
     static InputManager instance;
@@ -21,32 +28,64 @@ InputManager& InputManager::Instance()
 
 void InputManager::HandleInputs(SDL_Event& pEvent)
 {
-    std::map<SDL_Keycode, InputEvent*>::iterator it = mInputEvents.find(pEvent.key.keysym.sym);
-    if (it != mInputEvents.end())
+    // Handle keyboard events
+    if (pEvent.type == SDL_KEYDOWN || pEvent.type == SDL_KEYUP)
     {
-        (*it).second->NotifyListeners(pEvent);
+        std::map<SDL_Keycode, InputEvent*>::iterator it = mKeyboardEvents.find(pEvent.key.keysym.sym);
+        if (it != mKeyboardEvents.end())
+        {
+            (*it).second->NotifyListeners(pEvent);
+        }
+    }
+    // Handle mouse events
+    else if (pEvent.type == SDL_MOUSEBUTTONDOWN || pEvent.type == SDL_MOUSEBUTTONUP)
+    {
+        std::map<Uint8, InputEvent*>::iterator it = mMouseEvents.find(pEvent.button.button);
+        if (it != mMouseEvents.end())
+        {
+            (*it).second->NotifyListeners(pEvent);
+        }
     }
 }
 
 void InputManager::SubscribeTo(SDL_Keycode pKeyCode, IInputListener* pListener)
 {
-    //The count function of map<T,U> returns 1 if the element exists, 0 otherwise
-    size_t hasKey = mInputEvents.count(pKeyCode);
+    size_t hasKey = mKeyboardEvents.count(pKeyCode);
     if (hasKey == 0)
     {
-        mInputEvents[pKeyCode] = new InputEvent();
+        mKeyboardEvents[pKeyCode] = new InputEvent();
     }
-    mInputEvents[pKeyCode]->Subscribe(pListener);
+    mKeyboardEvents[pKeyCode]->Subscribe(pListener);
 }
 
 void InputManager::UnsubscribeTo(SDL_Keycode pKeyCode, IInputListener* pListener)
 {
-    ////Is this how you implement this? ////////////////////////////////////////////////////
-    size_t hasKey = mInputEvents.count(pKeyCode);
+    size_t hasKey = mKeyboardEvents.count(pKeyCode);
     if (hasKey == 0)
     {
-        mInputEvents[pKeyCode] = new InputEvent();
+        mKeyboardEvents[pKeyCode] = new InputEvent();
     }
-    mInputEvents[pKeyCode]->Unsubscribe(pListener);
+    mKeyboardEvents[pKeyCode]->Unsubscribe(pListener);
 }
+
+void InputManager::SubscribeToMouse(Uint8 mouseButton, IInputListener* pListener)
+{
+    size_t hasKey = mMouseEvents.count(mouseButton);
+    if (hasKey == 0)
+    {
+        mMouseEvents[mouseButton] = new InputEvent();
+    }
+    mMouseEvents[mouseButton]->Subscribe(pListener);
+}
+
+void InputManager::UnsubscribeToMouse(Uint8 mouseButton, IInputListener* pListener)
+{
+    size_t hasKey = mMouseEvents.count(mouseButton);
+    if (hasKey == 0)
+    {
+        mMouseEvents[mouseButton] = new InputEvent();
+    }
+    mMouseEvents[mouseButton]->Unsubscribe(pListener);
+}
+
 

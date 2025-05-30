@@ -177,6 +177,8 @@
     <ClCompile Include="BowlingBall.cpp" />
     <ClCompile Include="BowlingBallController.cpp" />
     <ClCompile Include="BowlingScene.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletPool.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DoomScene.cpp" />
@@ -189,6 +191,7 @@
     <ClCompile Include="IInputListener.cpp" />
     <ClCompile Include="InputEvent.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LineTrace.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Matrix4.cpp" />
@@ -229,6 +232,8 @@
     <ClInclude Include="BowlingBall.h" />
     <ClInclude Include="BowlingBallController.h" />
     <ClInclude Include="BowlingScene.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletPool.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DoomScene.h" />
@@ -242,6 +247,7 @@
     <ClInclude Include="InputEvent.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IRenderer.h" />
+    <ClInclude Include="LineTrace.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Maths.h" />

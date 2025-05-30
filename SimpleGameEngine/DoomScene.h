@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "ShaderProgram.h"
+#include "BulletPool.h"
 class DoomScene : public Scene
 {
 public:
@@ -12,8 +13,10 @@ public:
 
     ShaderProgram* sp = new ShaderProgram();
 
+    BulletPool* mBulletPool;
+
     DoomScene();
-    ~DoomScene() override = default;
+    ~DoomScene() override;
     void Start() override;
     void Render() override;
     void Update() override;
