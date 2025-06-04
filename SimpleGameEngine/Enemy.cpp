@@ -83,8 +83,6 @@ void Enemy::UpdateShooting()
     // Update shoot timer
     mShootTimer += Time::deltaTime;
 
-    // Debug logging
-
     // Check timer condition
     bool timerReady = mShootTimer >= mShootCooldown;
 
@@ -130,7 +128,6 @@ bool Enemy::CanShootAtPlayer()
     bool hasLineOfSight = LineTrace::HasLineOfSightToTarget(&GetScene(), enemyPos, playerPos, mCollider, playerCollider);
 
     if (!hasLineOfSight) {
-        // Debug: Let's see what's actually blocking us
         LineTraceHit hit = LineTrace::TraceLineAgainstColliders(&GetScene(), enemyPos, playerPos, mCollider);
         if (hit.bHit) {
             Actor* blockingActor = hit.hitCollider->GetOwner();
