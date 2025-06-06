@@ -1,7 +1,7 @@
 #version 400 core
 
 layout(triangles) in;
-layout(triangle_strip, max_vertices = 32) out; // Increased slightly
+layout(triangle_strip, max_vertices = 32) out;
 
 in vec3 worldPos[];
 in vec3 worldNormal[];
@@ -93,7 +93,7 @@ void emitTree(vec3 basePos, vec3 normal, float treeHeight) {
         gl_Position = vec4(fragWorldPos, 1.0) * uWorldTransform * uViewProj;
         EmitVertex();
         
-        EndPrimitive(); // End each triangle separately
+        EndPrimitive();
     }
 }
 

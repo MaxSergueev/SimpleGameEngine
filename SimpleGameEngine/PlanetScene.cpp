@@ -73,12 +73,11 @@ void PlanetScene::Load()
 
     // Load noise texture for displacement
     Assets::LoadTexture(*mRenderer, "Resources/noise.png", "noiseTexture");
-    Assets::LoadTexture(*mRenderer, "Resources/purple.png", "skyTexture");
 
     // Create planet actor
     mPlanetActor = new Actor();
     AddActor(mPlanetActor);
-    mPlanetActor->SetPosition(Vector3(0, 0, 0));
+    mPlanetActor->SetPosition(Vector3(0, 0, 150));
     mPlanetActor->SetRotation(Vector3(0, 0, 0));
     mPlanetActor->SetScale(Vector3(50, 50, 50));
 

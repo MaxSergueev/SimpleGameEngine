@@ -18,7 +18,7 @@ out float height;
 
 void main()
 {
-    // Interpolate using barycentric coordinates (your existing method)
+    // Interpolate using barycentric coordinates
     vec3 p0 = gl_TessCoord.x * tcPosition[0];
     vec3 p1 = gl_TessCoord.y * tcPosition[1];
     vec3 p2 = gl_TessCoord.z * tcPosition[2];
