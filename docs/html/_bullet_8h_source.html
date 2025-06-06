@@ -98,50 +98,53 @@ $(function(){initNavTree('_bullet_8h_source.html','',''); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">class </span><a class="code hl_class" href="class_mesh_component.html">MeshComponent</a>;</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a>;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_bullet.html">    8</a></span><span class="keyword">class </span>Bullet : <span class="keyword">public</span> <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    Bullet();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    ~Bullet() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bullet.html#a3ba0ec4b4bf603c5100d219ed14aad3f">UpdateActor</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Initialize bullet with starting position, direction, and shooter</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> Initialize(<span class="keyword">const</span> <a class="code hl_class" href="class_vector3.html">Vector3</a>&amp; startPos, <span class="keyword">const</span> <a class="code hl_class" href="class_vector3.html">Vector3</a>&amp; direction, <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a>* shooter, <span class="keywordtype">float</span> speed = 500.0f);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Reset bullet for reuse in pool</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> Reset();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// Check if bullet is active</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">bool</span> IsActive()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mIsActive; }</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Get the shooter</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a>* GetShooter()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mShooter; }</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Components</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="class_mesh_component.html">MeshComponent</a>* mMeshComponent;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a>* mCollider;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Bullet properties</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="class_vector3.html">Vector3</a> mDirection;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">float</span> mSpeed;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">float</span> mLifetime;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">float</span> mMaxLifetime;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> mIsActive;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a>* mShooter;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> SetupCollision();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> OnHit(<a class="code hl_class" href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a>* other);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> Deactivate();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_bullet.html">   17</a></span><span class="keyword">class </span><a class="code hl_function" href="class_bullet.html#acd7befc0bc18907cc1d871d37bbdddeb">Bullet</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="class_bullet.html#acd7befc0bc18907cc1d871d37bbdddeb">Bullet</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_bullet.html#ad1ae97704e472b871214d1f58581f163">   28</a></span>    <a class="code hl_function" href="class_bullet.html#ad1ae97704e472b871214d1f58581f163">~Bullet</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bullet.html#a3ba0ec4b4bf603c5100d219ed14aad3f">UpdateActor</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bullet.html#ad0fdc9f1d21eb8f774dd32b5385dd0a6">Initialize</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_vector3.html">Vector3</a>&amp; startPos, <span class="keyword">const</span> <a class="code hl_class" href="class_vector3.html">Vector3</a>&amp; direction, <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a>* shooter, <span class="keywordtype">float</span> speed = 500.0f);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bullet.html#a2de1bc8fb8c70cce09385efd11e9156c">Reset</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_bullet.html#a808a0e0eeb524be049001d4ca96d0e99">   53</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bullet.html#a808a0e0eeb524be049001d4ca96d0e99">IsActive</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mIsActive; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_bullet.html#ab6ea6dea05bf5a69238838c253b5c33a">   59</a></span>    <a class="code hl_function" href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor</a>* <a class="code hl_function" href="class_bullet.html#ab6ea6dea05bf5a69238838c253b5c33a">GetShooter</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mShooter; }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_class" href="class_mesh_component.html">MeshComponent</a>* mMeshComponent;          </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a>* mCollider;       </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_class" href="class_vector3.html">Vector3</a> mDirection;     </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">float</span> mSpeed;           </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">float</span> mLifetime;        </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">float</span> mMaxLifetime;     </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">bool</span> mIsActive;         </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_class" href="class_actor.html">Actor</a>* mShooter;        </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> SetupCollision();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> OnHit(<a class="code hl_class" href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a>* other);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> Deactivate();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="ttc" id="aclass_a_a_b_b_collider_component_html"><div class="ttname"><a href="class_a_a_b_b_collider_component.html">AABBColliderComponent</a></div><div class="ttdoc">Axis-Aligned Bounding Box collision component for 3D collision detection.</div><div class="ttdef"><b>Definition</b> AABBColliderComponent.h:15</div></div>
+<div class="ttc" id="aclass_actor_html"><div class="ttname"><a href="class_actor.html">Actor</a></div><div class="ttdoc">Base class for all game objects in the engine.</div><div class="ttdef"><b>Definition</b> Actor.h:16</div></div>
 <div class="ttc" id="aclass_actor_html_a2a0ff4335a1ee9096df90f288c026c8b"><div class="ttname"><a href="class_actor.html#a2a0ff4335a1ee9096df90f288c026c8b">Actor::Actor</a></div><div class="ttdeci">Actor()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition</b> Actor.cpp:6</div></div>
-<div class="ttc" id="aclass_bullet_html_a3ba0ec4b4bf603c5100d219ed14aad3f"><div class="ttname"><a href="class_bullet.html#a3ba0ec4b4bf603c5100d219ed14aad3f">Bullet::UpdateActor</a></div><div class="ttdeci">void UpdateActor() override</div><div class="ttdoc">Actor-specific update logic - override in derived classes.</div><div class="ttdef"><b>Definition</b> Bullet.cpp:37</div></div>
+<div class="ttc" id="aclass_bullet_html_a2de1bc8fb8c70cce09385efd11e9156c"><div class="ttname"><a href="class_bullet.html#a2de1bc8fb8c70cce09385efd11e9156c">Bullet::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">Resets bullet state for reuse in object pool.</div><div class="ttdef"><b>Definition</b> Bullet.cpp:61</div></div>
+<div class="ttc" id="aclass_bullet_html_a3ba0ec4b4bf603c5100d219ed14aad3f"><div class="ttname"><a href="class_bullet.html#a3ba0ec4b4bf603c5100d219ed14aad3f">Bullet::UpdateActor</a></div><div class="ttdeci">void UpdateActor() override</div><div class="ttdoc">Updates bullet movement and lifetime each frame.</div><div class="ttdef"><b>Definition</b> Bullet.cpp:33</div></div>
+<div class="ttc" id="aclass_bullet_html_a808a0e0eeb524be049001d4ca96d0e99"><div class="ttname"><a href="class_bullet.html#a808a0e0eeb524be049001d4ca96d0e99">Bullet::IsActive</a></div><div class="ttdeci">bool IsActive() const</div><div class="ttdoc">Checks if bullet is currently active and moving.</div><div class="ttdef"><b>Definition</b> Bullet.h:53</div></div>
+<div class="ttc" id="aclass_bullet_html_ab6ea6dea05bf5a69238838c253b5c33a"><div class="ttname"><a href="class_bullet.html#ab6ea6dea05bf5a69238838c253b5c33a">Bullet::GetShooter</a></div><div class="ttdeci">Actor * GetShooter() const</div><div class="ttdoc">Gets the actor that fired this bullet.</div><div class="ttdef"><b>Definition</b> Bullet.h:59</div></div>
+<div class="ttc" id="aclass_bullet_html_acd7befc0bc18907cc1d871d37bbdddeb"><div class="ttname"><a href="class_bullet.html#acd7befc0bc18907cc1d871d37bbdddeb">Bullet::Bullet</a></div><div class="ttdeci">Bullet()</div><div class="ttdoc">Default constructor - creates an inactive bullet ready for pooling.</div><div class="ttdef"><b>Definition</b> Bullet.cpp:11</div></div>
+<div class="ttc" id="aclass_bullet_html_ad0fdc9f1d21eb8f774dd32b5385dd0a6"><div class="ttname"><a href="class_bullet.html#ad0fdc9f1d21eb8f774dd32b5385dd0a6">Bullet::Initialize</a></div><div class="ttdeci">void Initialize(const Vector3 &amp;startPos, const Vector3 &amp;direction, Actor *shooter, float speed=500.0f)</div><div class="ttdoc">Initializes bullet for firing with specified parameters.</div><div class="ttdef"><b>Definition</b> Bullet.cpp:48</div></div>
+<div class="ttc" id="aclass_bullet_html_ad1ae97704e472b871214d1f58581f163"><div class="ttname"><a href="class_bullet.html#ad1ae97704e472b871214d1f58581f163">Bullet::~Bullet</a></div><div class="ttdeci">~Bullet() override=default</div><div class="ttdoc">Default destructor.</div></div>
 <div class="ttc" id="aclass_mesh_component_html"><div class="ttname"><a href="class_mesh_component.html">MeshComponent</a></div><div class="ttdoc">Component that renders 3D meshes for actors.</div><div class="ttdef"><b>Definition</b> MeshComponent.h:13</div></div>
 <div class="ttc" id="aclass_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3</a></div><div class="ttdef"><b>Definition</b> Vector3.h:4</div></div>
 </div><!-- fragment --></div><!-- contents -->

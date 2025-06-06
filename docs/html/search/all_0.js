@@ -14,7 +14,8 @@ var searchData=
   ['addmesh_11',['AddMesh',['../class_i_renderer.html#a81174d6a4be3bf2fe8868b943293b635',1,'IRenderer::AddMesh()'],['../class_renderer_gl.html#afbf204b7ce20365120d64175ca55e7f3',1,'RendererGl::AddMesh()'],['../class_renderer_s_d_l.html#a1d467cae4b7edfe04821c2845372fcee',1,'RendererSDL::AddMesh()']]],
   ['addsprite_12',['AddSprite',['../class_i_renderer.html#a7d09a0b9147f8245ded0aec051a4ddd6',1,'IRenderer::AddSprite()'],['../class_renderer_gl.html#a0b43cdb1afa74f94b31472a07c92d808',1,'RendererGl::AddSprite()'],['../class_renderer_s_d_l.html#a8f9d558f5be82e7ad92db9854812bb9d',1,'RendererSDL::AddSprite()']]],
   ['animatedspritecomponent_13',['AnimatedSpriteComponent',['../class_animated_sprite_component.html',1,'AnimatedSpriteComponent'],['../class_animated_sprite_component.html#a189548f277dafa28ec559b3fd28c5e31',1,'AnimatedSpriteComponent::AnimatedSpriteComponent()']]],
-  ['assets_14',['Assets',['../class_assets.html',1,'']]],
-  ['atan2_15',['ATan2',['../namespace_maths.html#a157e3653c9d9e138a4116ff616abfd65',1,'Maths']]],
-  ['attachscene_16',['AttachScene',['../class_actor.html#a7842755222ed26fcab6c435ccbec2880',1,'Actor']]]
+  ['applyimpulse_14',['ApplyImpulse',['../class_pin.html#ab5f6fbb20d9de890e3d09b56efff1a66',1,'Pin']]],
+  ['assets_15',['Assets',['../class_assets.html',1,'']]],
+  ['atan2_16',['ATan2',['../namespace_maths.html#a157e3653c9d9e138a4116ff616abfd65',1,'Maths']]],
+  ['attachscene_17',['AttachScene',['../class_actor.html#a7842755222ed26fcab6c435ccbec2880',1,'Actor']]]
 ];

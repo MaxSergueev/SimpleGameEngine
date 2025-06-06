@@ -95,28 +95,33 @@ $(function(){initNavTree('_pin_physics_component_8h_source.html','',''); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;Component.h&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;MoveComponent.h&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_pin_physics_component.html">    5</a></span><span class="keyword">class </span>PinPhysicsComponent : <span class="keyword">public</span> Component</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_class" href="class_move_component.html">MoveComponent</a>* mMoveComponent;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">float</span> mFrictionFactor;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    PinPhysicsComponent(<span class="keyword">class</span> <a class="code hl_class" href="class_actor.html">Actor</a>* owner);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    ~PinPhysicsComponent() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pin_physics_component.html#a030a2511369767716810c85454c806f8">Update</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> SetFrictionFactor(<span class="keywordtype">float</span> factor) { mFrictionFactor = factor; }</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">float</span> GetFrictionFactor()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mFrictionFactor; }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
-</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span></div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_pin_physics_component.html">   14</a></span><span class="keyword">class </span><a class="code hl_function" href="class_pin_physics_component.html#a8b50141edc5b84c987b0c38cf5d699ee">PinPhysicsComponent</a> : <span class="keyword">public</span> Component</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_move_component.html">MoveComponent</a>* mMoveComponent;  </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">float</span> mFrictionFactor;          </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="class_pin_physics_component.html#a8b50141edc5b84c987b0c38cf5d699ee">PinPhysicsComponent</a>(<span class="keyword">class</span> <a class="code hl_class" href="class_actor.html">Actor</a>* owner);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_pin_physics_component.html#ada6fe510864190611fe98eafe1055755">   30</a></span>    <a class="code hl_function" href="class_pin_physics_component.html#ada6fe510864190611fe98eafe1055755">~PinPhysicsComponent</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pin_physics_component.html#a030a2511369767716810c85454c806f8">Update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_pin_physics_component.html#a7487f72a6c29c9b7aeb9fdb76f0d760c">   44</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pin_physics_component.html#a7487f72a6c29c9b7aeb9fdb76f0d760c">SetFrictionFactor</a>(<span class="keywordtype">float</span> factor) { mFrictionFactor = factor; }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_pin_physics_component.html#a7e660bdbb22ab6069b6921e22f98cbf2">   50</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_pin_physics_component.html#a7e660bdbb22ab6069b6921e22f98cbf2">GetFrictionFactor</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mFrictionFactor; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+</div>
 <div class="ttc" id="aclass_actor_html"><div class="ttname"><a href="class_actor.html">Actor</a></div><div class="ttdoc">Base class for all game objects in the engine.</div><div class="ttdef"><b>Definition</b> Actor.h:16</div></div>
 <div class="ttc" id="aclass_move_component_html"><div class="ttname"><a href="class_move_component.html">MoveComponent</a></div><div class="ttdoc">Component that handles actor movement based on speed and direction.</div><div class="ttdef"><b>Definition</b> MoveComponent.h:14</div></div>
-<div class="ttc" id="aclass_pin_physics_component_html_a030a2511369767716810c85454c806f8"><div class="ttname"><a href="class_pin_physics_component.html#a030a2511369767716810c85454c806f8">PinPhysicsComponent::Update</a></div><div class="ttdeci">void Update() override</div><div class="ttdoc">Called every frame - override for component-specific update logic.</div><div class="ttdef"><b>Definition</b> PinPhysicsComponent.cpp:16</div></div>
+<div class="ttc" id="aclass_pin_physics_component_html_a030a2511369767716810c85454c806f8"><div class="ttname"><a href="class_pin_physics_component.html#a030a2511369767716810c85454c806f8">PinPhysicsComponent::Update</a></div><div class="ttdeci">void Update() override</div><div class="ttdoc">Updates physics simulation each frame.</div><div class="ttdef"><b>Definition</b> PinPhysicsComponent.cpp:14</div></div>
+<div class="ttc" id="aclass_pin_physics_component_html_a7487f72a6c29c9b7aeb9fdb76f0d760c"><div class="ttname"><a href="class_pin_physics_component.html#a7487f72a6c29c9b7aeb9fdb76f0d760c">PinPhysicsComponent::SetFrictionFactor</a></div><div class="ttdeci">void SetFrictionFactor(float factor)</div><div class="ttdoc">Sets the base friction coefficient.</div><div class="ttdef"><b>Definition</b> PinPhysicsComponent.h:44</div></div>
+<div class="ttc" id="aclass_pin_physics_component_html_a7e660bdbb22ab6069b6921e22f98cbf2"><div class="ttname"><a href="class_pin_physics_component.html#a7e660bdbb22ab6069b6921e22f98cbf2">PinPhysicsComponent::GetFrictionFactor</a></div><div class="ttdeci">float GetFrictionFactor() const</div><div class="ttdoc">Gets the current friction coefficient.</div><div class="ttdef"><b>Definition</b> PinPhysicsComponent.h:50</div></div>
+<div class="ttc" id="aclass_pin_physics_component_html_a8b50141edc5b84c987b0c38cf5d699ee"><div class="ttname"><a href="class_pin_physics_component.html#a8b50141edc5b84c987b0c38cf5d699ee">PinPhysicsComponent::PinPhysicsComponent</a></div><div class="ttdeci">PinPhysicsComponent(class Actor *owner)</div><div class="ttdoc">Constructs physics component for the specified actor.</div><div class="ttdef"><b>Definition</b> PinPhysicsComponent.cpp:5</div></div>
+<div class="ttc" id="aclass_pin_physics_component_html_ada6fe510864190611fe98eafe1055755"><div class="ttname"><a href="class_pin_physics_component.html#ada6fe510864190611fe98eafe1055755">PinPhysicsComponent::~PinPhysicsComponent</a></div><div class="ttdeci">~PinPhysicsComponent()=default</div><div class="ttdoc">Default destructor.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

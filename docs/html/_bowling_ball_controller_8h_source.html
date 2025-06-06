@@ -97,35 +97,37 @@ $(function(){initNavTree('_bowling_ball_controller_8h_source.html','',''); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;IInputListener.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Vector2.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;BowlingBall.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_bowling_ball_controller.html">    7</a></span><span class="keyword">class </span>BowlingBallController : <span class="keyword">public</span> Component, <span class="keyword">public</span> <a class="code hl_class" href="class_i_input_listener.html">IInputListener</a></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    BowlingBallController() = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    BowlingBallController(<span class="keyword">const</span> BowlingBallController&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    BowlingBallController&amp; operator= (<span class="keyword">const</span> BowlingBallController&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    BowlingBallController(<a class="code hl_class" href="class_bowling_ball.html">BowlingBall</a>* ball);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    ~BowlingBallController();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#a406c2bc2706987db800963b5e06a2a78">OnStart</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#af95b641b513ae997bdc5c01fbe2d3747">Update</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#ad048c8aeb28fcd82bcf9ad7025f523d9">OnNotify</a>(SDL_Event&amp; pEvent) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_class" href="class_bowling_ball.html">BowlingBall</a>* mBowlingBall;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">float</span> mInputX;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">bool</span> mIsRolling;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">float</span> mLateralLimit;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_bowling_ball_controller.html">   16</a></span><span class="keyword">class </span>BowlingBallController : <span class="keyword">public</span> Component, <span class="keyword">public</span> <a class="code hl_class" href="class_i_input_listener.html">IInputListener</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    BowlingBallController() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    BowlingBallController(<span class="keyword">const</span> BowlingBallController&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    BowlingBallController&amp; operator= (<span class="keyword">const</span> BowlingBallController&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    BowlingBallController(<a class="code hl_class" href="class_bowling_ball.html">BowlingBall</a>* ball);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_function" href="class_bowling_ball_controller.html#a560aa8096c301aa82fd3e91f8f3ef2fa">~BowlingBallController</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#a406c2bc2706987db800963b5e06a2a78">OnStart</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#af95b641b513ae997bdc5c01fbe2d3747">Update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bowling_ball_controller.html#ad048c8aeb28fcd82bcf9ad7025f523d9">OnNotify</a>(SDL_Event&amp; pEvent) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="class_bowling_ball.html">BowlingBall</a>* mBowlingBall;  </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">float</span> mInputX;              </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> mIsRolling;            </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">float</span> mLateralLimit;        </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
 </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="ttc" id="aclass_bowling_ball_controller_html_a406c2bc2706987db800963b5e06a2a78"><div class="ttname"><a href="class_bowling_ball_controller.html#a406c2bc2706987db800963b5e06a2a78">BowlingBallController::OnStart</a></div><div class="ttdeci">void OnStart() override</div><div class="ttdoc">Called when the component is first created - override for initialization.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:18</div></div>
-<div class="ttc" id="aclass_bowling_ball_controller_html_ad048c8aeb28fcd82bcf9ad7025f523d9"><div class="ttname"><a href="class_bowling_ball_controller.html#ad048c8aeb28fcd82bcf9ad7025f523d9">BowlingBallController::OnNotify</a></div><div class="ttdeci">void OnNotify(SDL_Event &amp;pEvent) override</div><div class="ttdoc">Called when a subscribed input event occurs.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:45</div></div>
-<div class="ttc" id="aclass_bowling_ball_controller_html_af95b641b513ae997bdc5c01fbe2d3747"><div class="ttname"><a href="class_bowling_ball_controller.html#af95b641b513ae997bdc5c01fbe2d3747">BowlingBallController::Update</a></div><div class="ttdeci">void Update() override</div><div class="ttdoc">Called every frame - override for component-specific update logic.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:26</div></div>
-<div class="ttc" id="aclass_bowling_ball_html"><div class="ttname"><a href="class_bowling_ball.html">BowlingBall</a></div><div class="ttdef"><b>Definition</b> BowlingBall.h:8</div></div>
+<div class="ttc" id="aclass_bowling_ball_controller_html_a406c2bc2706987db800963b5e06a2a78"><div class="ttname"><a href="class_bowling_ball_controller.html#a406c2bc2706987db800963b5e06a2a78">BowlingBallController::OnStart</a></div><div class="ttdeci">void OnStart() override</div><div class="ttdoc">Initializes input subscriptions for keyboard controls.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:17</div></div>
+<div class="ttc" id="aclass_bowling_ball_controller_html_a560aa8096c301aa82fd3e91f8f3ef2fa"><div class="ttname"><a href="class_bowling_ball_controller.html#a560aa8096c301aa82fd3e91f8f3ef2fa">BowlingBallController::~BowlingBallController</a></div><div class="ttdeci">~BowlingBallController()</div><div class="ttdoc">Destructor - unsubscribes from input events.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:10</div></div>
+<div class="ttc" id="aclass_bowling_ball_controller_html_ad048c8aeb28fcd82bcf9ad7025f523d9"><div class="ttname"><a href="class_bowling_ball_controller.html#ad048c8aeb28fcd82bcf9ad7025f523d9">BowlingBallController::OnNotify</a></div><div class="ttdeci">void OnNotify(SDL_Event &amp;pEvent) override</div><div class="ttdoc">Handles keyboard input events for ball control.</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:39</div></div>
+<div class="ttc" id="aclass_bowling_ball_controller_html_af95b641b513ae997bdc5c01fbe2d3747"><div class="ttname"><a href="class_bowling_ball_controller.html#af95b641b513ae997bdc5c01fbe2d3747">BowlingBallController::Update</a></div><div class="ttdeci">void Update() override</div><div class="ttdoc">Updates ball position based on input (only when not rolling)</div><div class="ttdef"><b>Definition</b> BowlingBallController.cpp:24</div></div>
+<div class="ttc" id="aclass_bowling_ball_html"><div class="ttname"><a href="class_bowling_ball.html">BowlingBall</a></div><div class="ttdoc">Physics-based bowling ball actor for bowling game mechanics.</div><div class="ttdef"><b>Definition</b> BowlingBall.h:17</div></div>
 <div class="ttc" id="aclass_i_input_listener_html"><div class="ttname"><a href="class_i_input_listener.html">IInputListener</a></div><div class="ttdoc">Interface for objects that need to receive input events.</div><div class="ttdef"><b>Definition</b> IInputListener.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -9,7 +9,6 @@ BowlingBallController::BowlingBallController(BowlingBall* ball)
 
 BowlingBallController::~BowlingBallController()
 {
-    // Unsubscribe from input events
     InputManager::Instance().UnsubscribeTo(SDLK_SPACE, this);
     InputManager::Instance().UnsubscribeTo(SDLK_LEFT, this);
     InputManager::Instance().UnsubscribeTo(SDLK_RIGHT, this);
@@ -17,7 +16,6 @@ BowlingBallController::~BowlingBallController()
 
 void BowlingBallController::OnStart()
 {
-    // Subscribe to input events
     InputManager::Instance().SubscribeTo(SDLK_SPACE, this);
     InputManager::Instance().SubscribeTo(SDLK_LEFT, this);
     InputManager::Instance().SubscribeTo(SDLK_RIGHT, this);
@@ -27,17 +25,13 @@ void BowlingBallController::Update()
 {
     if (!mIsRolling)
     {
-        // Apply lateral movement if not rolling
-		Vector3 currentPos = mOwner->GetTransform().GetPosition();
+        Vector3 currentPos = mOwner->GetTransform().GetPosition();
 
-        // Calculate new position with lateral movement
         float newX = currentPos.x + mInputX * 0.25f;
 
-        // Clamp position within limits
         if (newX < -mLateralLimit) newX = -mLateralLimit;
         if (newX > mLateralLimit) newX = mLateralLimit;
 
-        // Update position
         mOwner->SetPosition(Vector3(newX, currentPos.y, currentPos.z));
     }
 }
@@ -46,7 +40,6 @@ void BowlingBallController::OnNotify(SDL_Event& pEvent)
 {
     if (pEvent.type == SDL_KEYDOWN || pEvent.type == SDL_KEYUP)
     {
-        // Only process input if not rolling or if it's the space key
         if (!mIsRolling || pEvent.key.keysym.sym == SDLK_SPACE)
         {
             switch (pEvent.key.keysym.sym)
@@ -68,7 +61,6 @@ void BowlingBallController::OnNotify(SDL_Event& pEvent)
             case SDLK_SPACE:
                 if (pEvent.type == SDL_KEYDOWN && !mIsRolling)
                 {
-                    // Start rolling the ball forward
                     mIsRolling = true;
                     mBowlingBall->Roll(Vector2(0.0f, 1.0f));
                 }
@@ -77,4 +69,3 @@ void BowlingBallController::OnNotify(SDL_Event& pEvent)
         }
     }
 }
-

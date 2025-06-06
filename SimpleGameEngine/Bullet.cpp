@@ -19,18 +19,14 @@ Bullet::Bullet()
     mIsActive(false),
     mShooter(nullptr)
 {
-    // Create mesh component (small sphere for bullet)
     mMeshComponent = new MeshComponent(this);
     mMeshComponent->SetMesh(Assets::GetMesh("bullet"));
     mMeshComponent->GetMesh()->SetTexture(&Assets::GetTexture("yellow"));
 
-    // Small scale for bullet
     SetScale(Vector3(1.0f, 1.0f, 1.0f));
 
-    // Setup collision
     SetupCollision();
 
-    // Start inactive
     SetActive(false);
 }
 
@@ -38,12 +34,10 @@ void Bullet::UpdateActor()
 {
     if (!mIsActive) return;
 
-    // Move bullet
     Vector3 currentPos = GetTransform().GetPosition();
     Vector3 movement = mDirection * mSpeed * Time::deltaTime;
     SetPosition(currentPos + movement);
 
-    // Update lifetime
     mLifetime += Time::deltaTime;
     if (mLifetime >= mMaxLifetime)
     {
@@ -74,16 +68,14 @@ void Bullet::Reset()
     SetActive(false);
     mCollider->SetActive(false);
 
-    // Move far away
     SetPosition(Vector3(10000, 10000, 10000));
 }
 
 void Bullet::SetupCollision()
 {
     mCollider = new AABBColliderComponent(this);
-    mCollider->SetDimensions(Vector3(2.0f, 2.0f, 2.0f)); // Small bullet collision
+    mCollider->SetDimensions(Vector3(2.0f, 2.0f, 2.0f));
 
-    // Make bullets triggers - they detect hits but don't cause physical collisions
     mCollider->SetTrigger(true);
 
     mCollider->SetOnCollisionEnter([this](AABBColliderComponent* other) {
@@ -93,10 +85,8 @@ void Bullet::SetupCollision()
 
 void Bullet::OnHit(AABBColliderComponent* other)
 {
-    // Don't hit the shooter
     if (other->GetOwner() == mShooter) return;
 
-    // Check what we hit
     FirstPersonActor* player = dynamic_cast<FirstPersonActor*>(other->GetOwner());
     Enemy* enemy = dynamic_cast<Enemy*>(other->GetOwner());
 
@@ -112,10 +102,8 @@ void Bullet::OnHit(AABBColliderComponent* other)
     }
     else if (!other->IsTrigger())
     {
-        // Hit any other solid object (walls, obstacles, etc.) - deactivate bullet
         Deactivate();
     }
-    // If it's another trigger (like another bullet), ignore it and keep going
 }
 
 void Bullet::Deactivate()
@@ -124,6 +112,5 @@ void Bullet::Deactivate()
     SetActive(false);
     mCollider->SetActive(false);
 
-    // Move far away
     SetPosition(Vector3(10000, 10000, 10000));
 }

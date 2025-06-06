@@ -92,6 +92,11 @@ $(function(){initNavTree('class_bullet.html','','class_bullet-members'); });
   <div class="headertitle"><div class="title">Bullet Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Projectile actor for shooting mechanics in the game engine.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_bullet_8h_source.html">Bullet.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Bullet:</div>
 <div class="dyncontent">
@@ -104,16 +109,23 @@ Inheritance diagram for Bullet:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:acd7befc0bc18907cc1d871d37bbdddeb" id="r_acd7befc0bc18907cc1d871d37bbdddeb"><td class="memItemLeft" align="right" valign="top"><a id="acd7befc0bc18907cc1d871d37bbdddeb" name="acd7befc0bc18907cc1d871d37bbdddeb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Bullet</b> ()</td></tr>
+<tr class="memdesc:acd7befc0bc18907cc1d871d37bbdddeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor - creates an inactive bullet ready for pooling. <br /></td></tr>
+<tr class="memitem:ad1ae97704e472b871214d1f58581f163" id="r_ad1ae97704e472b871214d1f58581f163"><td class="memItemLeft" align="right" valign="top"><a id="ad1ae97704e472b871214d1f58581f163" name="ad1ae97704e472b871214d1f58581f163"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Bullet</b> () override=default</td></tr>
+<tr class="memdesc:ad1ae97704e472b871214d1f58581f163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="memitem:a3ba0ec4b4bf603c5100d219ed14aad3f" id="r_a3ba0ec4b4bf603c5100d219ed14aad3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ba0ec4b4bf603c5100d219ed14aad3f">UpdateActor</a> () override</td></tr>
-<tr class="memdesc:a3ba0ec4b4bf603c5100d219ed14aad3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actor-specific update logic - override in derived classes.  <br /></td></tr>
-<tr class="memitem:ad0fdc9f1d21eb8f774dd32b5385dd0a6" id="r_ad0fdc9f1d21eb8f774dd32b5385dd0a6"><td class="memItemLeft" align="right" valign="top"><a id="ad0fdc9f1d21eb8f774dd32b5385dd0a6" name="ad0fdc9f1d21eb8f774dd32b5385dd0a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;startPos, const <a class="el" href="class_vector3.html">Vector3</a> &amp;direction, <a class="el" href="class_actor.html">Actor</a> *shooter, float speed=500.0f)</td></tr>
+<tr class="memdesc:a3ba0ec4b4bf603c5100d219ed14aad3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates bullet movement and lifetime each frame.  <br /></td></tr>
+<tr class="memitem:ad0fdc9f1d21eb8f774dd32b5385dd0a6" id="r_ad0fdc9f1d21eb8f774dd32b5385dd0a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0fdc9f1d21eb8f774dd32b5385dd0a6">Initialize</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;startPos, const <a class="el" href="class_vector3.html">Vector3</a> &amp;direction, <a class="el" href="class_actor.html">Actor</a> *shooter, float speed=500.0f)</td></tr>
+<tr class="memdesc:ad0fdc9f1d21eb8f774dd32b5385dd0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes bullet for firing with specified parameters.  <br /></td></tr>
 <tr class="memitem:a2de1bc8fb8c70cce09385efd11e9156c" id="r_a2de1bc8fb8c70cce09385efd11e9156c"><td class="memItemLeft" align="right" valign="top"><a id="a2de1bc8fb8c70cce09385efd11e9156c" name="a2de1bc8fb8c70cce09385efd11e9156c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr>
-<tr class="memitem:a808a0e0eeb524be049001d4ca96d0e99" id="r_a808a0e0eeb524be049001d4ca96d0e99"><td class="memItemLeft" align="right" valign="top"><a id="a808a0e0eeb524be049001d4ca96d0e99" name="a808a0e0eeb524be049001d4ca96d0e99"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsActive</b> () const</td></tr>
-<tr class="memitem:ab6ea6dea05bf5a69238838c253b5c33a" id="r_ab6ea6dea05bf5a69238838c253b5c33a"><td class="memItemLeft" align="right" valign="top"><a id="ab6ea6dea05bf5a69238838c253b5c33a" name="ab6ea6dea05bf5a69238838c253b5c33a"></a>
-<a class="el" href="class_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetShooter</b> () const</td></tr>
+<tr class="memdesc:a2de1bc8fb8c70cce09385efd11e9156c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets bullet state for reuse in object pool. <br /></td></tr>
+<tr class="memitem:a808a0e0eeb524be049001d4ca96d0e99" id="r_a808a0e0eeb524be049001d4ca96d0e99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a808a0e0eeb524be049001d4ca96d0e99">IsActive</a> () const</td></tr>
+<tr class="memdesc:a808a0e0eeb524be049001d4ca96d0e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if bullet is currently active and moving.  <br /></td></tr>
+<tr class="memitem:ab6ea6dea05bf5a69238838c253b5c33a" id="r_ab6ea6dea05bf5a69238838c253b5c33a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6ea6dea05bf5a69238838c253b5c33a">GetShooter</a> () const</td></tr>
+<tr class="memdesc:ab6ea6dea05bf5a69238838c253b5c33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the actor that fired this bullet.  <br /></td></tr>
 <tr class="inherit_header pub_methods_class_actor"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_actor')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_actor.html">Actor</a></td></tr>
 <tr class="memitem:aa98d279a92c4e3dfa49b4d775ed420ce inherit pub_methods_class_actor" id="r_aa98d279a92c4e3dfa49b4d775ed420ce"><td class="memTemplParams" colspan="2">template&lt;typename C&gt; </td></tr>
 <tr class="memitem:aa98d279a92c4e3dfa49b4d775ed420ce inherit pub_methods_class_actor template"><td class="memItemLeft" align="right" valign="top">C *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_actor.html#aa98d279a92c4e3dfa49b4d775ed420ce">GetComponentOfType</a> () const</td></tr>
@@ -195,7 +207,108 @@ Additional Inherited Members</h2></td></tr>
 std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mComponents</b></td></tr>
 <tr class="memdesc:a69af522a7017c89865f8e0fa3c0cec74 inherit pro_attribs_class_actor"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of components attached to this actor. <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Projectile actor for shooting mechanics in the game engine. </p>
+<p><a class="el" href="class_bullet.html" title="Projectile actor for shooting mechanics in the game engine.">Bullet</a> represents a projectile that can be fired by actors (players, enemies, etc.). It handles movement, collision detection, damage dealing, and automatic cleanup after a specified lifetime. Bullets are designed to be pooled for performance, allowing reuse without constant allocation/deallocation. They automatically detect hits against players, enemies, and solid objects. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab6ea6dea05bf5a69238838c253b5c33a" name="ab6ea6dea05bf5a69238838c253b5c33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ea6dea05bf5a69238838c253b5c33a">&#9670;&#160;</a></span>GetShooter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_actor.html">Actor</a> * Bullet::GetShooter </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the actor that fired this bullet. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the shooter actor, or nullptr if not set </dd></dl>
+
+</div>
+</div>
+<a id="ad0fdc9f1d21eb8f774dd32b5385dd0a6" name="ad0fdc9f1d21eb8f774dd32b5385dd0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0fdc9f1d21eb8f774dd32b5385dd0a6">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bullet::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>startPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_vector3.html">Vector3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>direction</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_actor.html">Actor</a> *</td>          <td class="paramname"><span class="paramname"><em>shooter</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>speed</em></span><span class="paramdefsep"> = </span><span class="paramdefval">500.0f</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes bullet for firing with specified parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPos</td><td>Starting position for the bullet </td></tr>
+    <tr><td class="paramname">direction</td><td>Normalized direction vector for bullet travel </td></tr>
+    <tr><td class="paramname">shooter</td><td><a class="el" href="class_actor.html" title="Base class for all game objects in the engine.">Actor</a> that fired this bullet (won't be damaged by it) </td></tr>
+    <tr><td class="paramname">speed</td><td>Movement speed in units per second (default: 500.0f) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a808a0e0eeb524be049001d4ca96d0e99" name="a808a0e0eeb524be049001d4ca96d0e99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a808a0e0eeb524be049001d4ca96d0e99">&#9670;&#160;</a></span>IsActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Bullet::IsActive </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if bullet is currently active and moving. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if bullet is active, false if available for reuse </dd></dl>
+
+</div>
+</div>
 <a id="a3ba0ec4b4bf603c5100d219ed14aad3f" name="a3ba0ec4b4bf603c5100d219ed14aad3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ba0ec4b4bf603c5100d219ed14aad3f">&#9670;&#160;</a></span>UpdateActor()</h2>
 
@@ -219,7 +332,7 @@ std::vector&lt; <a class="el" href="class_component.html">Component</a> * &gt;&#
 </table>
 </div><div class="memdoc">
 
-<p>Actor-specific update logic - override in derived classes. </p>
+<p>Updates bullet movement and lifetime each frame. </p>
 
 <p>Reimplemented from <a class="el" href="class_actor.html#a677f1abc4fa1c198d19065c3844ac841">Actor</a>.</p>
 

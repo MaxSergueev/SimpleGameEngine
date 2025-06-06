@@ -25,7 +25,6 @@ void BowlingBall::Roll(const Vector2& direction)
 {
     Vector2 dirCopy = direction;
 
-    // Normalize the direction and apply speed
     Vector2 normalizedDir = dirCopy;
     float sqrLength = dirCopy.GetSqrLength();
     if (sqrLength > 0.0f)
@@ -37,7 +36,6 @@ void BowlingBall::Roll(const Vector2& direction)
 
     mMoveComponent->SetSpeed(normalizedDir * mSpeed);
 }
-
 
 void BowlingBall::Stop()
 {

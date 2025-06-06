@@ -92,6 +92,11 @@ $(function(){initNavTree('class_bowling_ball_controller.html','','class_bowling_
   <div class="headertitle"><div class="title">BowlingBallController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Input controller component for bowling ball mechanics.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_bowling_ball_controller_8h_source.html">BowlingBallController.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BowlingBallController:</div>
 <div class="dyncontent">
@@ -109,14 +114,17 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BowlingBallController</b> (const <a class="el" href="class_bowling_ball_controller.html">BowlingBallController</a> &amp;)=delete</td></tr>
 <tr class="memitem:ad3e4b59f05497e8cc13f4005f17f969b" id="r_ad3e4b59f05497e8cc13f4005f17f969b"><td class="memItemLeft" align="right" valign="top"><a id="ad3e4b59f05497e8cc13f4005f17f969b" name="ad3e4b59f05497e8cc13f4005f17f969b"></a>
 <a class="el" href="class_bowling_ball_controller.html">BowlingBallController</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_bowling_ball_controller.html">BowlingBallController</a> &amp;)=delete</td></tr>
-<tr class="memitem:a6fc396b7255d027fc13adad912447356" id="r_a6fc396b7255d027fc13adad912447356"><td class="memItemLeft" align="right" valign="top"><a id="a6fc396b7255d027fc13adad912447356" name="a6fc396b7255d027fc13adad912447356"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BowlingBallController</b> (<a class="el" href="class_bowling_ball.html">BowlingBall</a> *ball)</td></tr>
+<tr class="memitem:a6fc396b7255d027fc13adad912447356" id="r_a6fc396b7255d027fc13adad912447356"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc396b7255d027fc13adad912447356">BowlingBallController</a> (<a class="el" href="class_bowling_ball.html">BowlingBall</a> *ball)</td></tr>
+<tr class="memdesc:a6fc396b7255d027fc13adad912447356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs controller for the specified bowling ball.  <br /></td></tr>
+<tr class="memitem:a560aa8096c301aa82fd3e91f8f3ef2fa" id="r_a560aa8096c301aa82fd3e91f8f3ef2fa"><td class="memItemLeft" align="right" valign="top"><a id="a560aa8096c301aa82fd3e91f8f3ef2fa" name="a560aa8096c301aa82fd3e91f8f3ef2fa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~BowlingBallController</b> ()</td></tr>
+<tr class="memdesc:a560aa8096c301aa82fd3e91f8f3ef2fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - unsubscribes from input events. <br /></td></tr>
 <tr class="memitem:a406c2bc2706987db800963b5e06a2a78" id="r_a406c2bc2706987db800963b5e06a2a78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a406c2bc2706987db800963b5e06a2a78">OnStart</a> () override</td></tr>
-<tr class="memdesc:a406c2bc2706987db800963b5e06a2a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is first created - override for initialization.  <br /></td></tr>
+<tr class="memdesc:a406c2bc2706987db800963b5e06a2a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes input subscriptions for keyboard controls.  <br /></td></tr>
 <tr class="memitem:af95b641b513ae997bdc5c01fbe2d3747" id="r_af95b641b513ae997bdc5c01fbe2d3747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95b641b513ae997bdc5c01fbe2d3747">Update</a> () override</td></tr>
-<tr class="memdesc:af95b641b513ae997bdc5c01fbe2d3747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called every frame - override for component-specific update logic.  <br /></td></tr>
+<tr class="memdesc:af95b641b513ae997bdc5c01fbe2d3747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates ball position based on input (only when not rolling)  <br /></td></tr>
 <tr class="memitem:ad048c8aeb28fcd82bcf9ad7025f523d9" id="r_ad048c8aeb28fcd82bcf9ad7025f523d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad048c8aeb28fcd82bcf9ad7025f523d9">OnNotify</a> (SDL_Event &amp;pEvent) override</td></tr>
-<tr class="memdesc:ad048c8aeb28fcd82bcf9ad7025f523d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a subscribed input event occurs.  <br /></td></tr>
+<tr class="memdesc:ad048c8aeb28fcd82bcf9ad7025f523d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles keyboard input events for ball control.  <br /></td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_component')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a3666d52c047753446a9c5a85f3d647ca inherit pub_methods_class_component" id="r_a3666d52c047753446a9c5a85f3d647ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a3666d52c047753446a9c5a85f3d647ca">Component</a> (<a class="el" href="class_actor.html">Actor</a> *pOwner, int pUpdateOrder=100)</td></tr>
 <tr class="memdesc:a3666d52c047753446a9c5a85f3d647ca inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a component and attaches it to an actor.  <br /></td></tr>
@@ -150,6 +158,35 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>mIsActive</b></td></t
 int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td></tr>
 <tr class="memdesc:af6bf73bf032074bc44815d9e51927b40 inherit pro_attribs_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update order priority (lower values update first) <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Input controller component for bowling ball mechanics. </p>
+<p><a class="el" href="class_bowling_ball_controller.html" title="Input controller component for bowling ball mechanics.">BowlingBallController</a> provides keyboard input handling for bowling ball gameplay, allowing players to position the ball laterally before rolling and then launch it forward. It implements a two-phase control system: positioning phase (left/right movement within limits) and rolling phase (triggered by spacebar). Once rolled, lateral movement is disabled to simulate realistic bowling physics. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6fc396b7255d027fc13adad912447356" name="a6fc396b7255d027fc13adad912447356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc396b7255d027fc13adad912447356">&#9670;&#160;</a></span>BowlingBallController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BowlingBallController::BowlingBallController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_bowling_ball.html">BowlingBall</a> *</td>          <td class="paramname"><span class="paramname"><em>ball</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs controller for the specified bowling ball. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ball</td><td>Pointer to the bowling ball to control </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ad048c8aeb28fcd82bcf9ad7025f523d9" name="ad048c8aeb28fcd82bcf9ad7025f523d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad048c8aeb28fcd82bcf9ad7025f523d9">&#9670;&#160;</a></span>OnNotify()</h2>
@@ -174,10 +211,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td><
 </table>
 </div><div class="memdoc">
 
-<p>Called when a subscribed input event occurs. </p>
+<p>Handles keyboard input events for ball control. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pEvent</td><td>The SDL event that was triggered </td></tr>
+    <tr><td class="paramname">pEvent</td><td>SDL event containing input information </td></tr>
   </table>
   </dd>
 </dl>
@@ -209,7 +246,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td><
 </table>
 </div><div class="memdoc">
 
-<p>Called when the component is first created - override for initialization. </p>
+<p>Initializes input subscriptions for keyboard controls. </p>
 
 <p>Reimplemented from <a class="el" href="class_component.html#af4b961f731e80d741882a25548174d3e">Component</a>.</p>
 
@@ -238,7 +275,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td><
 </table>
 </div><div class="memdoc">
 
-<p>Called every frame - override for component-specific update logic. </p>
+<p>Updates ball position based on input (only when not rolling) </p>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a53ec66587fb3229c44cadac8a555001d">Component</a>.</p>
 

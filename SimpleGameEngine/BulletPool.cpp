@@ -5,14 +5,13 @@
 BulletPool::BulletPool(Scene* scene, int poolSize)
     : mScene(scene), mPoolSize(poolSize), mNextBulletIndex(0)
 {
-    // Pre-allocate bullets
     mBullets.reserve(poolSize);
 
     for (int i = 0; i < poolSize; i++)
     {
         Bullet* bullet = new Bullet();
         mScene->AddActor(bullet);
-        bullet->Reset(); // Start inactive
+        bullet->Reset();
         mBullets.push_back(bullet);
     }
 
@@ -21,7 +20,6 @@ BulletPool::BulletPool(Scene* scene, int poolSize)
 
 BulletPool::~BulletPool()
 {
-    // cleaned up by the scene
 }
 
 bool BulletPool::FireBullet(const Vector3& startPos, const Vector3& direction, Actor* shooter, float speed)
@@ -33,7 +31,7 @@ bool BulletPool::FireBullet(const Vector3& startPos, const Vector3& direction, A
         return true;
     }
 
-	Log::Error(LogType::Error, "No available bullets in pool!");
+    Log::Error(LogType::Error, "No available bullets in pool!");
     return false;
 }
 
@@ -57,7 +55,6 @@ int BulletPool::GetActiveBulletCount() const
 
 Bullet* BulletPool::GetAvailableBullet()
 {
-    // Simple round-robin approach
     for (int i = 0; i < mPoolSize; i++)
     {
         int index = (mNextBulletIndex + i) % mPoolSize;
@@ -68,6 +65,5 @@ Bullet* BulletPool::GetAvailableBullet()
         }
     }
 
-    return nullptr; // No available bullets
+    return nullptr;
 }
-

@@ -92,6 +92,11 @@ $(function(){initNavTree('class_pin_physics_component.html','','class_pin_physic
   <div class="headertitle"><div class="title">PinPhysicsComponent Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Specialized physics component for bowling pin behavior.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_pin_physics_component_8h_source.html">PinPhysicsComponent.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PinPhysicsComponent:</div>
 <div class="dyncontent">
@@ -104,14 +109,17 @@ Inheritance diagram for PinPhysicsComponent:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b50141edc5b84c987b0c38cf5d699ee" id="r_a8b50141edc5b84c987b0c38cf5d699ee"><td class="memItemLeft" align="right" valign="top"><a id="a8b50141edc5b84c987b0c38cf5d699ee" name="a8b50141edc5b84c987b0c38cf5d699ee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PinPhysicsComponent</b> (class <a class="el" href="class_actor.html">Actor</a> *owner)</td></tr>
+<tr class="memitem:a8b50141edc5b84c987b0c38cf5d699ee" id="r_a8b50141edc5b84c987b0c38cf5d699ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b50141edc5b84c987b0c38cf5d699ee">PinPhysicsComponent</a> (class <a class="el" href="class_actor.html">Actor</a> *owner)</td></tr>
+<tr class="memdesc:a8b50141edc5b84c987b0c38cf5d699ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs physics component for the specified actor.  <br /></td></tr>
+<tr class="memitem:ada6fe510864190611fe98eafe1055755" id="r_ada6fe510864190611fe98eafe1055755"><td class="memItemLeft" align="right" valign="top"><a id="ada6fe510864190611fe98eafe1055755" name="ada6fe510864190611fe98eafe1055755"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~PinPhysicsComponent</b> ()=default</td></tr>
+<tr class="memdesc:ada6fe510864190611fe98eafe1055755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor. <br /></td></tr>
 <tr class="memitem:a030a2511369767716810c85454c806f8" id="r_a030a2511369767716810c85454c806f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a030a2511369767716810c85454c806f8">Update</a> () override</td></tr>
-<tr class="memdesc:a030a2511369767716810c85454c806f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called every frame - override for component-specific update logic.  <br /></td></tr>
-<tr class="memitem:a7487f72a6c29c9b7aeb9fdb76f0d760c" id="r_a7487f72a6c29c9b7aeb9fdb76f0d760c"><td class="memItemLeft" align="right" valign="top"><a id="a7487f72a6c29c9b7aeb9fdb76f0d760c" name="a7487f72a6c29c9b7aeb9fdb76f0d760c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFrictionFactor</b> (float factor)</td></tr>
-<tr class="memitem:a7e660bdbb22ab6069b6921e22f98cbf2" id="r_a7e660bdbb22ab6069b6921e22f98cbf2"><td class="memItemLeft" align="right" valign="top"><a id="a7e660bdbb22ab6069b6921e22f98cbf2" name="a7e660bdbb22ab6069b6921e22f98cbf2"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>GetFrictionFactor</b> () const</td></tr>
+<tr class="memdesc:a030a2511369767716810c85454c806f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates physics simulation each frame.  <br /></td></tr>
+<tr class="memitem:a7487f72a6c29c9b7aeb9fdb76f0d760c" id="r_a7487f72a6c29c9b7aeb9fdb76f0d760c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7487f72a6c29c9b7aeb9fdb76f0d760c">SetFrictionFactor</a> (float factor)</td></tr>
+<tr class="memdesc:a7487f72a6c29c9b7aeb9fdb76f0d760c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the base friction coefficient.  <br /></td></tr>
+<tr class="memitem:a7e660bdbb22ab6069b6921e22f98cbf2" id="r_a7e660bdbb22ab6069b6921e22f98cbf2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e660bdbb22ab6069b6921e22f98cbf2">GetFrictionFactor</a> () const</td></tr>
+<tr class="memdesc:a7e660bdbb22ab6069b6921e22f98cbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current friction coefficient.  <br /></td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_component')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a3666d52c047753446a9c5a85f3d647ca inherit pub_methods_class_component" id="r_a3666d52c047753446a9c5a85f3d647ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a3666d52c047753446a9c5a85f3d647ca">Component</a> (<a class="el" href="class_actor.html">Actor</a> *pOwner, int pUpdateOrder=100)</td></tr>
 <tr class="memdesc:a3666d52c047753446a9c5a85f3d647ca inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a component and attaches it to an actor.  <br /></td></tr>
@@ -143,7 +151,97 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>mIsActive</b></td></t
 int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td></tr>
 <tr class="memdesc:af6bf73bf032074bc44815d9e51927b40 inherit pro_attribs_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update order priority (lower values update first) <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Specialized physics component for bowling pin behavior. </p>
+<p><a class="el" href="class_pin_physics_component.html" title="Specialized physics component for bowling pin behavior.">PinPhysicsComponent</a> provides friction and momentum simulation for bowling pins. It applies dynamic friction based on movement speed to create pin physics where pins gradually slow down after being knocked. The component features speed-dependent friction coefficients and automatic stopping for very slow movements to prevent infinite sliding. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8b50141edc5b84c987b0c38cf5d699ee" name="a8b50141edc5b84c987b0c38cf5d699ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b50141edc5b84c987b0c38cf5d699ee">&#9670;&#160;</a></span>PinPhysicsComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PinPhysicsComponent::PinPhysicsComponent </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="class_actor.html">Actor</a> *</td>          <td class="paramname"><span class="paramname"><em>owner</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs physics component for the specified actor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>Pointer to the actor (typically a <a class="el" href="class_pin.html" title="Bowling pin actor with physics interactions.">Pin</a>) that owns this component </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a7e660bdbb22ab6069b6921e22f98cbf2" name="a7e660bdbb22ab6069b6921e22f98cbf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e660bdbb22ab6069b6921e22f98cbf2">&#9670;&#160;</a></span>GetFrictionFactor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PinPhysicsComponent::GetFrictionFactor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current friction coefficient. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current friction factor value </dd></dl>
+
+</div>
+</div>
+<a id="a7487f72a6c29c9b7aeb9fdb76f0d760c" name="a7487f72a6c29c9b7aeb9fdb76f0d760c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7487f72a6c29c9b7aeb9fdb76f0d760c">&#9670;&#160;</a></span>SetFrictionFactor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PinPhysicsComponent::SetFrictionFactor </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>factor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the base friction coefficient. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">factor</td><td>Friction factor between 0.0 (no friction) and 1.0 (maximum friction) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a030a2511369767716810c85454c806f8" name="a030a2511369767716810c85454c806f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a030a2511369767716810c85454c806f8">&#9670;&#160;</a></span>Update()</h2>
 
@@ -167,7 +265,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mUpdateOrder</b></td><
 </table>
 </div><div class="memdoc">
 
-<p>Called every frame - override for component-specific update logic. </p>
+<p>Updates physics simulation each frame. </p>
+<p>Applies dynamic friction based on current movement speed and stops the pin when velocity becomes negligible to prevent infinite sliding. </p>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a53ec66587fb3229c44cadac8a555001d">Component</a>.</p>
 
