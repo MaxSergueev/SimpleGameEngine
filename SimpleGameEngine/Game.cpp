@@ -10,21 +10,21 @@
 class Scene;
 using namespace std;
 
-
-Game::Game(std::string pTitle, std::vector<Scene*> pScenes, IRenderer::RendererType pType):mTitle(pTitle),  mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
+Game::Game(std::string pTitle, std::vector<Scene*> pScenes, IRenderer::RendererType pType)
+    : mTitle(pTitle), mIsRunning(true), mScenes(std::move(pScenes)), mLoadedScene(0)
 {
     if (pType == IRenderer::RendererType::SDL) {
         mRenderer = new RendererSDL();
     }
-    else if (pType == IRenderer::RendererType::OPENGL){
+    else if (pType == IRenderer::RendererType::OPENGL) {
         mRenderer = new RendererGl();
     }
 
-    if(mScenes.empty())
+    if (mScenes.empty())
     {
         Log::Error(LogType::Error, "No scene set for game");
     }
-    for(vector<Scene*>::iterator s = mScenes.begin(); s != mScenes.end(); ++s)
+    for (vector<Scene*>::iterator s = mScenes.begin(); s != mScenes.end(); ++s)
     {
         (*s)->SetRenderer(mRenderer);
     }
@@ -37,23 +37,21 @@ Game::~Game()
 
 void Game::Initialize()
 {
-    //mWindow = new Window(1440, 810);
     mWindow = new Window(1584, 891);
 
     mInputManager = new InputManager;
 
-    if(mWindow->Open() && mRenderer->Initialize(*mWindow))
+    if (mWindow->Open() && mRenderer->Initialize(*mWindow))
     {
         mScenes[mLoadedScene]->Start();
         mScenes[mLoadedScene]->Load();
         Loop();
     }
-
 }
 
 void Game::Loop()
 {
-    while(mIsRunning)
+    while (mIsRunning)
     {
         Time::ComputeDeltaTime();
         CheckInputs();
@@ -99,9 +97,8 @@ void Game::CheckInputs()
 void Game::Close()
 {
     mScenes[mLoadedScene]->Unload();
-    if(!mScenes.empty())mScenes[mLoadedScene]->Close();
+    if (!mScenes.empty())mScenes[mLoadedScene]->Close();
     mRenderer->Close();
     mWindow->Close();
     SDL_Quit();
 }
-

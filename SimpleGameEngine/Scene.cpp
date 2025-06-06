@@ -7,7 +7,7 @@ using namespace std;
 
 Scene* Scene::ActiveScene = nullptr;
 
-Scene::Scene( std::string pTitle): mTitle(pTitle), mRenderer(nullptr), mIsUpdatingActors(false)
+Scene::Scene(std::string pTitle) : mTitle(pTitle), mRenderer(nullptr), mIsUpdatingActors(false)
 {
     ActiveScene = this;
 }
@@ -19,8 +19,7 @@ void Scene::SetRenderer(IRenderer* pRenderer)
 
 void Scene::Unload()
 {
-    //Free actors pointers memory
-    while(!mActors.empty())
+    while (!mActors.empty())
     {
         delete mActors.back();
         mActors.pop_back();
@@ -31,20 +30,20 @@ void Scene::Unload()
 void Scene::AddActor(Actor* actor)
 {
     actor->AttachScene(*this);
-    if(mIsUpdatingActors){mPendingActors.emplace_back(actor);}
+    if (mIsUpdatingActors) { mPendingActors.emplace_back(actor); }
     else mActors.emplace_back(actor);
 }
 
 void Scene::RemoveActor(Actor* actor)
 {
     vector<Actor*>::iterator it = find(mPendingActors.begin(), mPendingActors.end(), actor);
-    if(it != mPendingActors.end())
+    if (it != mPendingActors.end())
     {
         iter_swap(it, mPendingActors.end() - 1);
         mPendingActors.pop_back();
     }
     it = find(mActors.begin(), mActors.end(), actor);
-    if(it != mActors.end())
+    if (it != mActors.end())
     {
         iter_swap(it, mActors.end() - 1);
         mActors.pop_back();
@@ -54,19 +53,18 @@ void Scene::RemoveActor(Actor* actor)
 void Scene::UpdateAllActors()
 {
     mIsUpdatingActors = true;
-    for(Actor* actor : mActors)
+    for (Actor* actor : mActors)
     {
         actor->Update();
     }
     mIsUpdatingActors = false;
 
-    // Add pending actors to the pool
-    for(Actor* actor: mPendingActors)
+    for (Actor* actor : mPendingActors)
     {
         mActors.emplace_back(actor);
     }
     mPendingActors.clear();
-    for(Actor* deadActor: mDeadActors)
+    for (Actor* deadActor : mDeadActors)
     {
         delete deadActor;
     }
@@ -90,7 +88,6 @@ void Scene::CheckCollisions()
 {
     std::vector<std::pair<AABBColliderComponent*, AABBColliderComponent*>> currentFrameCollisions;
 
-    // Check all colliders against each other
     for (size_t i = 0; i < mColliders.size(); i++)
     {
         if (!mColliders[i]->IsActive()) continue;
@@ -102,22 +99,17 @@ void Scene::CheckCollisions()
             AABBColliderComponent* a = mColliders[i];
             AABBColliderComponent* b = mColliders[j];
 
-            // Check if they intersect
             if (a->Intersects(b))
             {
-                // Add to current frame collisions
                 currentFrameCollisions.push_back(std::make_pair(a, b));
 
-                // Check if this is a new collision
                 if (!a->IsCollidingWith(b))
                 {
-                    // New collision
                     a->OnCollisionEnter(b);
                     b->OnCollisionEnter(a);
                 }
                 else
                 {
-                    // Continuing collision
                     a->OnCollisionStay(b);
                     b->OnCollisionStay(a);
                 }
@@ -125,7 +117,6 @@ void Scene::CheckCollisions()
         }
     }
 
-    // Check for collisions that ended
     for (auto& collider : mColliders)
     {
         if (!collider->IsActive()) continue;
@@ -153,7 +144,6 @@ void Scene::CheckCollisions()
             }
         }
 
-        // Notify about ended collisions
         for (auto& ended : endedCollisions)
         {
             collider->OnCollisionExit(ended);

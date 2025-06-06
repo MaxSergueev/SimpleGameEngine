@@ -41,7 +41,6 @@ bool LineTrace::HasLineOfSight(Scene* scene, const Vector3& start, const Vector3
     return !hit.bHit;
 }
 
-// Add this new function to LineTrace.cpp
 bool LineTrace::HasLineOfSightToTarget(Scene* scene, const Vector3& start, const Vector3& end,
     AABBColliderComponent* shooterCollider,
     AABBColliderComponent* targetCollider)
@@ -49,17 +48,13 @@ bool LineTrace::HasLineOfSightToTarget(Scene* scene, const Vector3& start, const
     LineTraceHit hit = TraceLineAgainstColliders(scene, start, end, shooterCollider);
 
     if (!hit.bHit) {
-        // Nothing hit - clear line of sight
         return true;
     }
 
-    // Something was hit - check if it's our target
     if (hit.hitCollider == targetCollider) {
-        // We hit our target - that's a clear line of sight for shooting purposes
         return true;
     }
 
-    // We hit something else (wall, other enemy, etc.) - line of sight blocked
     return false;
 }
 
@@ -71,23 +66,21 @@ bool LineTrace::LineIntersectsAABB(const Vector3& lineStart, const Vector3& line
     if (lineLength == 0.0f)
         return false;
 
-    // Normalize
     direction.x = direction.x / lineLength;
-	direction.y = direction.y / lineLength;
-	direction.z = direction.z / lineLength;
+    direction.y = direction.y / lineLength;
+    direction.z = direction.z / lineLength;
 
-    // Calculate intersection using slab method
     float tMin = 0.0f;
     float tMax = lineLength;
 
-    for (int i = 0; i < 3; i++) // x, y, z components
+    for (int i = 0; i < 3; i++)
     {
         float dirComponent = (i == 0) ? direction.x : (i == 1) ? direction.y : direction.z;
         float startComponent = (i == 0) ? lineStart.x : (i == 1) ? lineStart.y : lineStart.z;
         float minComponent = (i == 0) ? aabbMin.x : (i == 1) ? aabbMin.y : aabbMin.z;
         float maxComponent = (i == 0) ? aabbMax.x : (i == 1) ? aabbMax.y : aabbMax.z;
 
-        if (abs(dirComponent) < 0.0001f) // Ray is parallel to slab
+        if (abs(dirComponent) < 0.0001f)
         {
             if (startComponent < minComponent || startComponent > maxComponent)
                 return false;

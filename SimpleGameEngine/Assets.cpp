@@ -7,7 +7,7 @@
 
 std::map<std::string, Texture> Assets::mTextures = {};
 std::map<std::string, Mesh> Assets::mMeshes = {};
-std::map < std::string, ShaderProgram> Assets::mShaderPrograms = {};
+std::map<std::string, ShaderProgram> Assets::mShaderPrograms = {};
 
 Texture Assets::LoadTexture(IRenderer& pRenderer, const std::string& pFileName, const std::string& pName)
 {
@@ -17,10 +17,10 @@ Texture Assets::LoadTexture(IRenderer& pRenderer, const std::string& pFileName, 
 
 Texture& Assets::GetTexture(const std::string& pName)
 {
-    if(mTextures.find(pName) == mTextures.end())
+    if (mTextures.find(pName) == mTextures.end())
     {
         std::ostringstream loadError;
-        loadError << "Texture "<<pName<<" does not exist in assets manager\n";
+        loadError << "Texture " << pName << " does not exist in assets manager\n";
         Log::Error(LogType::Application, loadError.str());
     }
     return mTextures[pName];
@@ -28,7 +28,7 @@ Texture& Assets::GetTexture(const std::string& pName)
 
 void Assets::Clear()
 {
-    for(auto iter : mTextures)
+    for (auto iter : mTextures)
     {
         iter.second.Unload();
     }
@@ -54,8 +54,6 @@ ShaderProgram& Assets::GetShaderProgram(const std::string& pName)
     }
     return mShaderPrograms[pName];
 }
-
-
 
 Texture Assets::LoadTextureFromFile(IRenderer& pRenderer, const std::string& pFileName)
 {
@@ -100,6 +98,7 @@ Mesh Assets::LoadMeshFromFile(const std::string& pFileName)
     {
         Log::Info("Mesh " + pFileName + " successfully loaded");
     }
+
     std::vector<Vertex> vertices;
     for (int i = 0; i < shapes.size(); i++)
     {
@@ -122,12 +121,12 @@ Mesh Assets::LoadMeshFromFile(const std::string& pFileName)
                 attributes.texcoords[i.texcoord_index * 2],
                 attributes.texcoords[i.texcoord_index * 2 + 1],
             };
-            // Not gonna care about texCoord right now.
+
             Vertex vert = { position, normal, texCoord };
             vertices.push_back(vert);
         }
-
     }
     return Mesh(vertices);
 }
+
 

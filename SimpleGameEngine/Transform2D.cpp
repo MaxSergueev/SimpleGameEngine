@@ -1,7 +1,7 @@
 #include "Transform2D.h"
 
-Transform2D::Transform2D() :mPosition(0, 0, 0), mScale( 1.0f, 1.0f, 1.0f), 
-                            mRotation(Quaternion::Identity), mNeedsUpdate(true)
+Transform2D::Transform2D() :mPosition(0, 0, 0), mScale(1.0f, 1.0f, 1.0f),
+mRotation(Quaternion::Identity), mNeedsUpdate(true)
 {
 }
 
@@ -46,23 +46,23 @@ void Transform2D::Rotate(Vector3 pRotation)
 
 void Transform2D::RotateX(float xRotation)
 {
-	Quaternion qRotation(Vector3(1.0f, 0.0f, 0.0f), Maths::ToRad(xRotation));
-	mRotation = Quaternion::Concatenate(mRotation, qRotation);
-	mNeedsUpdate = true;
+    Quaternion qRotation(Vector3(1.0f, 0.0f, 0.0f), Maths::ToRad(xRotation));
+    mRotation = Quaternion::Concatenate(mRotation, qRotation);
+    mNeedsUpdate = true;
 }
 
 void Transform2D::RotateY(float yRotation)
 {
-	Quaternion qRotation(Vector3(0.0f, 1.0f, 0.0f), Maths::ToRad(yRotation));
-	mRotation = Quaternion::Concatenate(mRotation, qRotation);
-	mNeedsUpdate = true;
+    Quaternion qRotation(Vector3(0.0f, 1.0f, 0.0f), Maths::ToRad(yRotation));
+    mRotation = Quaternion::Concatenate(mRotation, qRotation);
+    mNeedsUpdate = true;
 }
 
 void Transform2D::RotateZ(float zRotation)
 {
-	Quaternion qRotation(Vector3(0.0f, 0.0f, 1.0f), Maths::ToRad(zRotation));
-	mRotation = Quaternion::Concatenate(mRotation, qRotation);
-	mNeedsUpdate = true;
+    Quaternion qRotation(Vector3(0.0f, 0.0f, 1.0f), Maths::ToRad(zRotation));
+    mRotation = Quaternion::Concatenate(mRotation, qRotation);
+    mNeedsUpdate = true;
 }
 
 void Transform2D::ComputeWorldTransform()
@@ -72,5 +72,4 @@ void Transform2D::ComputeWorldTransform()
     mWorldTransform = Matrix4Row::CreateScale(mScale);
     mWorldTransform *= Matrix4Row::CreateFromQuaternion(mRotation);
     mWorldTransform *= Matrix4Row::CreateTranslation(mPosition);
-    //mOwner->UpdateComponentsTransform();
 }

@@ -1,5 +1,4 @@
 #include "AnimatedSpriteComponent.h"
-
 #include "Time.h"
 
 AnimatedSpriteComponent::AnimatedSpriteComponent(Actor* pOwner, const vector<Texture*>& pTexture, int pDrawOrder) :
@@ -29,6 +28,7 @@ void AnimatedSpriteComponent::Update()
 {
     SpriteComponent::Update();
     if (mAnimationTextures.size() == 0) return;
+
     mCurrentFrame += mAnimFps * Time::deltaTime;
     while (mCurrentFrame >= mAnimationTextures.size())
     {
@@ -36,4 +36,5 @@ void AnimatedSpriteComponent::Update()
     }
     SetTexture(*mAnimationTextures[static_cast<int>(mCurrentFrame)]);
 }
+
 

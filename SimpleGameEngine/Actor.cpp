@@ -1,10 +1,9 @@
 #include "Actor.h"
-
 #include "Component.h"
 #include "Scene.h"
 using namespace std;
 
-Actor::Actor():mState(ActorState::Active),
+Actor::Actor() : mState(ActorState::Active),
 mTransform(Transform2D()),
 mScene(*Scene::ActiveScene)
 {
@@ -13,8 +12,8 @@ mScene(*Scene::ActiveScene)
 Actor::~Actor()
 {
     mScene.RemoveActor(this);
-    //Delete every components*
-    while(!mComponents.empty())
+
+    while (!mComponents.empty())
     {
         delete mComponents.back();
     }
@@ -42,7 +41,6 @@ void Actor::SetScale(Vector3 pScale)
 
 void Actor::SetRotation(Vector3 pRotation)
 {
-
     mTransform.SetRotation(pRotation);
 }
 
@@ -71,18 +69,13 @@ void Actor::RotateZ(float pRotation)
     mTransform.RotateZ(pRotation);
 }
 
-
 void Actor::AddComponent(Component* pComponent)
 {
-    //Find correct place of insertion for the component depending
-    //on update order
-
     int order = pComponent->GetUpdateOrder();
-    //std::vector<Component*>::iterator
     auto it = mComponents.begin();
-    for(;it != mComponents.end(); ++it)
+    for (; it != mComponents.end(); ++it)
     {
-        if(order < (*it)->GetUpdateOrder()) break;
+        if (order < (*it)->GetUpdateOrder()) break;
     }
     mComponents.insert(it, pComponent);
 }
@@ -90,19 +83,19 @@ void Actor::AddComponent(Component* pComponent)
 void Actor::RemoveComponent(Component* pComponent)
 {
     auto it = find(mComponents.begin(), mComponents.end(), pComponent);
-    if(it != mComponents.end()) mComponents.erase(it);
+    if (it != mComponents.end()) mComponents.erase(it);
 }
 
 void Actor::Update()
 {
-    if(mState != ActorState::Active) return;
+    if (mState != ActorState::Active) return;
     UpdateComponents();
     UpdateActor();
 }
 
 void Actor::UpdateComponents()
 {
-    for(Component* comp : mComponents)
+    for (Component* comp : mComponents)
     {
         comp->Update();
     }
@@ -111,5 +104,4 @@ void Actor::UpdateComponents()
 void Actor::UpdateActor()
 {
 }
-
 

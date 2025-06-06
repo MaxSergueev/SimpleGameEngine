@@ -202,6 +202,7 @@
     <ClCompile Include="MoveComponent.h" />
     <ClCompile Include="Pin.cpp" />
     <ClCompile Include="PinPhysicsComponent.cpp" />
+    <ClCompile Include="PlanetScene.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RigidBodyComponent.cpp" />
     <ClCompile Include="Quaternion.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="Pin.h" />
     <ClInclude Include="PinPhysicsComponent.h" />
+    <ClInclude Include="PlanetScene.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="RigidBodyComponent.h" />
     <ClInclude Include="Quaternion.h" />

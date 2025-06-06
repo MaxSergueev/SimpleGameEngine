@@ -3,7 +3,6 @@
 
 InputManager::~InputManager()
 {
-    // Clean up keyboard events
     std::map<SDL_Keycode, InputEvent*>::iterator it;
     for (it = mKeyboardEvents.begin(); it != mKeyboardEvents.end(); it++)
     {
@@ -11,7 +10,6 @@ InputManager::~InputManager()
     }
     mKeyboardEvents.clear();
 
-    // Clean up mouse events
     std::map<Uint8, InputEvent*>::iterator mouseIt;
     for (mouseIt = mMouseEvents.begin(); mouseIt != mMouseEvents.end(); mouseIt++)
     {
@@ -28,7 +26,6 @@ InputManager& InputManager::Instance()
 
 void InputManager::HandleInputs(SDL_Event& pEvent)
 {
-    // Handle keyboard events
     if (pEvent.type == SDL_KEYDOWN || pEvent.type == SDL_KEYUP)
     {
         std::map<SDL_Keycode, InputEvent*>::iterator it = mKeyboardEvents.find(pEvent.key.keysym.sym);
@@ -37,7 +34,6 @@ void InputManager::HandleInputs(SDL_Event& pEvent)
             (*it).second->NotifyListeners(pEvent);
         }
     }
-    // Handle mouse events
     else if (pEvent.type == SDL_MOUSEBUTTONDOWN || pEvent.type == SDL_MOUSEBUTTONUP)
     {
         std::map<Uint8, InputEvent*>::iterator it = mMouseEvents.find(pEvent.button.button);
@@ -87,5 +83,3 @@ void InputManager::UnsubscribeToMouse(Uint8 mouseButton, IInputListener* pListen
     }
     mMouseEvents[mouseButton]->Unsubscribe(pListener);
 }
-
-

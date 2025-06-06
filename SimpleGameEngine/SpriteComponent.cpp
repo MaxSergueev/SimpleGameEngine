@@ -3,12 +3,12 @@
 #include "Actor.h"
 #include "Scene.h"
 
-SpriteComponent::SpriteComponent(Actor* pOwner, Texture& pTexture, int pDrawOrder):
-Component(pOwner),
-mTexture(pTexture),
-mDrawOrder(pDrawOrder),
-mTexWidth(pTexture.GetWidth()),
-mTexHeight(pTexture.GetHeight())
+SpriteComponent::SpriteComponent(Actor* pOwner, Texture& pTexture, int pDrawOrder) :
+    Component(pOwner),
+    mTexture(pTexture),
+    mDrawOrder(pDrawOrder),
+    mTexWidth(pTexture.GetWidth()),
+    mTexHeight(pTexture.GetHeight())
 {
     mOwner->GetScene().GetRenderer().AddSprite(this);
 }

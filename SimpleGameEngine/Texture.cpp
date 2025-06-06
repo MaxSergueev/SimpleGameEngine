@@ -2,7 +2,7 @@
 #include <SDL_image.h>
 #include "Log.h"
 
-Texture::Texture(): mSdlTexture(nullptr), mWidth(0), mHeight(0)
+Texture::Texture() : mSdlTexture(nullptr), mWidth(0), mHeight(0)
 {
 }
 
@@ -54,7 +54,6 @@ bool Texture::LoadGl(RendererGl* pRenderer, const std::string& pFileName, SDL_Su
 
 bool Texture::LoadSdl(RendererSDL* pRenderer, const std::string& pFileName, SDL_Surface* pSurface)
 {
-    //Create texture from surface
     mSdlTexture = SDL_CreateTextureFromSurface(pRenderer->ToSdlRenderer(), pSurface);
     SDL_FreeSurface(pSurface);
     if (!mSdlTexture)
@@ -71,8 +70,8 @@ void Texture::Unload()
     if (mSdlTexture) SDL_DestroyTexture(mSdlTexture);
     else glDeleteTextures(1, &mTextureId);
 }
+
 void Texture::SetActive() const
 {
     glBindTexture(GL_TEXTURE_2D, mTextureId);
 }
-

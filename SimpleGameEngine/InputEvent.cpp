@@ -1,4 +1,5 @@
 #include "InputEvent.h"
+
 InputEvent::~InputEvent()
 {
     mListeners.clear();

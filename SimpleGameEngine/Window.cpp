@@ -6,10 +6,9 @@
 #include "Log.h"
 using namespace std;
 
-Window::Window(int pWidth, int pHeight):mSdlWindow(nullptr),mDimensions({static_cast<float>(pWidth), static_cast<float>(pHeight)})
+Window::Window(int pWidth, int pHeight) :mSdlWindow(nullptr), mDimensions({ static_cast<float>(pWidth), static_cast<float>(pHeight) })
 {
 }
-
 
 Vector2 Window::GetDimensions() const
 {
@@ -29,8 +28,8 @@ bool Window::Open()
         return false;
     }
     mSdlWindow = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        static_cast<int>(mDimensions.x),static_cast<int>(mDimensions.y), SDL_WINDOW_OPENGL);
-    if(!mSdlWindow)
+        static_cast<int>(mDimensions.x), static_cast<int>(mDimensions.y), SDL_WINDOW_OPENGL);
+    if (!mSdlWindow)
     {
         Log::Error(LogType::System, "Failed to create window");
         return false;

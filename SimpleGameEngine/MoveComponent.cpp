@@ -3,8 +3,6 @@
 #include "Time.h"
 #include "Actor.h"
 
-
-
 MoveComponent::MoveComponent(Actor* pOwner, int pUpdateOrder) :
     Component(pOwner, pUpdateOrder), mSpeed(0.0f)
 {
@@ -25,7 +23,6 @@ void MoveComponent::Update()
     {
         Vector3 newPosition = mOwner->GetTransform().GetPosition()
             + (mOwner->GetTransform().Right() * mSpeed.x
-                //+ mOwner->GetTransform().Up() * mSpeed.y
                 + mOwner->GetTransform().Forward() * mSpeed.y) * Time::deltaTime;
         mOwner->SetPosition(newPosition);
     }

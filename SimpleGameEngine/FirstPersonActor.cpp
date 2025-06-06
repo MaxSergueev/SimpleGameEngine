@@ -15,7 +15,6 @@ FirstPersonActor::FirstPersonActor(Scene* scene, BulletPool* bulletPool)
     mRigidBody = new RigidBodyComponent(this);
 
     mHealthComponent = new HealthComponent(this, 100);
-
     mHealthComponent->SetOnDeathCallback([this]() {
         HandleDeath();
         });
@@ -47,13 +46,9 @@ void FirstPersonActor::Shoot()
         return;
     }
 
-    // Get shooting position (camera position)
     Vector3 shootPos = GetTransform().GetPosition();
-
-    // Get shooting direction (camera forward direction)
     Vector3 shootDirection = GetTransform().Forward();
 
-    // Fire bullet
     if (mBulletPool->FireBullet(shootPos, shootDirection, this, 400.0f))
     {
         Log::Info("Player fired bullet!");
@@ -67,14 +62,12 @@ void FirstPersonActor::Shoot()
 void FirstPersonActor::SetupCollisionCallbacks()
 {
     mCollider->SetOnCollisionEnter([this](AABBColliderComponent* other) {
-        // Only resolve collision if the other object is not a trigger
         if (!other->IsTrigger()) {
             mRigidBody->ResolveCollision(other);
         }
         });
 
     mCollider->SetOnCollisionStay([this](AABBColliderComponent* other) {
-        // Only resolve collision if the other object is not a trigger
         if (!other->IsTrigger()) {
             mRigidBody->ResolveCollision(other);
         }
@@ -85,6 +78,3 @@ void FirstPersonActor::HandleDeath()
 {
     Log::Info("Player died!");
 }
-
-
-
